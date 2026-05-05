@@ -17,6 +17,84 @@
   text-align: center;
 }
 
+/* === HOLOGRAPHIC BUTTONS/CARDS === */
+.btn-holographic {
+  position: relative;
+  background: var(--red-900);
+  color: var(--white) !important;
+  border: 1px solid var(--neon-border);
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.btn-holographic::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg, 
+    transparent, 
+    transparent 30%, 
+    var(--glow-red)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  z-index: -1;
+}
+
+.btn-holographic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--glow-red);
+}
+
+.btn-holographic:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+.holographic-card {
+  background: #111;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  transition: all 0.5s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.holographic-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg, 
+    transparent, 
+    transparent 30%, 
+    var(--glow-red)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.holographic-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px var(--glow-red);
+  border-color: var(--red-500);
+}
+
+.holographic-card:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
 .btn--solid {
   background: var(--red-500);
   color: #fff;

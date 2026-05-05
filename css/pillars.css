@@ -1,73 +1,256 @@
 /* ============================================
-   PILLARS — "Why Different" (NEO-EDITORIAL DARK GLASS)
+   WHY SECTION — RED 3D STAND-UP CARDS WITH HOVER REVEAL
+   - Cards stand up on scroll-in (entrance)
+   - Hover: smooth tilt + description reveal
+   - All-red gradient palette (light → deep)
    ============================================ */
-.why { 
-  background: var(--bg-dark); 
+.why {
+  background: var(--bg-main);
   position: relative;
   overflow: hidden;
+  padding-block: 8rem;
 }
-/* Giant watermark in background */
-.why::before {
-  content: "DIFFERENT";
-  position: absolute;
-  top: 10%;
-  left: -5%;
-  font-size: 15vw;
-  font-weight: 800;
-  color: #fff;
-  opacity: 0.03;
-  pointer-events: none;
+
+.why__head {
+  max-width: 760px;
+  margin-bottom: 6rem;
+  text-align: center;
+  margin-inline: auto;
 }
-.why__head { max-width: 760px; margin-bottom: 5rem; position: relative; z-index: 2; }
-.why__head .eyebrow { color: rgba(255,255,255,0.7); }
-.why__head .section-title { color: #fff; font-size: clamp(3rem, 5vw, 4.5rem); }
-.why__head .section-subtitle { color: rgba(255,255,255,0.8); }
 
 .why__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  position: relative;
-  z-index: 2;
-}
-.why__card {
-  padding: 3rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  min-height: 380px;
-  transition: all var(--transition);
-}
-.why__card:hover { 
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  border-color: rgba(255,255,255,0.4);
-}
-.why__num {
-  font-size: 4rem;
-  font-weight: 800;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: -0.05em;
-  line-height: 1;
-  transition: color var(--transition), transform var(--transition);
-}
-.why__card:hover .why__num {
-  color: #fff;
-  transform: scale(1.1) translateX(10px);
-  transform-origin: left center;
-}
-.why__card h3 {
-  font-size: 1.75rem;
-  font-weight: 800;
-  margin-block: 2rem 1rem;
-  letter-spacing: -0.02em;
-}
-.why__card p {
-  color: rgba(255,255,255,0.8);
-  line-height: 1.6;
-  font-size: 1.0625rem;
+  gap: 2.25rem;
+  max-width: 1200px;
+  margin-inline: auto;
+  perspective: 1500px;
+  perspective-origin: 50% 0%;
 }
 
-@media (max-width: 920px) {
-  .why__grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .why__card { min-height: 260px; padding: 2.5rem 2rem; }
+/* === Entrance: cards stand up from a tilted resting pose === */
+@keyframes whyStandUp {
+  0% {
+    transform: rotateX(60deg) translateY(-90px) translateZ(-60px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg) translateY(0) translateZ(0);
+    opacity: 1;
+  }
+}
+
+.why__card {
+  position: relative;
+  height: 380px;
+  border-radius: 22px;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+  transform-origin: 50% 100%;
+  transform: rotateX(60deg) translateY(-90px) translateZ(-60px);
+  opacity: 0;
+  cursor: default;
+  box-shadow:
+    0 30px 60px -22px rgba(0, 0, 0, 0.45),
+    0 18px 40px -12px rgba(183, 28, 28, 0.28);
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.why__card.is-visible {
+  animation: whyStandUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.why__card:nth-child(1).is-visible { animation-delay: 0ms; }
+.why__card:nth-child(2).is-visible { animation-delay: 140ms; }
+.why__card:nth-child(3).is-visible { animation-delay: 280ms; }
+
+/* === All-red gradient palette: light → brand → deep === */
+.why__card:nth-child(1) {
+  background: linear-gradient(155deg, #ef5350 0%, #c62828 60%, #b71c1c 100%);
+}
+.why__card:nth-child(2) {
+  background: linear-gradient(155deg, #d32f2f 0%, #a71919 60%, #821414 100%);
+}
+.why__card:nth-child(3) {
+  background: linear-gradient(155deg, #821414 0%, #5d0f0f 60%, #2b0808 100%);
+}
+
+/* Glassy highlight overlay */
+.why__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0) 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.22));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Sweeping shine */
+.why__shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255, 255, 255, 0.22) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-200%) skewX(-18deg);
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === Big edition number, top-right === */
+.why__num {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.75rem;
+  z-index: 3;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 5.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #fff;
+  opacity: 0.25;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    font-size 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === Body: title + description (description revealed on hover) === */
+.why__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.why__title {
+  color: #fff;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.why__desc {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  max-width: 32ch;
+  /* hidden until hover */
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+}
+
+/* === Hover cue (bottom-right) === */
+.why__cue {
+  position: absolute;
+  bottom: 1.4rem;
+  right: 1.5rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  transition:
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === Hover state: lift + tilt + reveal description === */
+.why__card.is-visible:hover {
+  transform: translateY(-12px) rotateX(2deg) rotateY(-3deg) scale(1.015);
+  box-shadow:
+    0 45px 80px -20px rgba(0, 0, 0, 0.55),
+    0 25px 60px -10px rgba(183, 28, 28, 0.4);
+}
+
+.why__card.is-visible:hover .why__shine { transform: translateX(250%) skewX(-18deg); }
+
+.why__card.is-visible:hover .why__num {
+  font-size: 2.25rem;
+  opacity: 0.65;
+  transform: translate(-2px, 2px);
+}
+
+.why__card.is-visible:hover .why__title {
+  transform: translateY(-4px);
+}
+
+.why__card.is-visible:hover .why__desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.why__card.is-visible:hover .why__cue {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .why__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .why__card:nth-child(3).is-visible { animation-delay: 140ms; }
+}
+
+@media (max-width: 720px) {
+  .why__grid { grid-template-columns: 1fr; gap: 1.5rem; perspective: 900px; }
+  .why__card { height: auto; min-height: 280px; }
+  .why__num { font-size: 4rem; top: 1.25rem; right: 1.5rem; }
+  .why__body { position: static; padding: 5rem 1.5rem 1.5rem; }
+  /* Always-visible description on touch screens */
+  .why__desc { opacity: 1; transform: none; }
+  .why__cue { display: none; }
+  @keyframes whyStandUp {
+    0% { transform: rotateX(35deg) translateY(-40px); opacity: 0; }
+    100% { transform: rotateX(0deg) translateY(0); opacity: 1; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why__card { transform: none; opacity: 1; animation: none; }
+  .why__card.is-visible { animation: none; }
+  .why__card.is-visible:hover { transform: translateY(-4px); }
+  .why__shine { display: none; }
+}
+
+/* On hover-incapable devices, expose the description by default */
+@media (hover: none) {
+  .why__desc { opacity: 1; transform: none; }
+  .why__cue { display: none; }
+  .why__num { font-size: 3rem; opacity: 0.4; }
+  .why__body { padding-top: 5rem; }
+}
+{ padding-top: 5rem; }
 }

@@ -17,23 +17,24 @@
   --gray-500: #6b6b6b;
   --gray-300: #c4c4c4;
   --gray-100: #ededed;
-  --gray-50:  #fafafa;
+  --gray-50:  #f4f4f4;
 
-  /* === NEO-EDITORIAL TOKENS === */
-  --bg-main: #ffffff;
+  /* === CLEAN BENTO TOKENS === */
+  --bg-main: #fcfcfc;
   --bg-dark: var(--red-900);
+  --bg-card-flat: #f4f4f4;
   
-  /* iOS Glass */
-  --glass-bg-light: rgba(255, 255, 255, 0.2);
+  /* iOS Glass for Navbar */
+  --glass-bg-light: rgba(255, 255, 255, 0.4);
   --glass-bg-dark: rgba(0, 0, 0, 0.2);
-  --glass-border: rgba(255, 255, 255, 0.25);
-  --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
   
-  /* Sharp base, rounded for glass */
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-glass: 20px;
+  /* Softer radius for flat bento */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-glass: 100px; /* For pill navbar */
   --radius-full: 9999px;
 
   /* === TYPOGRAPHY === */
@@ -51,11 +52,24 @@
   --container-narrow: 960px;
   --gutter:           clamp(1.25rem, 4vw, 3rem);
 
+  /* === GLOW & HOLOGRAPHIC TOKENS === */
+  --glow-red: rgba(183, 28, 28, 0.4);
+  --glow-cyan: rgba(0, 255, 255, 0.3);
+  --holo-gradient: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --neon-border: rgba(183, 28, 28, 0.3);
+
   /* === MOTION === */
-  --transition: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 400ms cubic-bezier(0.16, 1, 0.3, 1);
 
   /* === ELEVATION === */
-  --shadow-sm: 0 2px 4px rgba(0,0,0,.02), 0 4px 12px rgba(0,0,0,.04);
-  --shadow:    0 10px 24px rgba(0,0,0,.04), 0 20px 48px rgba(0,0,0,.08);
-  --shadow-lg: 0 30px 60px rgba(0,0,0,.08), 0 40px 80px rgba(0,0,0,.12);
+  --shadow-sm: 0 0 0 rgba(0,0,0,0); /* Flattened */
+  --shadow:    0 0 0 rgba(0,0,0,0); /* Flattened */
+  --shadow-lg: 0 0 0 rgba(0,0,0,0); /* Flattened */
 }

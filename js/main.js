@@ -26,6 +26,7 @@
 
   /* Init interactions after DOM mounted */
   window.SorceryScroll.init();
+  A.navInit();
   A.faqInit();
   A.formInit();
 

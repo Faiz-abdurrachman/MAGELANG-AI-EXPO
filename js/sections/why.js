@@ -3,11 +3,19 @@ window.SorceryApp.why = function () {
   const cards = window.SorceryData.pillars
     .map(
       (p) => `
-        <div class="why__card ios-glass--dark reveal">
-          <div class="why__num">${p.number}</div>
-          <h3>${p.title}</h3>
-          <p>${p.desc}</p>
-        </div>
+        <article class="why__card reveal">
+          <div class="why__shine"></div>
+          <div class="why__num" aria-hidden="true">${p.number}</div>
+          <div class="why__body">
+            <h3 class="why__title">${p.title}</h3>
+            <p class="why__desc">${p.desc}</p>
+          </div>
+          <div class="why__cue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </div>
+        </article>
       `
     )
     .join("");

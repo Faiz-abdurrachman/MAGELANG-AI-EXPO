@@ -7,7 +7,7 @@ window.SorceryApp.footer = function () {
           <div class="footer__brand">
             <h3>${window.SorceryIcons.logo} Sorcery MTI</h3>
             <small>Meet The Investor 2026</small>
-            <p>Matchmaking summit eksklusif yang mempertemukan inovasi regional terbaik dengan pemodal nasional. Diselenggarakan di Jogja-Magelang, 30 Agustus 2026.</p>
+            <p>Matchmaking summit eksklusif yang mempertemukan inovasi regional terbaik dengan pemodal nasional. Diselenggarakan di Jogja-Magelang, 22 Mei 2026.</p>
           </div>
 
           <div class="footer__col">

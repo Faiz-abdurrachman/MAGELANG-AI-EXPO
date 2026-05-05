@@ -3,13 +3,19 @@ window.SorceryApp.format = function () {
   const cards = window.SorceryData.zones
     .map(
       (z, i) => `
-        <div class="format__card reveal">
-          <div>
-            <div class="format__num">Zone 0${i + 1}</div>
-            <div class="format__name">${z.name}</div>
-            <div class="format__role">${z.role}</div>
+        <div class="format__card-wrapper reveal">
+          <div class="format__card">
+            <div class="format__slide format__slide--1">
+              <div class="format__num">Zone 0${i + 1}</div>
+              <div class="format__name">${z.name}</div>
+              <div class="format__role">${z.role}</div>
+            </div>
+            <div class="format__slide format__slide--2">
+              <div class="format__content">
+                <p class="format__desc">${z.desc}</p>
+              </div>
+            </div>
           </div>
-          <p class="format__desc">${z.desc}</p>
         </div>
       `
     )

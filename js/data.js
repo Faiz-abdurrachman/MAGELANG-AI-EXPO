@@ -4,8 +4,8 @@ window.SorceryData = {
     edition: "2026",
     location: "Jogja-Magelang",
     venue: "Lokalfolk Cafe, Yogyakarta",
-    date: "30 Agustus 2026",
-    deadline: new Date("2026-08-30T23:59:59+07:00"),
+    date: "22 Mei 2026",
+    deadline: new Date("2026-05-22T23:59:59+07:00"),
     tagline: "Connecting Regional Innovation to National Capital"
   },
 
@@ -18,10 +18,26 @@ window.SorceryData = {
   ],
 
   stats: [
-    { value: "10",        label: "Curated Startups" },
-    { value: "25+",       label: "Venture Capital" },
-    { value: "Rp 100M+",  label: "Capital Pool" },
-    { value: "6 Jam",     label: "Pitch & Matchmaking" }
+    { 
+      value: "10",        
+      label: "Curated Startups",      
+      desc: "Hanya 5% pendaftar terbaik yang lolos kurasi panel independen untuk tampil di panggung utama." 
+    },
+    { 
+      value: "25+",       
+      label: "Venture Capital",       
+      desc: "Akses eksklusif ke Partner dan MD dari top-tier VC nasional yang aktif mencari deal di regional." 
+    },
+    { 
+      value: "Rp 100M+",  
+      label: "Capital Pool",          
+      desc: "Total alokasi dana kolektif yang disiapkan investor khusus untuk startup yang tampil di Sorcery 2026." 
+    },
+    { 
+      value: "6 Jam",     
+      label: "Pitch & Matchmaking",   
+      desc: "Format sekuensial dari Pitching Battle hingga Private Room—tanpa interupsi, tanpa basa-basi." 
+    }
   ],
 
   vcLogos: [
@@ -155,7 +171,7 @@ window.SorceryData = {
     },
     {
       q: "Kapan batas akhir pendaftaran?",
-      a: "Gelombang pertama ditutup 30 Agustus 2026 pukul 23:59 WIB. Pengumuman shortlist disampaikan H-14 sebelum hari acara, beserta briefing teknis dan investor preview."
+      a: "Gelombang pertama ditutup 22 Mei 2026 pukul 23:59 WIB. Pengumuman shortlist disampaikan H-14 sebelum hari acara, beserta briefing teknis dan investor preview."
     },
     {
       q: "Apakah acara ini berbayar untuk startup?",

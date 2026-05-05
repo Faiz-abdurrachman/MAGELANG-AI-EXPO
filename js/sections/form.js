@@ -10,7 +10,7 @@ window.SorceryApp.form = function () {
             <h2>Ambil Kesempatan Anda di Sorcery MTI 2026.</h2>
             <p>Kami menyeleksi ketat 10 startup yang siap dipertemukan dengan pemodal. Pengisian form butuh sekitar 4 menit—pastikan link pitch deck dapat diakses publik.</p>
             <div class="form__intro-meta">
-              <div><span>Deadline</span><span>30 Agustus 2026</span></div>
+              <div><span>Deadline</span><span>22 Mei 2026</span></div>
               <div><span>Biaya Partisipasi</span><span>Rp 0 (Gratis)</span></div>
               <div><span>Pengumuman Shortlist</span><span>H-14 Event</span></div>
               <div><span>Slot Tersedia</span><span>10 Startup</span></div>
@@ -89,7 +89,7 @@ window.SorceryApp.form = function () {
               <span class="form__error" data-error="deck"></span>
             </div>
 
-            <button type="submit" class="btn btn--solid btn--lg form__submit">Kirim Aplikasi Pitching</button>
+            <button type="submit" class="btn btn-holographic btn--lg form__submit">Kirim Aplikasi Pitching</button>
           </form>
         </div>
       </div>

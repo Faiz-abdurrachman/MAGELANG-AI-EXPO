@@ -17,7 +17,7 @@ window.SorceryApp.agenda = function () {
     <section class="section agenda" id="agenda">
       <div class="container">
         <div class="agenda__head reveal">
-          <span class="eyebrow">Agenda · 30 Agustus 2026</span>
+          <span class="eyebrow">Agenda · 22 Mei 2026</span>
           <h2 class="section-title">Rundown<br>Sorcery MTI 2026.</h2>
           <p class="section-subtitle">Enam jam disusun rapat—dari welcoming AI Wayang Portrait hingga sesi tertutup Speed Dating, dimana deal sebenarnya dimulai.</p>
         </div>

@@ -16,18 +16,24 @@ window.SorceryScroll = {
 
     /* Active nav link based on visible section */
     const sections = document.querySelectorAll("section[id]");
-    const links    = document.querySelectorAll(".nav__menu a");
+    const links    = document.querySelectorAll(".nav__link");
     if (sections.length && links.length) {
       const navIO = new IntersectionObserver((entries) => {
+        if (window.isNavClicking) return;
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute("id");
-            links.forEach((link) => {
-              link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
-            });
+            const targetLink = document.querySelector(`.nav__link[href="#${id}"]`);
+            if (targetLink) {
+              links.forEach((link) => link.classList.remove("is-active"));
+              targetLink.classList.add("is-active");
+            }
           }
         });
-      }, { threshold: 0.4 });
+      }, { 
+        threshold: 0, 
+        rootMargin: "-25% 0px -70% 0px" 
+      });
       sections.forEach((s) => navIO.observe(s));
     }
 
