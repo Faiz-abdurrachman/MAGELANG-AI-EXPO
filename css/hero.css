@@ -7,7 +7,7 @@
   position: relative;
   min-height: 100vh;
   padding-top: 110px;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -94,30 +94,24 @@
 }
 
 .hero__badge {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
   margin-bottom: 3rem;
-  padding: 0;
-  background: none;
-  border: none;
 }
 
 .hero__badge::before {
-  content: "MTI-26";
-  font-size: 0.625rem;
-  font-weight: 900;
-  color: #fff;
+  content: "";
+  width: 2px;
+  height: 20px;
   background: var(--red-500);
-  padding: 0.25rem 0.6rem;
-  border-radius: 2px;
-  letter-spacing: 0.05em;
+  display: block;
 }
 
 .hero__badge span:last-child {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 800;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gray-900);
 }

@@ -34,8 +34,8 @@ window.SorceryApp.footer = function () {
             <h4>Kontak</h4>
             <ul>
               <li><a href="mailto:partnership@sorcery.id">partnership@sorcery.id</a></li>
-              <li>Lokalfolk Cafe</li>
-              <li>Yogyakarta, Indonesia</li>
+              <li>Gedung Tri Bhakti</li>
+              <li>Magelang, Indonesia</li>
               <li><a href="#">Instagram · LinkedIn</a></li>
             </ul>
           </div>

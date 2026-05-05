@@ -3,7 +3,7 @@ window.SorceryData = {
     name: "Sorcery: Meet The Investor",
     edition: "2026",
     location: "Jogja-Magelang",
-    venue: "Lokalfolk Cafe, Yogyakarta",
+    venue: "Gedung Tri Bhakti, Magelang",
     date: "22 Mei 2026",
     deadline: new Date("2026-05-22T23:59:59+07:00"),
     tagline: "Connecting Regional Innovation to National Capital"

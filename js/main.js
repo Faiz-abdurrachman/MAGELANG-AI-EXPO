@@ -17,6 +17,7 @@
     ${A.investors()}
     ${A.value()}
     ${A.process()}
+    ${A.map()}
     ${A.form()}
     ${A.faq()}
     ${sealDivider}

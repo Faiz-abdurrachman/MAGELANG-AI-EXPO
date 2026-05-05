@@ -5,7 +5,7 @@
   padding-block: 0 6rem;
   position: relative;
   z-index: 10;
-  margin-top: -4rem; /* Overlap hero */
+  margin-top: -1rem; /* Reduced overlap to give more breathing room */
 }
 
 .stats__grid {
@@ -60,7 +60,7 @@
     0 20px 40px -15px rgba(0, 0, 0, 0.06),
     0 10px 20px -10px rgba(0, 0, 0, 0.04);
   z-index: 2;
-  transform: rotateY(0deg);
+  transform: rotateY(0deg) translateZ(1px); /* Force layer */
 }
 
 /* Subtle pattern for front side */
@@ -96,7 +96,7 @@
 .stats__back {
   background: #0f0f0f;
   color: #ffffff;
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px); /* Force layer */
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   padding: 2.5rem;
@@ -104,12 +104,13 @@
 }
 
 .stats__desc {
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
+  color: #ffffff !important; /* Force visibility */
   text-align: center;
   font-weight: 500;
   margin-bottom: 1.5rem;
+  opacity: 1 !important;
 }
 
 /* Subtle separator for back */

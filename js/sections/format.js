@@ -27,7 +27,7 @@ window.SorceryApp.format = function () {
         <div class="format__head reveal">
           <span class="eyebrow">The Venue Format</span>
           <h2 class="section-title">Tiga Zona, Satu Hari Penuh.</h2>
-          <p class="section-subtitle">Lokalfolk Cafe diatur menjadi tiga zona spesifik—masing-masing dirancang untuk format interaksi yang berbeda. Investor tidak perlu berjalan jauh; semua diatur dalam radius hospitality eksekutif.</p>
+          <p class="section-subtitle">Venue acara diatur menjadi tiga zona spesifik—masing-masing dirancang untuk format interaksi yang berbeda. Investor tidak perlu berjalan jauh; semua diatur dalam radius hospitality eksekutif.</p>
         </div>
         <div class="format__grid">${cards}</div>
       </div>

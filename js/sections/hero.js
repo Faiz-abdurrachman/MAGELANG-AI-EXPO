@@ -6,7 +6,7 @@ window.SorceryApp.hero = function () {
       <div class="hero__watermark">${window.SorceryIcons.dragonWatermark}</div>
 
       <span class="hero__edition" aria-hidden="true">VOL · 02 / 2026</span>
-      <span class="hero__rail" aria-hidden="true">SORCERY · MEET THE INVESTOR · YOGYAKARTA</span>
+      <span class="hero__rail" aria-hidden="true">SORCERY · MEET THE INVESTOR · MAGELANG</span>
 
       <div class="container hero__inner">
         <div class="hero__grid">
@@ -51,8 +51,8 @@ window.SorceryApp.hero = function () {
 
               <div class="hero__ticket-row">
                 <span class="hero__ticket-label">Venue</span>
-                <span class="hero__ticket-value">Lokalfolk Cafe</span>
-                <span class="hero__ticket-meta">Yogyakarta · Capacity 120</span>
+                <span class="hero__ticket-value">Gedung Tri Bhakti</span>
+                <span class="hero__ticket-meta">Magelang · Capacity 500+</span>
               </div>
 
               <div class="hero__ticket-divider"></div>
