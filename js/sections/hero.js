@@ -5,7 +5,6 @@ window.SorceryApp.hero = function () {
       <div class="hero__bg-glow"></div>
       <div class="hero__watermark">${window.SorceryIcons.dragonWatermark}</div>
 
-      <span class="hero__edition" aria-hidden="true">VOL · 02 / 2026</span>
       <span class="hero__rail" aria-hidden="true">SORCERY · MEET THE INVESTOR · MAGELANG</span>
 
       <div class="container hero__inner">
