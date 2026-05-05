@@ -1,0 +1,74 @@
+/* ============================================
+   INVESTORS SPOTLIGHT — dark section, profile cards
+   ============================================ */
+.investors {
+  background: var(--red-900);
+  color: #fff;
+  position: relative;
+}
+.investors__head { max-width: 760px; margin-bottom: 4rem; }
+.investors__head .section-title    { color: #fff; }
+.investors__head .section-subtitle { color: rgba(255,255,255,0.65); }
+.investors__head .eyebrow          { color: var(--red-200); }
+.investors__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+.investors__card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 2rem;
+  transition: all var(--transition);
+}
+.investors__card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--red-300);
+  transform: translateY(-2px);
+}
+.investors__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.005em;
+  margin-bottom: 0.5rem;
+}
+.investors__thesis {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--red-200);
+  letter-spacing: 0.02em;
+  margin-bottom: 1.75rem;
+}
+.investors__meta {
+  border-top: 1px solid rgba(255,255,255,0.10);
+  padding-top: 1.125rem;
+  display: grid;
+  gap: 0.625rem;
+}
+.investors__meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+.investors__meta-label {
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+}
+.investors__meta-value {
+  color: #fff;
+  font-weight: 600;
+  text-align: right;
+}
+.investors__note {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+}
+
+@media (max-width: 720px) {
+  .investors__grid { grid-template-columns: 1fr; }
+}

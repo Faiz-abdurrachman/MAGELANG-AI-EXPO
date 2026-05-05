@@ -1,0 +1,116 @@
+/* ============================================
+   HERO (NEO-EDITORIAL SPLIT)
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 76px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--bg-main);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 35%;
+  background: var(--red-500);
+  z-index: 0;
+}
+.hero__watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.15;
+  padding-right: 5%;
+}
+.hero__watermark svg {
+  width: auto;
+  height: 120vh;
+  color: var(--red-900);
+}
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-block: 5.5rem 8rem;
+  width: 100%;
+}
+.hero__headline {
+  font-size: var(--fs-display);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--red-900);
+  margin-block: 1.75rem 1.5rem;
+  max-width: 15ch;
+  position: relative;
+  z-index: 3;
+}
+.hero__headline em {
+  color: var(--red-500);
+  font-style: normal;
+  display: block;
+}
+.hero__sub {
+  font-size: clamp(1.125rem, 1.8vw, 1.35rem);
+  color: var(--gray-700);
+  max-width: 50ch;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+.hero__meta {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1.75rem 3rem;
+  margin-top: 5rem;
+  padding: 2.5rem 3rem;
+  max-width: max-content;
+  /* positioning to overlap the right red section */
+  position: relative;
+  transform: translateX(10%);
+}
+.hero__meta-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 0.5rem;
+}
+.hero__meta-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  letter-spacing: -0.01em;
+}
+.hero__meta-full { grid-column: 1 / -1; }
+
+@media (max-width: 1024px) {
+  .hero::before { width: 100%; top: auto; height: 30%; }
+  .hero__meta { transform: translateY(20%); }
+}
+
+@media (max-width: 720px) {
+  .hero { padding-top: 76px; min-height: auto; }
+  .hero__inner { padding-block: 4rem 6rem; }
+  .hero__meta { 
+    grid-template-columns: 1fr; 
+    gap: 1.5rem; 
+    padding: 2rem; 
+    transform: translateY(10%);
+    width: 100%;
+  }
+}

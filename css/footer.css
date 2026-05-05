@@ -1,0 +1,85 @@
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--red-900);
+  color: rgba(255,255,255,0.7);
+  padding-block: 5rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer__top {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 3rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer__brand h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.625rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.footer__brand h3 svg { width: 32px; height: 32px; color: var(--red-200); flex-shrink: 0; }
+.footer__brand small {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.5rem;
+}
+.footer__brand p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  max-width: 36ch;
+}
+.footer__col h4 {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+.footer__col ul { display: grid; gap: 0.75rem; }
+.footer__col li, .footer__col a {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.6);
+  transition: color var(--transition);
+}
+.footer__col a:hover { color: #fff; }
+.footer__crest {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer__crest svg {
+  width: 100px;
+  height: 100px;
+  color: rgba(255,255,255,0.25);
+}
+.footer__bottom {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.4);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 920px) {
+  .footer__top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .footer__top { grid-template-columns: 1fr; }
+}

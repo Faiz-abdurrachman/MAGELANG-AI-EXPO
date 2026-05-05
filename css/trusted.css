@@ -1,0 +1,56 @@
+/* ============================================
+   TRUSTED BY (VC LOGOS MARQUEE)
+   ============================================ */
+.trusted {
+  padding-block: 5rem;
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-100);
+}
+.trusted__label {
+  text-align: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 3rem;
+}
+.trusted__marquee {
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+.trusted__track {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 50s linear infinite;
+  width: max-content;
+}
+.trusted__logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--gray-300);
+  transition: color var(--transition);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+}
+.trusted__logo::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.trusted__logo:hover { color: var(--red-500); }
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 2rem)); }
+}

@@ -1,0 +1,170 @@
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.625rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  border-radius: var(--radius-full);
+  transition: all var(--transition);
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.btn--solid {
+  background: var(--red-500);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(183, 28, 28, 0.2);
+}
+.btn--solid:hover {
+  background: var(--red-600);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(183, 28, 28, 0.35);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--red-500);
+  border: 1.5px solid var(--red-100);
+}
+.btn--outline:hover {
+  border-color: var(--red-500);
+  background: rgba(183, 28, 28, 0.05);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--red-900);
+}
+.btn--ghost:hover { 
+  color: var(--red-500); 
+  background: rgba(183, 28, 28, 0.05);
+}
+
+.btn--lg {
+  padding: 1.0625rem 2.125rem;
+  font-size: 1rem;
+}
+
+/* ============================================
+   BADGE
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.875rem;
+  background: var(--red-50);
+  color: var(--red-700);
+  border: 1px solid var(--red-100);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red-500);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(1.4); }
+}
+
+/* ============================================
+   IOS GLASS UTILITY
+   ============================================ */
+.ios-glass {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-glass);
+  box-shadow: var(--glass-shadow);
+  color: var(--gray-900);
+}
+
+.ios-glass--dark {
+  background: var(--glass-bg-dark);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* ============================================
+   REVEAL ON SCROLL
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   COUNTDOWN
+   ============================================ */
+.countdown {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.countdown__item { text-align: left; min-width: 56px; }
+.countdown__num {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--red-500);
+  font-variant-numeric: tabular-nums;
+}
+.countdown__label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   SECTION DIVIDER (DRAGON SEAL)
+   ============================================ */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 4rem;
+  background: var(--white);
+  position: relative;
+}
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: clamp(60px, 18vw, 220px);
+  height: 1px;
+  background: var(--red-100);
+}
+.section-divider::before { right: calc(50% + 56px); }
+.section-divider::after  { left:  calc(50% + 56px); }
+.section-divider svg {
+  width: 72px;
+  height: 72px;
+  color: var(--red-500);
+  opacity: 0.65;
+}

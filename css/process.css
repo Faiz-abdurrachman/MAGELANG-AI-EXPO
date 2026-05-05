@@ -1,0 +1,71 @@
+/* ============================================
+   PROCESS — 4-step selection flow
+   ============================================ */
+.process { background: var(--gray-50); }
+.process__head { text-align: center; margin-bottom: 4rem; max-width: 760px; margin-inline: auto; }
+.process__head .section-subtitle { margin-inline: auto; }
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  position: relative;
+}
+.process__card {
+  background: #fff;
+  padding: 2rem;
+  position: relative;
+  border: 1px solid var(--gray-100);
+  transition: all var(--transition);
+}
+.process__card:hover {
+  border-color: var(--red-200);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.process__step {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--red-500);
+  margin-bottom: 0.875rem;
+  text-transform: uppercase;
+}
+.process__card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--red-900);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.005em;
+}
+.process__card p {
+  color: var(--gray-700);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+.process__card::after {
+  content: "→";
+  position: absolute;
+  right: -1.125rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--red-300);
+  font-size: 1.375rem;
+  font-weight: 600;
+  z-index: 1;
+  background: var(--gray-50);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.process__card:last-child::after { display: none; }
+
+@media (max-width: 920px) {
+  .process__grid { grid-template-columns: repeat(2, 1fr); }
+  .process__card:nth-child(2)::after { display: none; }
+}
+@media (max-width: 560px) {
+  .process__grid { grid-template-columns: 1fr; }
+  .process__card::after { display: none; }
+}

@@ -1,0 +1,51 @@
+/* ============================================
+   VALUE PROP — 6 deliverables grid (NEO-EDITORIAL GLASS)
+   ============================================ */
+.value { background: transparent; position: relative; }
+.value__head { max-width: 760px; margin-bottom: 5rem; }
+.value__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+.value__card {
+  padding: 2.5rem 2rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.value__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.value__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  color: var(--red-900);
+  margin-bottom: 2rem;
+  border-bottom: 3px solid var(--red-500);
+  padding-bottom: 1rem;
+}
+.value__icon svg { width: 100%; height: 100%; }
+.value__card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--red-900);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.value__card p {
+  color: var(--gray-700);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 920px) {
+  .value__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+}
+@media (max-width: 560px) {
+  .value__grid { grid-template-columns: 1fr; }
+}

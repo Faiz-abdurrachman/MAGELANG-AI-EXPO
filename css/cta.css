@@ -1,0 +1,72 @@
+/* ============================================
+   CTA BANNER — final urgency push
+   ============================================ */
+.cta {
+  background: var(--red-900);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.cta__watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0.05;
+}
+.cta__watermark svg {
+  width: min(90vw, 900px);
+  color: #fff;
+}
+.cta__inner {
+  position: relative;
+  text-align: center;
+  padding-block: 7rem;
+}
+.cta__eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red-200);
+}
+.cta__headline {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-block: 1.25rem 1.5rem;
+  max-width: 18ch;
+  margin-inline: auto;
+  color: #fff;
+}
+.cta__sub {
+  color: rgba(255,255,255,0.7);
+  max-width: 560px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+.cta__countdown {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.75rem;
+  flex-wrap: wrap;
+}
+.cta__countdown .countdown__num   { color: #fff; }
+.cta__countdown .countdown__label { color: rgba(255,255,255,0.55); }
+.cta__btn {
+  background: #fff;
+  color: var(--red-900);
+}
+.cta__btn:hover {
+  background: var(--red-50);
+  color: var(--red-900);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}

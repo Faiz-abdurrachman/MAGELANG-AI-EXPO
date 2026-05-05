@@ -1,0 +1,47 @@
+/* ============================================
+   STATS BAR (NEO-EDITORIAL OVERLAP)
+   ============================================ */
+.stats {
+  padding-block: 2rem 4.5rem;
+  position: relative;
+  z-index: 10;
+  margin-top: -6rem; /* Overlap hero */
+}
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.stats__item {
+  text-align: center;
+  padding: 3rem 2rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.stats__item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+.stats__num {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--red-900);
+  line-height: 1;
+}
+.stats__label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-700);
+  margin-top: 1rem;
+}
+
+@media (max-width: 920px) {
+  .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .stats { margin-top: -3rem; }
+}
+@media (max-width: 560px) {
+  .stats__grid { gap: 1rem; }
+  .stats__item { padding: 2rem 1.5rem; }
+}

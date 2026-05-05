@@ -1,0 +1,73 @@
+/* ============================================
+   PILLARS — "Why Different" (NEO-EDITORIAL DARK GLASS)
+   ============================================ */
+.why { 
+  background: var(--bg-dark); 
+  position: relative;
+  overflow: hidden;
+}
+/* Giant watermark in background */
+.why::before {
+  content: "DIFFERENT";
+  position: absolute;
+  top: 10%;
+  left: -5%;
+  font-size: 15vw;
+  font-weight: 800;
+  color: #fff;
+  opacity: 0.03;
+  pointer-events: none;
+}
+.why__head { max-width: 760px; margin-bottom: 5rem; position: relative; z-index: 2; }
+.why__head .eyebrow { color: rgba(255,255,255,0.7); }
+.why__head .section-title { color: #fff; font-size: clamp(3rem, 5vw, 4.5rem); }
+.why__head .section-subtitle { color: rgba(255,255,255,0.8); }
+
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+.why__card {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  transition: all var(--transition);
+}
+.why__card:hover { 
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.4);
+}
+.why__num {
+  font-size: 4rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  transition: color var(--transition), transform var(--transition);
+}
+.why__card:hover .why__num {
+  color: #fff;
+  transform: scale(1.1) translateX(10px);
+  transform-origin: left center;
+}
+.why__card h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-block: 2rem 1rem;
+  letter-spacing: -0.02em;
+}
+.why__card p {
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  font-size: 1.0625rem;
+}
+
+@media (max-width: 920px) {
+  .why__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .why__card { min-height: 260px; padding: 2.5rem 2rem; }
+}
