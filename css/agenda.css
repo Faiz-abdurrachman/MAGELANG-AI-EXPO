@@ -171,7 +171,7 @@
 /* === HOVER STATES === */
 .agenda__item:hover,
 .agenda__item.is-hovered {
-  background: linear-gradient(90deg, rgba(183, 28, 28, 0.08) 0%, transparent 60%);
+  background: transparent; /* Removed boxy tint */
 }
 
 .agenda__item:hover .agenda__marker-dot,
