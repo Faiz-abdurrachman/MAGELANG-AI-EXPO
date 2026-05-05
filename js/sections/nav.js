@@ -16,9 +16,12 @@ window.SorceryApp.nav = function () {
           <div class="nav__indicator"></div>
         </nav>
         <div class="nav__cta">
-          <button class="nav__burger" aria-label="Buka menu" type="button"
-                  onclick="document.querySelector('.nav__menu').classList.toggle('is-open')">
-            <span></span>
+          <button class="nav__burger" aria-label="Buka menu" type="button" id="nav-toggle">
+            <div class="nav__burger-box">
+              <span class="nav__burger-line nav__burger-line--1"></span>
+              <span class="nav__burger-line nav__burger-line--2"></span>
+              <span class="nav__burger-line nav__burger-line--3"></span>
+            </div>
           </button>
           <a href="#register" class="btn btn-holographic">Daftar Sekarang</a>
         </div>
@@ -31,13 +34,23 @@ window.SorceryApp.navInit = function() {
   const menu = document.querySelector('.nav__menu');
   const indicator = document.querySelector('.nav__indicator');
   const links = document.querySelectorAll('.nav__link');
+  const toggle = document.getElementById('nav-toggle');
 
   if (!menu || !indicator) return;
+
+  // Toggle Mobile Menu
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('is-open');
+      toggle.classList.toggle('is-active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+  }
 
   let hoverLink = null;
 
   const moveIndicator = (el) => {
-    if (!el) {
+    if (!el || window.innerWidth <= 920) {
       indicator.style.opacity = '0';
       return;
     }
@@ -51,9 +64,11 @@ window.SorceryApp.navInit = function() {
     indicator.style.top = `${rect.top - menuRect.top}px`;
   };
 
-  // Sync indicator to whatever the user is currently looking at:
-  // hover wins, otherwise active link, otherwise hide.
   const sync = () => {
+    if (window.innerWidth <= 920) {
+      indicator.style.opacity = '0';
+      return;
+    }
     if (hoverLink) {
       moveIndicator(hoverLink);
       return;
@@ -73,6 +88,14 @@ window.SorceryApp.navInit = function() {
       link.classList.add('is-active');
       hoverLink = link;
       sync();
+      
+      // Close mobile menu on click
+      if (menu.classList.contains('is-open')) {
+        menu.classList.remove('is-open');
+        toggle?.classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+
       setTimeout(() => { window.isNavClicking = false; }, 1000);
     });
     link.addEventListener('mouseenter', () => {
@@ -81,8 +104,6 @@ window.SorceryApp.navInit = function() {
     });
     link.addEventListener('mouseleave', () => {
       if (hoverLink === link) hoverLink = null;
-      // Don't sync immediately — menu mouseleave handles the final state,
-      // and moving between adjacent links fires mouseenter on the next link first.
     });
   });
 
@@ -91,10 +112,8 @@ window.SorceryApp.navInit = function() {
     sync();
   });
 
-  // Initial position once layout settles.
   requestAnimationFrame(() => requestAnimationFrame(sync));
 
-  // Scroll-spy updates is-active on links — reflect that only when not hovering.
   const observer = new MutationObserver(() => {
     if (!hoverLink) sync();
   });
@@ -102,6 +121,12 @@ window.SorceryApp.navInit = function() {
     observer.observe(link, { attributes: true, attributeFilter: ['class'] });
   });
 
-  // Re-sync on resize so the pill stays glued to the link.
-  window.addEventListener('resize', sync);
+  window.addEventListener('resize', () => {
+    sync();
+    if (window.innerWidth > 920 && menu.classList.contains('is-open')) {
+      menu.classList.remove('is-open');
+      toggle?.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+  });
 };

@@ -192,16 +192,19 @@
   .agenda__item {
     grid-template-columns: 40px 1fr;
     gap: 1.5rem;
+    padding-block: 2.5rem;
   }
   .agenda__index { display: none; }
-  .agenda__title { font-size: 1.5rem; }
-  .agenda__item::after { width: 500px; height: 350px; left: 50%; }
+  .agenda__title { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .agenda__item::after { width: 350px; height: 350px; left: 50%; }
+  .agenda__content-box { max-width: 100%; }
 }
 
 @media (max-width: 540px) {
   .agenda { padding-block: 5rem; }
-  .agenda__head { margin-bottom: 3rem; }
-  .agenda__item { padding-block: 2.5rem; }
-  .agenda__top { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  .agenda__desc { font-size: 0.9375rem; }
+  .agenda__head { margin-bottom: 3.5rem; }
+  .agenda__item { padding-block: 2rem; }
+  .agenda__top { flex-direction: row; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .agenda__time { font-size: 0.9375rem; }
+  .agenda__desc { font-size: 0.9375rem; line-height: 1.55; }
 }

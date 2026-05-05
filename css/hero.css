@@ -381,24 +381,41 @@
 
 @media (max-width: 720px) {
   .hero {
-    padding-top: 130px;
-    padding-bottom: 3rem;
+    padding-top: 100px;
+    padding-bottom: 4rem;
+    min-height: auto;
   }
+  .hero__inner { padding-top: 1rem; }
   .hero__edition {
     top: 92px;
     right: var(--gutter);
     font-size: 0.625rem;
     letter-spacing: 0.25em;
   }
-  .hero__headline { font-size: 2.5rem; }
-  .hero__sub { font-size: 1rem; }
-  .hero__actions { flex-direction: column; align-items: stretch; gap: 1rem; }
-  .hero__actions .btn { width: 100%; text-align: center; }
-  .hero__link-arrow { justify-content: center; }
-  .hero__ticket { padding: 1.5rem 1.25rem 1.5rem 1.5rem; }
-  .hero__ticket-row { grid-template-columns: 80px 1fr; }
+  .hero__headline { 
+    font-size: 2.75rem; 
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  .hero__sub { 
+    font-size: 1rem; 
+    margin-bottom: 2rem;
+    color: var(--gray-600);
+  }
+  .hero__actions { flex-direction: column; align-items: stretch; gap: 1.25rem; }
+  .hero__actions .btn { width: 100%; padding-block: 1.125rem; }
+  .hero__link-arrow { justify-content: center; padding-block: 0.75rem; }
+  
+  .hero__ticket { 
+    padding: 1.5rem; 
+    border-radius: 24px;
+    margin-top: 1rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  .hero__ticket-row { grid-template-columns: 80px 1fr; padding-block: 0.4rem; }
   .hero__ticket-value { font-size: 1.125rem; }
   .hero__ticket .countdown { gap: 0.5rem; }
   .hero__ticket .countdown__item { min-width: 36px; }
   .hero__ticket .countdown__num { font-size: 1.25rem; }
+  .hero__ticket-foot { font-size: 0.6875rem; gap: 0.4rem 0.6rem; }
 }

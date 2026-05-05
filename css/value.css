@@ -121,7 +121,13 @@
 @media (max-width: 1024px) {
   .value__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 }
+
 @media (max-width: 640px) {
-  .value__grid { grid-template-columns: 1fr; }
+  .value { padding-block: 5rem; }
+  .value__head { margin-bottom: 3.5rem; }
+  .value__grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .value__card-inner { padding: 2.5rem 1.5rem; }
   .value__card:hover { transform: translateY(-10px); }
+  .value__icon { width: 64px; height: 64px; border-radius: 16px; margin-bottom: 1.5rem; }
+  .value__card h3 { font-size: 1.25rem; }
 }

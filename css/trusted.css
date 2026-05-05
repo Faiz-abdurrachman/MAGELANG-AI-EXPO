@@ -50,6 +50,13 @@
 }
 .trusted__logo:hover { color: var(--red-500); }
 
+@media (max-width: 720px) {
+  .trusted { padding-block: 4rem; }
+  .trusted__label { font-size: 0.75rem; margin-bottom: 2.5rem; }
+  .trusted__track { gap: 2.5rem; }
+  .trusted__logo { font-size: 1.0625rem; }
+}
+
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(calc(-50% - 2rem)); }

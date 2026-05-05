@@ -190,9 +190,13 @@
 }
 
 @media (max-width: 720px) {
-  .format__grid { grid-template-columns: 1fr; perspective: 900px; }
-  .format__card { height: 340px; }
+  .format__grid { grid-template-columns: 1fr; perspective: 900px; gap: 1.5rem; }
+  .format__card { height: 360px; border-radius: 24px; }
   .format__card-wrapper { transform: rotateX(30deg) translateY(-30px); }
+  .format__slide { padding: 2rem 1.5rem; }
+  .format__name { font-size: 1.85rem; }
+  .format__card:hover .format__slide--1 { height: 80px; }
+  .format__slide--2 { padding-top: 3.5rem; }
   @keyframes formatStandUp {
     0% { transform: rotateX(30deg) translateY(-30px); opacity: 0; }
     100% { transform: rotateX(0) translateY(0); opacity: 1; }

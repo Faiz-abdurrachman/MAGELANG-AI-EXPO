@@ -22,6 +22,13 @@ body {
   padding-block: clamp(4.5rem, 10vw, 8rem);
 }
 
+@media (max-width: 720px) {
+  .section { padding-block: 5rem; }
+  .section-title { font-size: 2.25rem; margin-bottom: 1rem; }
+  .section-subtitle { font-size: 1rem; line-height: 1.5; }
+  :root { --gutter: 1.25rem; }
+}
+
 .eyebrow {
   display: inline-block;
   font-size: 0.8125rem;

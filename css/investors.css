@@ -91,6 +91,10 @@
 }
 
 @media (max-width: 720px) {
-  .investors__grid { grid-template-columns: 1fr; border-left: none;}
-  .investors__card { padding: 3rem 1.5rem; border-left: none; border-right: none;}
+  .investors { padding-block: 5rem; }
+  .investors__head { margin-bottom: 3.5rem; }
+  .investors__grid { grid-template-columns: 1fr; border-left: none; border-top: 1px solid var(--gray-200); }
+  .investors__card { padding: 3rem 1.25rem; border-left: none; border-right: none; border-bottom: 1px solid var(--gray-200); }
+  .investors__title { font-size: 1.5rem; }
+  .investors__thesis { padding-bottom: 3rem; font-size: 0.9375rem; }
 }
