@@ -3,10 +3,10 @@ window.SorceryApp.investors = function () {
   const cards = window.SorceryData.investors
     .map(
       (inv, i) => `
-        <div class="investors__dossier reveal">
-          <div class="dossier__inner">
-            <!-- Background Elements -->
-            <div class="dossier__pattern"></div>
+        <div class="investors__profile reveal">
+          <div class="profile__inner">
+            <!-- Background Watermark -->
+            <div class="profile__watermark">CONFIDENTIAL</div>
             
             <!-- Corner Brackets -->
             <span class="bracket bracket--tl"></span>
@@ -14,38 +14,49 @@ window.SorceryApp.investors = function () {
             <span class="bracket bracket--bl"></span>
             <span class="bracket bracket--br"></span>
 
-            <header class="dossier__header">
-              <div class="dossier__status">
-                <span class="status__dot"></span>
-                <span class="status__text">DATA_NODE: SECURE</span>
+            <div class="profile__layout">
+              <div class="profile__side">
+                <!-- Abstract Geometric Avatar -->
+                <div class="profile__avatar">
+                  <div class="avatar__geom avatar__geom--1"></div>
+                  <div class="avatar__geom avatar__geom--2"></div>
+                  <div class="avatar__glow"></div>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="profile__id">MN_REF_0${i+1}</div>
               </div>
-              <div class="dossier__id">MN-2026/0${i+1}</div>
-            </header>
 
-            <div class="dossier__body">
-              <div class="dossier__type">AUTHORIZED INVESTOR</div>
-              <h3 class="dossier__name">${inv.title}</h3>
-              <p class="dossier__thesis">${inv.thesis}</p>
+              <div class="profile__main">
+                <header class="profile__header">
+                  <div class="profile__tag-group">
+                    <span class="profile__tag">VERIFIED_NODE</span>
+                    <span class="profile__clearance">LEVEL_2</span>
+                  </div>
+                  <h3 class="profile__name">${inv.title}</h3>
+                  <p class="profile__thesis">${inv.thesis}</p>
+                </header>
+
+                <div class="profile__data">
+                  <div class="data__row">
+                    <span class="data__key">MAX_ALLOCATION</span>
+                    <span class="data__val">${inv.ticket}</span>
+                  </div>
+                  <div class="data__row">
+                    <span class="data__key">NODES_BACKED</span>
+                    <span class="data__val">${inv.portfolio}</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="dossier__specs">
-              <div class="spec__item">
-                <label>ALLOCATION_RANGE</label>
-                <div class="spec__value">${inv.ticket}</div>
-              </div>
-              <div class="spec__item">
-                <label>HISTORICAL_NODES</label>
-                <div class="spec__value">${inv.portfolio}</div>
-              </div>
-            </div>
-
-            <footer class="dossier__footer">
-              <div class="dossier__barcode">
+            <footer class="profile__footer">
+              <div class="profile__barcode">
+                <span></span><span></span><span></span><span></span><span></span>
                 <span></span><span></span><span></span><span></span><span></span>
                 <span></span><span></span><span></span><span></span><span></span>
                 <span></span><span></span><span></span><span></span><span></span>
               </div>
-              <div class="dossier__auth">AUTH_VALID</div>
+              <div class="profile__seal">MTI_SECURE_AUTH</div>
             </footer>
           </div>
         </div>
@@ -55,17 +66,17 @@ window.SorceryApp.investors = function () {
 
   return `
     <section class="section investors" id="investors">
-      <div class="investors__bg-grid"></div>
       <div class="container">
         <div class="investors__head reveal">
-          <span class="eyebrow">Capital Network</span>
-          <h2 class="section-title">The Investor Dossier.</h2>
-          <p class="section-subtitle">Daftar pemegang keputusan dari jajaran Venture Capital nasional yang terkonfirmasi hadir.</p>
+          <span class="eyebrow">Strategic Capital</span>
+          <h2 class="section-title">The Capital<br>High-Command.</h2>
+          <p class="section-subtitle">Akses eksklusif ke Partner Senior dan Managing Director dari jajaran Venture Capital paling aktif di regional.</p>
         </div>
         <div class="investors__grid">${cards}</div>
-        <div class="investors__footer-banner reveal">
-          <div class="banner__line"></div>
-          <p>CONFIDENTIAL DATA · DETAILED IDENTITY RELEASED POST-CURATION STAGE</p>
+        <div class="investors__security-note reveal">
+          <div class="security-note__line"></div>
+          <p>PROTECTED DATA NODE: IDENTITY CLEARANCE LEVEL 2 REQUIRED FOR FULL ACCESS</p>
+          <div class="security-note__line"></div>
         </div>
       </div>
     </section>

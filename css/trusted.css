@@ -3,8 +3,8 @@
    ============================================ */
 .trusted {
   padding-block: 5rem;
-  background: var(--gray-50);
-  border-bottom: 1px solid var(--gray-100);
+  background: var(--bg-main);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 .trusted__label {
   text-align: center;

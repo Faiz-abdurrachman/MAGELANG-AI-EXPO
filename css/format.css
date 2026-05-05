@@ -2,7 +2,7 @@
    EVENT FORMAT — 3D LIFT CARDS WITH SLIDE REVEAL
    ============================================ */
 .format {
-  background: var(--gray-50);
+  background: var(--bg-main);
   padding-block: 8rem;
 }
 

@@ -2,12 +2,11 @@
    PROCESS (HOLOGRAPHIC BENTO)
    ============================================ */
 .process { 
-  background: #fcfcfc; 
+  background: var(--bg-main); 
   padding-block: 8rem; 
   position: relative;
   overflow: hidden;
 }
-
 .process::before {
   content: "";
   position: absolute;
