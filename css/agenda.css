@@ -55,7 +55,8 @@
   100% { transform: translate(-50%, -50%) scale(1.2) opacity(1); filter: blur(45px); }
 }
 
-.agenda__item:hover::after {
+.agenda__item:hover::after,
+.agenda__item.is-hovered::after {
   transform: translate(-50%, -50%) scale(1.1);
   opacity: 1;
   animation: glowLife 3s infinite alternate ease-in-out;
@@ -168,21 +169,25 @@
 }
 
 /* === HOVER STATES === */
-.agenda__item:hover {
+.agenda__item:hover,
+.agenda__item.is-hovered {
   background: linear-gradient(90deg, rgba(183, 28, 28, 0.08) 0%, transparent 60%);
 }
 
-.agenda__item:hover .agenda__marker-dot {
+.agenda__item:hover .agenda__marker-dot,
+.agenda__item.is-hovered .agenda__marker-dot {
   background: var(--red-500);
   transform: scale(1.4);
   box-shadow: 0 0 25px rgba(183, 28, 28, 0.4);
 }
 
-.agenda__item:hover .agenda__content-box {
+.agenda__item:hover .agenda__content-box,
+.agenda__item.is-hovered .agenda__content-box {
   transform: translateX(12px);
 }
 
-.agenda__item:hover .agenda__index {
+.agenda__item:hover .agenda__index,
+.agenda__item.is-hovered .agenda__index {
   color: rgba(183, 28, 28, 0.1);
   transform: scale(1.05) translateX(-10px);
 }

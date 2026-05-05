@@ -30,7 +30,8 @@
   cursor: pointer;
 }
 
-.stats__item-wrapper:hover .stats__item {
+.stats__item-wrapper:hover .stats__item,
+.stats__item-wrapper.is-hovered .stats__item {
   transform: rotateY(180deg);
 }
 

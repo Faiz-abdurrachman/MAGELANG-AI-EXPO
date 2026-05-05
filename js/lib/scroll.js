@@ -14,6 +14,37 @@ window.SorceryScroll = {
       reveals.forEach((el) => io.observe(el));
     }
 
+    /* Mobile: Agenda Glow on Scroll (Auto-trigger in middle of screen) */
+    const agendaItems = document.querySelectorAll(".agenda__item");
+    if (agendaItems.length && window.innerWidth <= 920) {
+      const agendaIO = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-hovered");
+          } else {
+            entry.target.classList.remove("is-hovered");
+          }
+        });
+      }, { 
+        threshold: 0, 
+        rootMargin: "-40% 0px -40% 0px" /* Trigger when item is in the center 20% of the screen */
+      });
+      agendaItems.forEach((item) => agendaIO.observe(item));
+    }
+
+    /* Mobile: Stats Tap-to-Flip */
+    const statsItems = document.querySelectorAll(".stats__item-wrapper");
+    statsItems.forEach(item => {
+      item.addEventListener("click", () => {
+        if (window.innerWidth <= 920) {
+          // Toggle this one, close others
+          const wasHovered = item.classList.contains("is-hovered");
+          statsItems.forEach(i => i.classList.remove("is-hovered"));
+          if (!wasHovered) item.classList.add("is-hovered");
+        }
+      });
+    });
+
     /* Active nav link based on visible section */
     const sections = document.querySelectorAll("section[id]");
     const links    = document.querySelectorAll(".nav__link");
@@ -58,6 +89,8 @@ window.SorceryScroll = {
         const top = target.getBoundingClientRect().top + window.scrollY - 60;
         window.scrollTo({ top, behavior: "smooth" });
         document.querySelector(".nav__menu")?.classList.remove("is-open");
+        document.getElementById("nav-toggle")?.classList.remove("is-active");
+        document.body.style.overflow = '';
       });
     });
   }
