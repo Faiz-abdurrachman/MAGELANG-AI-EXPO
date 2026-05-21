@@ -8,6 +8,7 @@ const DATA_FILE = path.join('/tmp', 'applications.json');
 
 // Middleware
 app.use(express.json());
+app.use(express.static(__dirname));
 
 // POST /applications endpoint
 app.post('/applications', async (req, res) => {

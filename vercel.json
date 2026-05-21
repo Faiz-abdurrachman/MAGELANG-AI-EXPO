@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/applications", "destination": "/index.js" }
+    { "source": "/(.*)", "destination": "/index.js" }
   ]
 }
