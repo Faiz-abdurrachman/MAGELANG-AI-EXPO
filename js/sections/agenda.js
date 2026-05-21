@@ -14,6 +14,7 @@ window.SorceryApp.agenda = function () {
               <span class="agenda__tag">${a.tag}</span>
             </div>
             <h3 class="agenda__title">${a.title}</h3>
+            <div class="agenda__pic">PIC: ${a.pic}</div>
             <p class="agenda__desc">${a.desc}</p>
           </div>
           <div class="agenda__index" aria-hidden="true">0${i + 1}</div>

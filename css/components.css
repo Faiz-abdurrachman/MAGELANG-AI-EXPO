@@ -17,48 +17,78 @@
   text-align: center;
 }
 
-/* === HOLOGRAPHIC BUTTONS/CARDS === */
+/* === HOLOGRAPHIC & VIBRANT BUTTONS (TRUE GLASS EFFECT) === */
 .btn-holographic {
   position: relative;
-  background: rgba(14, 165, 233, 0.1);
-  color: #fff !important;
-  border: 1px solid var(--neon-border);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.9) !important; /* Glassy white */
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  color: var(--blue-600) !important;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   overflow: hidden;
   z-index: 1;
-  transition: all 0.5s ease;
-  box-shadow: 0 0 10px rgba(34, 211, 238, 0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 0.3),
+    0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .btn-holographic::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
-    0deg, 
+    90deg, 
     transparent, 
-    transparent 30%, 
-    var(--glow-blue)
+    rgba(255, 255, 255, 0.6), 
+    transparent
   );
-  transform: rotate(-45deg);
-  transition: all 0.5s ease;
-  opacity: 0;
-  z-index: -1;
+  transition: none;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .btn-holographic:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px var(--glow-blue);
-  background: rgba(34, 211, 238, 0.2);
-  border-color: var(--neon-cyan);
+  background: rgba(255, 255, 255, 1) !important; 
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 
+    0 0 50px rgba(255, 255, 255, 0.6),
+    0 20px 40px rgba(14, 165, 233, 0.25);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .btn-holographic:hover::before {
-  opacity: 1;
-  transform: rotate(-45deg) translateY(100%);
+  left: 100%;
+  transition: left 0.7s ease-in-out;
+}
+
+.btn--white-blue {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  color: var(--blue-700) !important;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 0 25px rgba(255, 255, 255, 0.2),
+    0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+.btn--white-blue:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 
+    0 0 45px rgba(255, 255, 255, 0.5),
+    0 15px 30px rgba(14, 165, 233, 0.15);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .holographic-card {

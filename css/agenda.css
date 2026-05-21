@@ -144,7 +144,17 @@
   color: var(--gray-900);
   letter-spacing: -0.025em;
   line-height: 1.15;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem; /* Reduced for PIC */
+}
+
+.agenda__pic {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--blue-400);
+  margin-bottom: 1.25rem;
+  opacity: 0.9;
 }
 
 .agenda__desc {

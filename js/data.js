@@ -43,14 +43,16 @@ window.SorceryData = {
   ],
 
   agenda: [
-    { time: "09:00 — 10:00", title: "Registration & AI Showcase Opening", desc: "Tamu masuk, melihat booth produk AI, dan mulai mengenal founder serta use case yang dibawa masing-masing tim.", tag: "Opening" },
-    { time: "10:15 — 11:00", title: "Talk: AI untuk Bisnis Daerah", desc: "Diskusi ringan tentang bagaimana AI bisa membantu operasional, pemasaran, layanan pelanggan, dan efisiensi bisnis lokal.", tag: "Talk" },
-    { time: "11:00 — 12:00", title: "Founder Lightning Demo", desc: "Founder memperkenalkan produk AI secara singkat: masalah yang diselesaikan, cara kerja, target pengguna, dan progress saat ini.", tag: "Demo" },
-    { time: "12:00 — 13:00", title: "Lunch & Casual Networking", desc: "Waktu makan siang untuk ngobrol lebih santai antara peserta, tamu bisnis, komunitas, dan calon partner.", tag: "Networking" },
-    { time: "13:00 — 15:00", title: "Product Showcase Session", desc: "Sesi demo lebih dalam di booth. Pengunjung bisa mencoba produk, memberi feedback, dan membuka peluang kerja sama.", tag: "Showcase" },
-    { time: "15:30 — 16:30", title: "Business Matching", desc: "Percakapan terarah untuk tim yang punya kecocokan kebutuhan dengan calon partner, pembeli, mentor, atau pemilik modal.", tag: "Matching" }
+   { time: "10:00 — 10:25", title: "Registrasi", pic: "Panitia APINDO", desc: "Registrasi peserta dan tamu undangan.", tag: "Registration" },
+   { time: "10:25 — 10:35", title: "Opening", pic: "Panitia APINDO", desc: "Pembukaan acara oleh MC dan panitia.", tag: "Opening" },
+   { time: "10:35 — 10:50", title: "Sambutan APINDO", pic: "APINDO", desc: "Sambutan pembuka dari perwakilan APINDO.", tag: "Speech" },
+   { time: "10:50 — 11:20", title: "Sesi Data Sorcerers", pic: "Data Sorcerers", desc: "Sesi pengantar atau presentasi dari Data Sorcerers.", tag: "Session" },
+   { time: "11:20 — 12:00", title: "Sesi Walikota & Pengusaha", pic: "APINDO", desc: "Walikota dan pengusaha hadir dalam satu sesi bersama.", tag: "Talk" },
+   { time: "12:00 — 12:45", title: "Business Matching APINDO", pic: "APINDO / Panitia", desc: "Sesi matching antara pengusaha, kampus, dan stakeholder terkait.", tag: "Matching" },
+   { time: "12:45 — 13.30", title: "Lunch & Expo Visit", pic: "Panitia APINDO / EO", desc: "Makan siang dan kunjungan area expo.", tag: "Break" },
+   { time: "13:30 — 14:30", title: "Expo Activity & Networking", pic: "EO / Panitia APINDO", desc: "Aktivitas expo dan networking peserta.", tag: "Expo" },
+   { time: "14:30 — 15:00", title: "Closing & Photo Session", pic: "Panitia APINDO", desc: "Penutupan acara dan foto bersama.", tag: "Closing" }
   ],
-
   investors: [
     { title: "Pengusaha Senior", thesis: "Retail · Properti · Distribusi", ticket: "Potensi pilot project & jaringan bisnis", portfolio: "Berpengalaman membangun bisnis lintas sektor" },
     { title: "Pemilik Modal Lokal", thesis: "Early product · bisnis berbasis teknologi", ticket: "Diskusi kolaborasi, bukan janji pendanaan", portfolio: "Tertarik melihat peluang AI yang realistis" },

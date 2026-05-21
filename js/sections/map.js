@@ -20,7 +20,7 @@ window.SorceryApp.map = function () {
               </div>
             </div>
 
-            <a href="https://maps.app.goo.gl/VBFcNCqUjxprmiv16" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+            <a href="https://maps.app.goo.gl/VBFcNCqUjxprmiv16" target="_blank" rel="noopener noreferrer" class="btn btn--white-blue">
               Cari di Google Maps ↗
             </a>
           </div>

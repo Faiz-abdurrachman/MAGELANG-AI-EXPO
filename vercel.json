@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "server.js": {
+      "runtime": "vercel-node@latest"
+    }
+  },
+  "rewrites": [
+    { "source": "/applications", "destination": "/server.js" }
+  ]
+}
