@@ -141,7 +141,8 @@ window.SorceryApp.heroInit = function() {
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5); // Cap DPR for perf
     canvas.width = state.width * dpr;
     canvas.height = state.height * dpr;
-    context.scale(dpr, dpr);
+    // Setting canvas.width resets transforms, so re-apply scale
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
     updateImage(state.frameIndex >= 0 ? state.frameIndex : 0, true);
   }
 
