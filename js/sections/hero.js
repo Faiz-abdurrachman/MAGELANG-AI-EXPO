@@ -89,73 +89,81 @@ window.SorceryApp.heroInit = function() {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
   const context = canvas.getContext('2d');
-  
-  const frameCount = 192; // Total frames extracted
+
+  const frameCount = 48; // Reduced from 192 — every 4th frame
   const currentFrame = index => (
     `assets/sequence/frame_${(index + 1).toString().padStart(4, '0')}.webp`
   );
 
-  // Array to hold the preloaded Image objects
   const images = [];
-  let imagesLoaded = 0;
-  
-  // Object to keep track of drawing state to avoid redundant renders
+
   const state = {
-    frameIndex: 0,
+    frameIndex: -1,
     width: 0,
     height: 0
   };
 
-  // 1. Preload all images for buttery smooth playback
-  for (let i = 0; i < frameCount; i++) {
-    const img = new Image();
-    img.src = currentFrame(i);
-    // Draw the very first frame as soon as it loads to prevent empty background
-    if (i === 0) {
-      img.onload = () => {
-        resizeCanvas();
-        updateImage(0);
-      };
-    }
-    images.push(img);
+  // 1. Load FIRST frame immediately, then lazy-load the rest
+  function loadFrame(i) {
+    return new Promise((resolve) => {
+      if (images[i] && images[i].complete) { resolve(); return; }
+      const img = new Image();
+      img.onload = resolve;
+      img.onerror = resolve; // don't block on error
+      img.src = currentFrame(i);
+      images[i] = img;
+    });
   }
 
-  // 2. Resize canvas correctly (cover aspect ratio)
+  // Load frame 0 ASAP
+  loadFrame(0).then(() => {
+    resizeCanvas();
+    updateImage(0, true);
+    // Then preload the rest in the background (low priority)
+    requestIdleCallback
+      ? requestIdleCallback(() => preloadAll(1))
+      : setTimeout(() => preloadAll(1), 100);
+  });
+
+  function preloadAll(startFrom) {
+    let i = startFrom;
+    function next() {
+      if (i >= frameCount) return;
+      loadFrame(i).then(() => { i++; next(); });
+    }
+    next();
+  }
+
+  // 2. Resize canvas (cover aspect ratio)
   function resizeCanvas() {
     state.width = window.innerWidth;
     state.height = window.innerHeight;
-    
-    // Scale for high DPI displays (Retina) to keep it crisp
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5); // Cap DPR for perf
     canvas.width = state.width * dpr;
     canvas.height = state.height * dpr;
     context.scale(dpr, dpr);
-    
-    // Force a redraw on resize
-    updateImage(state.frameIndex, true);
+    updateImage(state.frameIndex >= 0 ? state.frameIndex : 0, true);
   }
 
-  // 3. Draw image to canvas using "cover" sizing logic
+  // 3. Draw image to canvas using "cover" sizing
   function updateImage(index, force = false) {
+    if (index < 0) index = 0;
     if (state.frameIndex === index && !force) return;
     state.frameIndex = index;
-    
+
     const img = images[index];
-    if (!img || !img.complete) return; // Skip if not loaded yet
-    
-    // Calculate aspect ratio covering
+    if (!img || !img.complete) return;
+
     const imgRatio = img.width / img.height;
     const canvasRatio = state.width / state.height;
     let drawWidth, drawHeight, x, y;
 
     if (imgRatio > canvasRatio) {
-      // Image is wider than canvas
       drawHeight = state.height;
       drawWidth = img.height * imgRatio;
       x = (state.width - drawWidth) / 2;
       y = 0;
     } else {
-      // Canvas is wider than image
       drawWidth = state.width;
       drawHeight = state.width / imgRatio;
       x = 0;
@@ -171,32 +179,17 @@ window.SorceryApp.heroInit = function() {
   let ticking = false;
 
   function onScroll() {
-    // Only calculate while within the hero section bounds
     const rect = heroSection.getBoundingClientRect();
     const sectionTop = rect.top;
-    const sectionHeight = rect.height;
-    
-    // Scroll progress from 0.0 to 1.0
-    // Starts when section is at top of viewport, ends when sticky container hits bottom
-    const scrollDistance = sectionHeight - window.innerHeight;
-    
-    // If section hasn't reached top yet or is already passed, handle bounds
-    if (sectionTop > 0) {
-      updateImage(0);
-      return;
-    }
-    
-    // Calculate progress (0 to 1)
+    const scrollDistance = rect.height - window.innerHeight;
+
+    if (sectionTop > 0) { updateImage(0); return; }
+
     let progress = Math.abs(sectionTop) / scrollDistance;
-    progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
-    
-    // Calculate which frame to show
-    const frameIndex = Math.min(
-      frameCount - 1,
-      Math.floor(progress * frameCount)
-    );
-    
-    // Use requestAnimationFrame for smooth drawing
+    progress = Math.max(0, Math.min(1, progress));
+
+    const frameIndex = Math.min(frameCount - 1, Math.floor(progress * frameCount));
+
     if (!ticking) {
       window.requestAnimationFrame(() => {
         updateImage(frameIndex);
@@ -206,7 +199,6 @@ window.SorceryApp.heroInit = function() {
     }
   }
 
-  // Event Listeners
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('scroll', onScroll, { passive: true });
 };
