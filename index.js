@@ -8,7 +8,9 @@ const DATA_FILE = path.join('/tmp', 'applications.json');
 
 // Middleware
 app.use(express.json());
-app.use(express.static(__dirname));
+
+// Serve static files from the project root
+app.use(express.static(path.join(__dirname)));
 
 // POST /applications endpoint
 app.post('/applications', async (req, res) => {
@@ -37,7 +39,12 @@ app.post('/applications', async (req, res) => {
   }
 });
 
-// Start server
+// SPA fallback: serve index.html for any non-file route
+app.get('/{*path}', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Start server (only in development, Vercel handles this in production)
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

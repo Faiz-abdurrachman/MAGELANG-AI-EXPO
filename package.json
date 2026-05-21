@@ -1,10 +1,11 @@
 {
-  "name": "2",
+  "name": "sorcery-mti",
   "version": "1.0.0",
-  "description": "",
+  "description": "Magelang AI Expo 2026 Landing Page",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
+    "dev": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
