@@ -10,7 +10,7 @@ const DATA_FILE = path.join('/tmp', 'applications.json');
 app.use(express.json());
 
 // Serve static files (only works locally, Vercel uses vercel.json routes for this)
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, '..')));
 
 // POST /applications endpoint
 app.post('/applications', async (req, res) => {
@@ -40,7 +40,7 @@ app.post('/applications', async (req, res) => {
 
 // SPA fallback (for local dev only - Vercel uses vercel.json routes)
 app.get('/{*splat}', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // Start server (only in development)
