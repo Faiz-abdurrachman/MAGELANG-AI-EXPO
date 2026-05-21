@@ -1,14 +1,14 @@
 window.SorceryApp = window.SorceryApp || {};
 window.SorceryApp.cta = function () {
   return `
-    <section class="cta">
+    <section class="section cta">
       <div class="cta__watermark">${window.SorceryIcons.dragonWatermark}</div>
       <div class="container cta__inner reveal">
-        <span class="cta__eyebrow">Deadline · 22 Mei 2026</span>
-        <h2 class="cta__headline">Sepuluh Kursi. Satu Sore. Tak Terulang Tahun Ini.</h2>
-        <p class="cta__sub">Sorcery hanya mengundang founder yang siap pitch dan menutup deal. Jika itu Anda—sisa waktu pendaftaran ada di bawah ini.</p>
+        <span class="cta__eyebrow">Acara · 4 Juni 2026</span>
+        <h2 class="cta__headline">Produk AI Anda Perlu Dilihat Orang yang Tepat.</h2>
+        <p class="cta__sub">Magelang AI Expo bukan janji investasi instan. Ini ruang untuk demo, validasi, networking, dan membuka peluang yang lebih realistis.</p>
         <div class="cta__countdown countdown" id="cta-countdown"></div>
-        <a href="#register" class="btn btn-holographic btn--lg cta__btn">Daftarkan Startup Anda →</a>
+        <a href="#register" class="btn btn-holographic btn--lg cta__btn">Daftarkan Produk AI Anda →</a>
       </div>
     </section>
   `;

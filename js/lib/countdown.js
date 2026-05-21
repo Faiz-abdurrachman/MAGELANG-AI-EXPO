@@ -8,7 +8,7 @@ window.SorceryCountdown = {
       const distance = targetDate.getTime() - Date.now();
 
       if (distance < 0) {
-        container.innerHTML = '<div class="countdown__item"><div class="countdown__num">EVENT LIVE</div><div class="countdown__label">Sorcery MTI 2026</div></div>';
+        container.innerHTML = '<div class="countdown__item"><div class="countdown__num">EVENT LIVE</div><div class="countdown__label">Magelang AI Expo 2026</div></div>';
         return;
       }
 

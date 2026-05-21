@@ -8,19 +8,19 @@
   z-index: 100;
   width: calc(100% - 48px);
   max-width: 1100px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: var(--radius-glass);
   transition: all var(--transition);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
 }
 
 .nav:hover, .nav.is-scrolled {
-  background: var(--glass-bg-light);
-  border-color: var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(20px) saturate(200%);
   -webkit-backdrop-filter: blur(20px) saturate(200%);
 }
@@ -40,21 +40,21 @@
   gap: 0.75rem;
   font-weight: 800;
   letter-spacing: -0.005em;
-  color: var(--red-900);
+  color: var(--blue-900);
   font-size: 0.9375rem;
   line-height: 1.1;
   position: relative;
   z-index: 110;
 }
 
-.nav__brand svg { width: 32px; height: 32px; color: var(--red-500); flex-shrink: 0; }
+.nav__brand svg { width: 32px; height: 32px; color: var(--blue-500); flex-shrink: 0; }
 .nav__brand small {
   display: block;
   font-size: 0.5625rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gray-500);
+  color: var(--gray-600);
   margin-top: 2px;
 }
 
@@ -69,7 +69,7 @@
 .nav__menu a {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--gray-700);
+  color: var(--gray-800);
   position: relative;
   padding: 0.5rem 1.25rem;
   transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -82,8 +82,8 @@
 .nav__indicator {
   position: absolute;
   background: 
-    radial-gradient(circle at center, rgba(183, 28, 28, 0.6) 0%, transparent 70%),
-    radial-gradient(circle at center, rgba(183, 28, 28, 0.3) 0%, transparent 95%);
+    radial-gradient(circle at center, rgba(14, 165, 233, 0.6) 0%, transparent 70%),
+    radial-gradient(circle at center, rgba(14, 165, 233, 0.3) 0%, transparent 95%);
   filter: blur(8px);
   border-radius: 50%;
   z-index: 1;
@@ -124,12 +124,12 @@
   right: 10%;
   font-size: 10px;
   font-weight: 900;
-  color: var(--red-500);
+  color: var(--blue-500);
   opacity: 0.8;
 }
 
-.nav__menu a:hover { color: var(--red-500); }
-.nav__menu a.is-active { color: var(--red-500); font-weight: 700; }
+.nav__menu a:hover { color: var(--blue-500); }
+.nav__menu a.is-active { color: var(--blue-500); font-weight: 700; }
 
 .nav__cta {
   display: flex;
@@ -170,7 +170,7 @@
   position: absolute;
   width: 100%;
   height: 2px;
-  background: var(--red-900);
+  background: var(--blue-900);
   border-radius: 4px;
   left: 0;
   transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
@@ -181,10 +181,10 @@
 .nav__burger-line--3 { top: 12px; }
 
 .nav__burger.is-active {
-  background: var(--red-500);
+  background: var(--blue-500);
 }
 
-.nav__burger.is-active .nav__burger-line { background: #fff; }
+.nav__burger.is-active .nav__burger-line { background: var(--bg-card); }
 .nav__burger.is-active .nav__burger-line--1 { transform: translateY(6px) rotate(45deg); }
 .nav__burger.is-active .nav__burger-line--2 { opacity: 0; transform: translateX(-10px); }
 .nav__burger.is-active .nav__burger-line--3 { transform: translateY(-6px) rotate(-45deg); }
@@ -202,7 +202,7 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(2, 6, 23, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
@@ -249,12 +249,12 @@
   
   /* Show CTA in mobile menu */
   .nav__menu::after {
-    content: "DAFTARKAN STARTUP ANDA";
+    content: "DAFTARKAN PRODUK AI ANDA";
     display: block;
     margin-top: 2rem;
     font-size: 0.75rem;
     font-weight: 800;
-    color: var(--red-500);
+    color: var(--blue-500);
     letter-spacing: 0.2em;
     opacity: 0;
     transition: opacity 0.5s ease 0.4s;

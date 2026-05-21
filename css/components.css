@@ -20,12 +20,14 @@
 /* === HOLOGRAPHIC BUTTONS/CARDS === */
 .btn-holographic {
   position: relative;
-  background: var(--red-900);
-  color: var(--white) !important;
+  background: rgba(14, 165, 233, 0.1);
+  color: #fff !important;
   border: 1px solid var(--neon-border);
+  backdrop-filter: blur(8px);
   overflow: hidden;
   z-index: 1;
   transition: all 0.5s ease;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.1);
 }
 
 .btn-holographic::before {
@@ -39,7 +41,7 @@
     0deg, 
     transparent, 
     transparent 30%, 
-    var(--glow-red)
+    var(--glow-blue)
   );
   transform: rotate(-45deg);
   transition: all 0.5s ease;
@@ -49,7 +51,9 @@
 
 .btn-holographic:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px var(--glow-red);
+  box-shadow: 0 0 25px var(--glow-blue);
+  background: rgba(34, 211, 238, 0.2);
+  border-color: var(--neon-cyan);
 }
 
 .btn-holographic:hover::before {
@@ -58,12 +62,12 @@
 }
 
 .holographic-card {
-  background: #111;
+  background: var(--bg-card);
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-lg);
   transition: all 0.5s ease;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid var(--glass-border);
 }
 
 .holographic-card::before {
@@ -77,7 +81,7 @@
     0deg, 
     transparent, 
     transparent 30%, 
-    var(--glow-red)
+    var(--glow-blue)
   );
   transform: rotate(-45deg);
   transition: all 0.5s ease;
@@ -86,8 +90,8 @@
 
 .holographic-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 30px var(--glow-red);
-  border-color: var(--red-500);
+  box-shadow: 0 0 30px var(--glow-blue);
+  border-color: var(--blue-400);
 }
 
 .holographic-card:hover::before {
@@ -96,33 +100,35 @@
 }
 
 .btn--solid {
-  background: var(--red-500);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(183, 28, 28, 0.2);
+  background: var(--blue-500);
+  color: var(--bg-space) !important;
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.4);
 }
 .btn--solid:hover {
-  background: var(--red-600);
+  background: var(--neon-cyan);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(183, 28, 28, 0.35);
+  box-shadow: 0 8px 24px rgba(34, 211, 238, 0.6);
 }
 
 .btn--outline {
   background: transparent;
-  color: var(--red-500);
-  border: 1.5px solid var(--red-100);
+  color: var(--blue-400);
+  border: 1.5px solid var(--blue-200);
 }
 .btn--outline:hover {
-  border-color: var(--red-500);
-  background: rgba(183, 28, 28, 0.05);
+  border-color: var(--blue-500);
+  background: rgba(14, 165, 233, 0.1);
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.2);
 }
 
 .btn--ghost {
   background: transparent;
-  color: var(--red-900);
+  color: var(--gray-800);
 }
 .btn--ghost:hover { 
-  color: var(--red-500); 
-  background: rgba(183, 28, 28, 0.05);
+  color: var(--blue-400); 
+  background: rgba(14, 165, 233, 0.08);
 }
 
 .btn--lg {
@@ -138,9 +144,9 @@
   align-items: center;
   gap: 0.625rem;
   padding: 0.5rem 0.875rem;
-  background: var(--red-50);
-  color: var(--red-700);
-  border: 1px solid var(--red-100);
+  background: var(--blue-50);
+  color: var(--blue-700);
+  border: 1px solid var(--blue-100);
   border-radius: 100px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -151,7 +157,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--red-500);
+  background: var(--blue-500);
   animation: pulse 2s infinite;
 }
 @keyframes pulse {
@@ -206,7 +212,7 @@
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: var(--red-500);
+  color: var(--blue-500);
   font-variant-numeric: tabular-nums;
 }
 .countdown__label {
@@ -214,7 +220,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gray-500);
+  color: var(--gray-600);
   margin-top: 0.5rem;
 }
 
@@ -226,7 +232,7 @@
   align-items: center;
   justify-content: center;
   padding-block: 4rem;
-  background: var(--white);
+  background: transparent;
   position: relative;
 }
 .section-divider::before,
@@ -236,13 +242,13 @@
   top: 50%;
   width: clamp(60px, 18vw, 220px);
   height: 1px;
-  background: var(--red-100);
+  background: var(--blue-100);
 }
 .section-divider::before { right: calc(50% + 56px); }
 .section-divider::after  { left:  calc(50% + 56px); }
 .section-divider svg {
   width: 72px;
   height: 72px;
-  color: var(--red-500);
+  color: var(--blue-500);
   opacity: 0.65;
 }

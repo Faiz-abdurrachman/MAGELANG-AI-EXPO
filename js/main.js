@@ -30,6 +30,7 @@
   A.navInit();
   A.faqInit();
   A.formInit();
+  A.heroInit();
 
   /* Countdowns — hero + final CTA both tick to deadline */
   const deadline = window.SorceryData.event.deadline;

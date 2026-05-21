@@ -56,7 +56,7 @@ window.SorceryApp.investors = function () {
                 <span></span><span></span><span></span><span></span><span></span>
                 <span></span><span></span><span></span><span></span><span></span>
               </div>
-              <div class="profile__seal">MTI_SECURE_AUTH</div>
+              <div class="profile__seal">MAE_SHOWCASE</div>
             </footer>
           </div>
         </div>
@@ -68,14 +68,14 @@ window.SorceryApp.investors = function () {
     <section class="section investors" id="investors">
       <div class="container">
         <div class="investors__head reveal">
-          <span class="eyebrow">Strategic Capital</span>
-          <h2 class="section-title">The Capital<br>High-Command.</h2>
-          <p class="section-subtitle">Akses eksklusif ke Partner Senior dan Managing Director dari jajaran Venture Capital paling aktif di regional.</p>
+          <span class="eyebrow">Strategic Guests</span>
+          <h2 class="section-title">Orang yang Punya<br>Akses, Jaringan, dan Kebutuhan.</h2>
+          <p class="section-subtitle">Bertemu pelaku bisnis, eksekutif, partner strategis, dan jaringan senior yang bisa memberi feedback, akses, atau peluang kerja sama.</p>
         </div>
         <div class="investors__grid">${cards}</div>
         <div class="investors__security-note reveal">
           <div class="security-note__line"></div>
-          <p>PROTECTED DATA NODE: IDENTITY CLEARANCE LEVEL 2 REQUIRED FOR FULL ACCESS</p>
+          <p>REALISTIC ROOM: NO FUNDING PROMISE, ONLY RELEVANT ACCESS AND CONVERSATION</p>
           <div class="security-note__line"></div>
         </div>
       </div>

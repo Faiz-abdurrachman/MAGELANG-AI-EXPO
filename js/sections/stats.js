@@ -4,10 +4,11 @@ window.SorceryApp.stats = function () {
     .map(
       (s, i) => `
         <div class="stats__item-wrapper reveal">
-          <div class="stats__item ${i === 1 ? 'stats__item--red' : ''}">
+          <div class="stats__item">
             <div class="stats__front">
               <div class="stats__num">${s.value}</div>
               <div class="stats__label">${s.label}</div>
+              <div class="stats__hint">Klik untuk detail →</div>
             </div>
             <div class="stats__back">
               <p class="stats__desc">${s.desc}</p>
@@ -20,7 +21,7 @@ window.SorceryApp.stats = function () {
     .join("");
 
   return `
-    <section class="stats">
+    <section class="section stats">
       <div class="container">
         <div class="stats__grid">${items}</div>
       </div>

@@ -1,256 +1,173 @@
 /* ============================================
-   WHY SECTION — RED 3D STAND-UP CARDS WITH HOVER REVEAL
-   - Cards stand up on scroll-in (entrance)
-   - Hover: smooth tilt + description reveal
-   - All-red gradient palette (light → deep)
+   WHY SECTION — TRON 3D STAND-UP CARDS
+   - Optimized for 60fps performance
+   - GPU-accelerated hover effects
    ============================================ */
 .why {
   background: var(--bg-main);
   position: relative;
   overflow: hidden;
-  padding-block: 8rem;
-}
-
-.why__head {
-  max-width: 760px;
-  margin-bottom: 6rem;
-  text-align: center;
-  margin-inline: auto;
 }
 
 .why__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.25rem;
+  gap: 3rem;
   max-width: 1200px;
   margin-inline: auto;
-  perspective: 1500px;
+  perspective: 2000px;
   perspective-origin: 50% 0%;
 }
 
-/* === Entrance: cards stand up from a tilted resting pose === */
 @keyframes whyStandUp {
-  0% {
-    transform: rotateX(60deg) translateY(-90px) translateZ(-60px);
-    opacity: 0;
-  }
-  100% {
-    transform: rotateX(0deg) translateY(0) translateZ(0);
-    opacity: 1;
-  }
+  0% { transform: rotateX(60deg) translateY(-90px) translateZ(-60px); opacity: 0; }
+  100% { transform: rotateX(0deg) translateY(0) translateZ(0); opacity: 1; }
 }
 
 .why__card {
   position: relative;
-  height: 380px;
-  border-radius: 22px;
+  height: 440px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   color: #fff;
   isolation: isolate;
   transform-origin: 50% 100%;
   transform: rotateX(60deg) translateY(-90px) translateZ(-60px);
   opacity: 0;
-  cursor: default;
-  box-shadow:
-    0 30px 60px -22px rgba(0, 0, 0, 0.45),
-    0 18px 40px -12px rgba(183, 28, 28, 0.28);
-  transition:
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s var(--transition), box-shadow 0.25s var(--transition);
+  will-change: transform, box-shadow; /* GPU Prep */
 }
 
 .why__card.is-visible {
   animation: whyStandUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.why__card:nth-child(1).is-visible { animation-delay: 0ms; }
-.why__card:nth-child(2).is-visible { animation-delay: 140ms; }
-.why__card:nth-child(3).is-visible { animation-delay: 280ms; }
+.why__shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%) skewX(-30deg);
+  transition: transform 0.5s var(--transition);
+  z-index: 5;
+  pointer-events: none;
+}
 
-/* === All-red gradient palette: light → brand → deep === */
-.why__card:nth-child(1) {
-  background: linear-gradient(155deg, #ef5350 0%, #c62828 60%, #b71c1c 100%);
-}
-.why__card:nth-child(2) {
-  background: linear-gradient(155deg, #d32f2f 0%, #a71919 60%, #821414 100%);
-}
-.why__card:nth-child(3) {
-  background: linear-gradient(155deg, #821414 0%, #5d0f0f 60%, #2b0808 100%);
+.why__card:hover .why__shine {
+  transform: translateX(100%) skewX(-30deg);
 }
 
-/* Glassy highlight overlay */
+.why__card:nth-child(1) { background: linear-gradient(155deg, #0ea5e9 0%, #0369a1 100%); }
+.why__card:nth-child(2) { background: linear-gradient(155deg, #0284c7 0%, #075985 100%); }
+.why__card:nth-child(3) { background: linear-gradient(155deg, #0c4a6e 0%, #082f49 100%); }
+
+.why__num {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1;
+  font-family: var(--font-sans);
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  opacity: 0.15;
+  transition: transform 0.25s var(--transition), opacity 0.25s var(--transition);
+  will-change: transform, opacity; /* Fixes hover lag */
+}
+
+.why__body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem;
+  z-index: 3;
+}
+
+.why__title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  transition: transform 0.25s var(--transition);
+}
+
+.why__desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.25s var(--transition), opacity 0.25s var(--transition);
+}
+
+/* === Natural Hover State (Performance Optimized) === */
+.why__card:hover {
+  transform: translateY(-12px) rotateX(1deg) scale(1.02);
+  box-shadow: 
+    0 40px 100px -20px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(34, 211, 238, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
 .why__card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(120% 80% at 0% 0%, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0) 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.22));
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Sweeping shine */
-.why__shine {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255, 255, 255, 0.22) 50%, rgba(255,255,255,0) 100%);
-  transform: translateX(-200%) skewX(-18deg);
-  pointer-events: none;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.25s ease;
   z-index: 2;
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* === Big edition number, top-right === */
-.why__num {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.75rem;
-  z-index: 3;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 5.5rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: #fff;
-  opacity: 0.25;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
-  transition:
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    font-size 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.why__card:hover::before {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
-/* === Body: title + description (description revealed on hover) === */
-.why__body {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 2rem;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+.why__card:hover .why__num {
+  transform: translate3d(5%, -5%, 0) scale(0.65); /* More subtle translate, uses 3d */
+  opacity: 0.35;
 }
 
-.why__title {
-  color: #fff;
-  font-size: 1.55rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.why__desc {
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-  max-width: 32ch;
-  /* hidden until hover */
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
-}
-
-/* === Hover cue (bottom-right) === */
-.why__cue {
-  position: absolute;
-  bottom: 1.4rem;
-  right: 1.5rem;
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.7rem;
-  border-radius: 100px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #fff;
-  transition:
-    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* === Hover state: lift + tilt + reveal description === */
-.why__card.is-visible:hover {
-  transform: translateY(-12px) rotateX(2deg) rotateY(-3deg) scale(1.015);
-  box-shadow:
-    0 45px 80px -20px rgba(0, 0, 0, 0.55),
-    0 25px 60px -10px rgba(183, 28, 28, 0.4);
-}
-
-.why__card.is-visible:hover .why__shine { transform: translateX(250%) skewX(-18deg); }
-
-.why__card.is-visible:hover .why__num {
-  font-size: 2.25rem;
-  opacity: 0.65;
-  transform: translate(-2px, 2px);
-}
-
-.why__card.is-visible:hover .why__title {
-  transform: translateY(-4px);
-}
-
-.why__card.is-visible:hover .why__desc {
+.why__card:hover .why__desc {
   opacity: 1;
   transform: translateY(0);
 }
 
-.why__card.is-visible:hover .why__cue {
-  opacity: 0;
-  transform: translateY(8px);
+.why__card:hover .why__title {
+  transform: translateY(-5px);
 }
 
-/* === Responsive === */
-@media (max-width: 1024px) {
-  .why__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .why__card:nth-child(3).is-visible { animation-delay: 140ms; }
+.why__cue {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 4;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: opacity 0.3s ease;
 }
 
-@media (max-width: 720px) {
-  .why__grid { grid-template-columns: 1fr; gap: 1.5rem; perspective: 900px; }
-  .why__card { height: auto; min-height: 280px; }
-  .why__num { font-size: 4rem; top: 1.25rem; right: 1.5rem; }
-  .why__body { position: static; padding: 5rem 1.5rem 1.5rem; }
-  /* Always-visible description on touch screens */
+.why__card:hover .why__cue { opacity: 0; }
+
+@media (max-width: 920px) {
+  .why__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .why__card { height: auto; min-height: 340px; }
+  .why__body { position: static; padding: 6rem 2rem 2.5rem; }
   .why__desc { opacity: 1; transform: none; }
   .why__cue { display: none; }
-  @keyframes whyStandUp {
-    0% { transform: rotateX(35deg) translateY(-40px); opacity: 0; }
-    100% { transform: rotateX(0deg) translateY(0); opacity: 1; }
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .why__card { transform: none; opacity: 1; animation: none; }
-  .why__card.is-visible { animation: none; }
-  .why__card.is-visible:hover { transform: translateY(-4px); }
-  .why__shine { display: none; }
-}
-
-/* On hover-incapable devices, expose the description by default */
-@media (hover: none) {
-  .why__desc { opacity: 1; transform: none; }
-  .why__cue { display: none; }
-  .why__num { font-size: 3rem; opacity: 0.4; }
-  .why__body { padding-top: 5rem; }
-}
-{ padding-top: 5rem; }
 }

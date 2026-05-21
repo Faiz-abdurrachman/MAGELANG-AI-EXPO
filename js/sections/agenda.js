@@ -28,7 +28,7 @@ window.SorceryApp.agenda = function () {
         <div class="agenda__head reveal">
           <span class="eyebrow">The Sequence</span>
           <h2 class="section-title">Enam Jam,<br>Masa Depan Inovasi.</h2>
-          <p class="section-subtitle">Disusun secara sekuensial untuk memaksimalkan efisiensi waktu antara pendanaan dan operasional bisnis.</p>
+          <p class="section-subtitle">Disusun untuk memudahkan demo, feedback, networking, dan percakapan bisnis yang realistis dalam satu hari.</p>
         </div>
         <div class="agenda__list">${items}</div>
       </div>

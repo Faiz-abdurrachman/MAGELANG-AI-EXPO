@@ -9,7 +9,7 @@ window.SorceryApp.nav = function () {
       <div class="container nav__inner">
         <a href="#top" class="nav__brand">
           ${window.SorceryIcons.logo}
-          <span>SORCERY MTI<small>Meet The Investor 2026</small></span>
+          <span>MAGELANG AI EXPO<small>AI Expo 2026</small></span>
         </a>
         <nav class="nav__menu">
           ${items}
@@ -23,7 +23,7 @@ window.SorceryApp.nav = function () {
               <span class="nav__burger-line nav__burger-line--3"></span>
             </div>
           </button>
-          <a href="#register" class="btn btn-holographic">Daftar Sekarang</a>
+          <a href="#register" class="btn btn-holographic">Daftar Produk</a>
         </div>
       </div>
     </header>

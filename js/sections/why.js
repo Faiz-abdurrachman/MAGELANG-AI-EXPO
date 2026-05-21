@@ -24,9 +24,9 @@ window.SorceryApp.why = function () {
     <section class="section why" id="about">
       <div class="container">
         <div class="why__head reveal">
-          <span class="eyebrow">Mengapa Sorcery MTI Berbeda</span>
-          <h2 class="section-title">Lebih dari Sekadar<br>Panggung Presentasi.</h2>
-          <p class="section-subtitle">Setiap detail dirancang untuk satu tujuan—mempercepat percakapan substantif antara founder dengan modal, tanpa formalitas yang tidak perlu.</p>
+          <span class="eyebrow">Mengapa Magelang AI Expo Berbeda</span>
+          <h2 class="section-title">Bukan Janji Investasi,<br>Tapi Ruang Bertemu yang Nyata.</h2>
+          <p class="section-subtitle">Setiap sesi dirancang agar founder AI bisa menjelaskan produknya dengan jelas, bertemu calon pengguna, dan membuka percakapan bisnis yang realistis.</p>
         </div>
         <div class="why__grid">${cards}</div>
       </div>

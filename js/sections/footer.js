@@ -5,9 +5,9 @@ window.SorceryApp.footer = function () {
       <div class="container">
         <div class="footer__top">
           <div class="footer__brand">
-            <h3>${window.SorceryIcons.logo} Sorcery MTI</h3>
-            <small>Meet The Investor 2026</small>
-            <p>Matchmaking summit eksklusif yang mempertemukan inovasi regional terbaik dengan pemodal nasional. Diselenggarakan di Jogja-Magelang, 22 Mei 2026.</p>
+            <h3>${window.SorceryIcons.logo} Magelang AI Expo</h3>
+            <small>AI Expo 2026</small>
+            <p>Expo produk AI yang mempertemukan builder, pelaku bisnis, calon pengguna, dan partner strategis di Magelang pada 4 Juni 2026.</p>
           </div>
 
           <div class="footer__col">
@@ -16,7 +16,7 @@ window.SorceryApp.footer = function () {
               <li><a href="#about">Tentang</a></li>
               <li><a href="#format">Format Venue</a></li>
               <li><a href="#agenda">Agenda</a></li>
-              <li><a href="#investors">Investor</a></li>
+              <li><a href="#investors">Tamu</a></li>
             </ul>
           </div>
 
@@ -34,7 +34,7 @@ window.SorceryApp.footer = function () {
             <h4>Kontak</h4>
             <ul>
               <li><a href="mailto:partnership@sorcery.id">partnership@sorcery.id</a></li>
-              <li>Gedung Tri Bhakti</li>
+              <li>Lokal Folk Cafe</li>
               <li>Magelang, Indonesia</li>
               <li><a href="#">Instagram · LinkedIn</a></li>
             </ul>
@@ -44,8 +44,8 @@ window.SorceryApp.footer = function () {
         <div class="footer__crest">${window.SorceryIcons.crest}</div>
 
         <div class="footer__bottom">
-          <div>© 2026 Sorcery Indonesia. All rights reserved.</div>
-          <div>Connecting Regional Innovation to National Capital.</div>
+          <div>© 2026 Magelang AI Expo. All rights reserved.</div>
+          <div>Showcasing Practical AI for Local Business.</div>
         </div>
       </div>
     </footer>

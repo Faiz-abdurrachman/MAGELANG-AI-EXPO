@@ -23,7 +23,7 @@ window.SorceryApp.value = function () {
         <div class="value__head reveal">
           <span class="eyebrow">What You Get</span>
           <h2 class="section-title">Enam Hal yang Anda<br>Bawa Pulang.</h2>
-          <p class="section-subtitle">Selain potensi term sheet—Sorcery memberikan exposure, dokumentasi profesional, dan akses lanjutan yang biasanya tidak terbeli oleh tiket event mana pun.</p>
+          <p class="section-subtitle">Magelang AI Expo memberi ruang agar produk AI bisa dilihat, dicoba, dan dibicarakan oleh orang yang relevan—tanpa menjanjikan hasil yang tidak pasti.</p>
         </div>
         <div class="value__grid">${cards}</div>
       </div>

@@ -7,9 +7,10 @@
 }
 
 .agenda__head {
-  max-width: 760px;
+  max-width: 800px;
   margin-bottom: 6rem;
-  text-align: left;
+  text-align: center;
+  margin-inline: auto;
 }
 
 .agenda__list {
@@ -26,40 +27,39 @@
   gap: 3rem;
   position: relative;
   padding-block: 3.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid var(--gray-200);
   transition: background 0.3s ease-out;
   overflow: visible;
 }
 
-/* === THE GLOW (ELONGATED & ALIVE) === */
+/* === THE GLOW (ORGANIC & SEAMLESS) === */
 .agenda__item::after {
   content: "";
   position: absolute;
   top: 50%;
-  left: 35%;
-  width: 900px; /* Much wider for "longer" look */
-  height: 400px;
-  background: radial-gradient(ellipse at center, rgba(183, 28, 28, 0.6) 0%, rgba(183, 28, 28, 0.15) 50%, transparent 80%);
-  filter: blur(60px);
+  left: 35%; /* Centered better for content */
+  width: 1200px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.25) 0%, rgba(14, 165, 233, 0.1) 40%, transparent 75%);
+  filter: blur(80px);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0.6);
   opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-out;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Animation to make it feel "Alive" */
 @keyframes glowLife {
-  0% { transform: translate(-50%, -50%) scale(1.1) opacity(0.8); filter: blur(60px); }
-  100% { transform: translate(-50%, -50%) scale(1.2) opacity(1); filter: blur(45px); }
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
 }
 
 .agenda__item:hover::after,
 .agenda__item.is-hovered::after {
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
-  animation: glowLife 3s infinite alternate ease-in-out;
+  animation: glowLife 4s infinite alternate ease-in-out;
 }
 
 .agenda__item:last-child {
@@ -78,11 +78,11 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 1px;
+  width: 2px;
   background: linear-gradient(180deg, 
-    rgba(183, 28, 28, 0.05) 0%, 
-    rgba(183, 28, 28, 0.3) 50%, 
-    rgba(183, 28, 28, 0.05) 100%
+    rgba(34, 211, 238, 0.05) 0%, 
+    rgba(34, 211, 238, 0.4) 50%, 
+    rgba(34, 211, 238, 0.05) 100%
   );
 }
 
@@ -92,14 +92,15 @@
 .agenda__marker-dot {
   position: sticky;
   top: 50%;
-  width: 12px;
-  height: 12px;
-  background: #fff;
-  border: 3px solid var(--red-500);
+  width: 14px;
+  height: 14px;
+  background: var(--bg-space);
+  border: 3px solid var(--blue-500);
   border-radius: 50%;
   z-index: 3;
   margin-top: 0.5rem;
   transition: all 0.2s ease-out;
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
 }
 
 /* === CONTENT BOX === */
@@ -130,11 +131,11 @@
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--red-500);
-  background: rgba(183, 28, 28, 0.08);
+  color: var(--neon-cyan);
+  background: rgba(34, 211, 238, 0.1);
   padding: 0.25rem 0.6rem;
   border-radius: 4px;
-  border: 1px solid rgba(183, 28, 28, 0.15);
+  border: 1px solid var(--neon-border);
 }
 
 .agenda__title {
@@ -157,7 +158,7 @@
 .agenda__index {
   font-size: 6rem;
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.03);
+  color: rgba(255, 255, 255, 0.03);
   line-height: 1;
   user-select: none;
   pointer-events: none;
@@ -168,28 +169,30 @@
   z-index: 1;
 }
 
-/* === HOVER STATES === */
+/* === HOVER STATES (NYATU/INTEGRATED) === */
 .agenda__item:hover,
 .agenda__item.is-hovered {
-  background: transparent; /* Removed boxy tint */
+  background: transparent;
 }
 
 .agenda__item:hover .agenda__marker-dot,
 .agenda__item.is-hovered .agenda__marker-dot {
-  background: var(--red-500);
-  transform: scale(1.4);
-  box-shadow: 0 0 25px rgba(183, 28, 28, 0.4);
+  background: var(--blue-500);
+  transform: scale(1.3);
+  box-shadow: 
+    0 0 20px rgba(14, 165, 233, 0.6),
+    0 0 40px rgba(14, 165, 233, 0.3);
 }
 
 .agenda__item:hover .agenda__content-box,
 .agenda__item.is-hovered .agenda__content-box {
-  transform: translateX(12px);
+  transform: translateX(15px);
 }
 
 .agenda__item:hover .agenda__index,
 .agenda__item.is-hovered .agenda__index {
-  color: rgba(183, 28, 28, 0.1);
-  transform: scale(1.05) translateX(-10px);
+  color: rgba(14, 165, 233, 0.08);
+  transform: scale(1.05) translateX(-15px);
 }
 
 /* === RESPONSIVE === */

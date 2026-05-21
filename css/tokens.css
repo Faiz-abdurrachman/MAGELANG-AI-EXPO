@@ -1,75 +1,71 @@
 :root {
-  /* === COLOR === */
-  --red-50:  #f8e8e8;
-  --red-100: #e9b9b9;
-  --red-200: #de9797;
-  --red-300: #cf6767;
-  --red-400: #c54949;
-  --red-500: #b71c1c;
-  --red-600: #a71919;
-  --red-700: #821414;
-  --red-800: #650f0f;
-  --red-900: #4d0c0c;
+  /* === COLOR (PROFESSIONAL TRON BLUE) === */
+  --blue-50:  #f0f9ff;
+  --blue-100: #e0f2fe;
+  --blue-200: #bae6fd;
+  --blue-300: #7dd3fc;
+  --blue-400: #38bdf8;
+  --blue-500: #0ea5e9; /* Primary Action */
+  --blue-600: #0284c7;
+  --blue-700: #0369a1;
+  --blue-800: #075985;
+  --blue-900: #0c4a6e;
+  --blue-950: #082f49;
 
+  /* Backgrounds (Global Dark Theme) */
+  --bg-space: #020617;
+  --bg-main:  var(--bg-space);
+  --bg-dark:  #000000;
+  
+  /* Cards & Elevate */
+  --bg-card:       rgba(15, 23, 42, 0.7);
+  --bg-card-flat:  rgba(15, 23, 42, 0.4);
+  --bg-elevated:   #0f172a;
+  
+  /* Grayscale (Light text for Dark theme) */
   --white:    #ffffff;
-  --gray-900: #111111;
-  --gray-700: #404040;
-  --gray-500: #6b6b6b;
-  --gray-300: #c4c4c4;
-  --gray-100: #ededed;
-  --gray-50:  #f4f4f4;
+  --gray-900: #f8fafc; /* Title Text */
+  --gray-800: #f1f5f9;
+  --gray-700: #cbd5e1; /* Main Body Text */
+  --gray-600: #94a3b8; /* Muted Text */
+  --gray-500: #64748b;
+  --gray-400: #475569;
+  --gray-300: #334155;
+  --gray-200: #1e293b; /* Borders */
+  --gray-100: #0f172a;
+  --gray-50:  #020617;
 
-  /* === CLEAN BENTO TOKENS === */
-  --bg-main: #fcfcfc;
-  --bg-dark: var(--red-900);
-  --bg-card-flat: #f4f4f4;
+  /* Tron Accents */
+  --neon-cyan: #22d3ee;
+  --glow-blue: rgba(14, 165, 233, 0.5);
+  --neon-border: rgba(34, 211, 238, 0.3);
+
+  /* Glass Utils */
+  --glass-bg-light: rgba(15, 23, 42, 0.4);
+  --glass-bg-dark:  rgba(2, 6, 23, 0.8);
+  --glass-border:   rgba(56, 189, 248, 0.2);
+  --glass-shadow:   0 8px 32px 0 rgba(0, 0, 0, 0.6);
+
+  /* === TYPOGRAPHY (RESTORED) === */
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   
-  /* iOS Glass for Navbar */
-  --glass-bg-light: rgba(255, 255, 255, 0.4);
-  --glass-bg-dark: rgba(0, 0, 0, 0.2);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  
-  /* Softer radius for flat bento */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-glass: 100px; /* For pill navbar */
-  --radius-full: 9999px;
+  --fs-display: clamp(2.5rem, 5vw, 3.85rem);
+  --fs-h1:      clamp(2rem, 4vw, 3rem);
+  --fs-h2:      clamp(1.75rem, 3vw, 2.5rem);
+  --fs-h3:      clamp(1.125rem, 2vw, 1.5rem);
+  --fs-body:    1rem;
+  --fs-small:   0.8125rem;
 
-  /* === TYPOGRAPHY === */
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-
-  --fs-display: clamp(4rem, 10vw, 8rem);
-  --fs-h1:      clamp(3rem, 6vw, 5rem);
-  --fs-h2:      clamp(2rem, 4vw, 3.5rem);
-  --fs-h3:      clamp(1.5rem, 2.5vw, 2rem);
-  --fs-body:    1.125rem; /* 18px */
-  --fs-small:   0.875rem;
-
-  /* === LAYOUT === */
-  --container:        1280px;
-  --container-narrow: 960px;
-  --gutter:           clamp(1.25rem, 4vw, 3rem);
-
-  /* === GLOW & HOLOGRAPHIC TOKENS === */
-  --glow-red: rgba(183, 28, 28, 0.4);
-  --glow-cyan: rgba(0, 255, 255, 0.3);
-  --holo-gradient: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.1) 45%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.1) 55%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  --neon-border: rgba(183, 28, 28, 0.3);
-
-  /* === MOTION === */
+  /* === MOTION & SHAPE === */
   --transition: 400ms cubic-bezier(0.16, 1, 0.3, 1);
-
-  /* === ELEVATION === */
-  --shadow-sm: 0 0 0 rgba(0,0,0,0); /* Flattened */
-  --shadow:    0 0 0 rgba(0,0,0,0); /* Flattened */
-  --shadow-lg: 0 0 0 rgba(0,0,0,0); /* Flattened */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --radius-glass: 100px;
+  
+  /* Layout */
+  --container: 1280px;
+  --container-narrow: 960px;
+  --gutter: clamp(1.5rem, 5vw, 3.5rem);
 }

@@ -1,24 +1,24 @@
 /* ============================================
-   STATS BAR — CUSTOM PREMIUM FLIP PLATES
+   STATS BAR — TRON 3D FLIP CARDS (REBORE)
    ============================================ */
 .stats {
-  padding-block: 0 6rem;
+  padding-block: 6rem 10rem;
   position: relative;
   z-index: 10;
-  margin-top: -1rem; /* Reduced overlap to give more breathing room */
+  background: var(--bg-main);
 }
 
 .stats__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.75rem;
-  max-width: 1200px;
+  gap: 2rem;
+  max-width: 1320px;
   margin-inline: auto;
 }
 
 .stats__item-wrapper {
   perspective: 2000px;
-  height: 300px;
+  height: 380px;
 }
 
 .stats__item {
@@ -30,12 +30,10 @@
   cursor: pointer;
 }
 
-.stats__item-wrapper:hover .stats__item,
-.stats__item-wrapper.is-hovered .stats__item {
+.stats__item-wrapper:hover .stats__item {
   transform: rotateY(180deg);
 }
 
-/* Base styles for both sides */
 .stats__front,
 .stats__back {
   position: absolute;
@@ -44,126 +42,105 @@
   height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 32px;
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem 2rem;
+  padding: 2.5rem 2rem;
   box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 }
 
-/* === FRONT SIDE === */
-.stats__front {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 
-    0 20px 40px -15px rgba(0, 0, 0, 0.06),
-    0 10px 20px -10px rgba(0, 0, 0, 0.04);
-  z-index: 2;
-  transform: rotateY(0deg) translateZ(1px); /* Force layer */
+/* === NYENTRIK BUT NATURAL GRADIENTS === */
+/* Using rich blues and cyans that pop but feel integrated */
+.stats__item-wrapper:nth-child(1) .stats__front {
+  background: linear-gradient(145deg, #0c4a6e 0%, #020617 100%);
+  box-shadow: inset 0 0 30px rgba(14, 165, 233, 0.1);
 }
-
-/* Subtle pattern for front side */
-.stats__front::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(183, 28, 28, 0.04) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.5;
-  pointer-events: none;
+.stats__item-wrapper:nth-child(2) .stats__front {
+  background: linear-gradient(145deg, #075985 0%, #020617 100%);
+  box-shadow: inset 0 0 30px rgba(34, 211, 238, 0.1);
+}
+.stats__item-wrapper:nth-child(3) .stats__front {
+  background: linear-gradient(145deg, #0369a1 0%, #020617 100%);
+  box-shadow: inset 0 0 30px rgba(56, 189, 248, 0.1);
+}
+.stats__item-wrapper:nth-child(4) .stats__front {
+  background: linear-gradient(145deg, #0ea5e9 0%, #020617 100%);
+  box-shadow: inset 0 0 30px rgba(125, 211, 252, 0.1);
 }
 
 .stats__num {
-  font-size: clamp(2.75rem, 5vw, 4rem);
-  font-weight: 800;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 900;
   letter-spacing: -0.05em;
-  color: #000;
+  color: var(--white);
   line-height: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
 }
 
 .stats__label {
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-weight: 800;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #777;
+  color: var(--blue-400);
   text-align: center;
+}
+
+.stats__hint {
+  margin-top: 2rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-500);
+  opacity: 0.6;
 }
 
 /* === BACK SIDE === */
 .stats__back {
-  background: #0f0f0f;
-  color: #ffffff;
-  transform: rotateY(180deg) translateZ(1px); /* Force layer */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-  padding: 2.5rem;
-  z-index: 1;
+  background: #0f172a;
+  color: var(--white);
+  transform: rotateY(180deg);
+  border: 1px solid var(--blue-500);
+  padding: 3rem 2rem;
+  box-shadow: inset 0 0 50px rgba(14, 165, 233, 0.1);
 }
 
 .stats__desc {
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.6;
-  color: #ffffff !important; /* Force visibility */
+  color: var(--gray-700);
   text-align: center;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  opacity: 1 !important;
-}
-
-/* Subtle separator for back */
-.stats__desc::after {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 2px;
-  background: var(--red-500);
-  margin: 1.5rem auto 0;
-  border-radius: 2px;
+  margin-bottom: 2rem;
 }
 
 .stats__back-label {
   font-size: 0.625rem;
   font-weight: 800;
-  text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  color: var(--blue-500);
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  border-radius: 100px;
 }
 
-/* === RED HIGHLIGHTED CARD === */
-.stats__item--red .stats__front {
-  background: linear-gradient(145deg, #b71c1c 0%, #4d0c0c 100%);
-  border: none;
-  box-shadow: 0 30px 60px -15px rgba(183, 28, 28, 0.4);
+/* Hover refinements */
+.stats__item-wrapper:hover .stats__front {
+  border-color: var(--blue-400);
 }
 
-.stats__item--red .stats__num { color: #ffffff; }
-.stats__item--red .stats__label { color: rgba(255, 255, 255, 0.75); }
-
-.stats__item--red .stats__back {
-  background: linear-gradient(145deg, #3a0a0a 0%, #000000 100%);
-  border-color: rgba(183, 28, 28, 0.3);
-}
-
-/* === RESPONSIVE === */
+/* Responsive */
 @media (max-width: 1100px) {
-  .stats__grid { gap: 1.25rem; padding-inline: 1.5rem; }
+  .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding-inline: 1.5rem; }
+  .stats__item-wrapper { height: 340px; }
 }
 
-@media (max-width: 920px) {
-  .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  .stats { margin-top: -3rem; padding-bottom: 4rem; }
-  .stats__item-wrapper { height: 260px; }
-  .stats__front, .stats__back { border-radius: 28px; padding: 2rem 1.25rem; }
-  .stats__desc { font-size: 0.9375rem; line-height: 1.4; }
-  .stats__num { font-size: 2.75rem; }
-}
-
-@media (max-width: 540px) {
-  .stats__grid { grid-template-columns: 1fr; gap: 1.25rem; max-width: 340px; margin-inline: auto; }
-  .stats__num { font-size: 3.5rem; }
-  .stats__item-wrapper { height: 280px; }
+@media (max-width: 600px) {
+  .stats__grid { grid-template-columns: 1fr; max-width: 400px; }
 }

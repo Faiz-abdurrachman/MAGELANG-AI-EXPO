@@ -2,11 +2,18 @@ body {
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   line-height: 1.6;
-  color: var(--gray-900);
+  color: var(--gray-700);
   background: var(--bg-main);
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  color: var(--gray-900);
+  line-height: 1.1;
 }
 
 .container {
@@ -18,46 +25,85 @@ body {
 
 .container--narrow { max-width: var(--container-narrow); }
 
+/* === SECTION: HIGH-FIDELITY SPACING & BLENDING === */
 .section {
-  padding-block: clamp(4.5rem, 10vw, 8rem);
+  padding-block: clamp(10rem, 20vw, 15rem); /* Maximum breathing room */
+  position: relative;
+  /* Every section now has a guaranteed fade to the deep space background */
+  background-color: var(--bg-main);
+}
+
+/* Global Section Blenders - Ensures consistent transition everywhere */
+.section::before,
+.section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 350px; /* Deeper blend for smoother flow */
+  pointer-events: none;
+  z-index: 5;
+}
+.section::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom, 
+    var(--bg-main) 0%, 
+    rgba(2, 6, 23, 0.7) 30%, 
+    rgba(2, 6, 23, 0) 100%
+  );
+}
+.section::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top, 
+    var(--bg-main) 0%, 
+    rgba(2, 6, 23, 0.7) 30%, 
+    rgba(2, 6, 23, 0) 100%
+  );
 }
 
 @media (max-width: 720px) {
-  .section { padding-block: 5rem; }
-  .section-title { font-size: 2.25rem; margin-bottom: 1rem; }
-  .section-subtitle { font-size: 1rem; line-height: 1.5; }
-  :root { --gutter: 1.25rem; }
+  .section { padding-block: 8rem; }
+  .section-title { font-size: 2.25rem; }
 }
 
 .eyebrow {
-  display: inline-block;
+  display: block;
   font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--red-500);
+  color: var(--blue-500);
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .section-title {
   font-size: var(--fs-h1);
   font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -0.025em;
-  color: var(--red-900);
-  margin-block: 1rem 1.25rem;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  margin-block: 0 3rem; /* Aggressive margin for clarity */
+  text-align: center;
 }
 
 .section-subtitle {
   font-size: 1.125rem;
-  color: var(--gray-500);
-  max-width: 60ch;
-  line-height: 1.6;
+  color: var(--gray-600);
+  max-width: 65ch;
+  line-height: 1.7;
+  margin-inline: auto;
+  text-align: center;
+  margin-bottom: 5rem; /* Space before content starts */
 }
 
-.text-red    { color: var(--red-500); }
-.text-deep   { color: var(--red-900); }
+.text-blue    { color: var(--blue-500); }
+.text-cyan    { color: var(--neon-cyan); }
 .text-muted  { color: var(--gray-500); }
+.text-deep   { color: var(--blue-900); }
 
 @media (max-width: 600px) {
-  .section-subtitle { font-size: 1rem; }
+  .section-subtitle { font-size: 1rem; margin-bottom: 3.5rem; }
 }

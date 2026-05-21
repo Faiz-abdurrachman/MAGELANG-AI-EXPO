@@ -22,8 +22,8 @@ window.SorceryApp.process = function () {
       <div class="container">
         <div class="process__head reveal">
           <span class="eyebrow">Selection Process</span>
-          <h2 class="section-title">Bagaimana Kami<br>Memilih 10 Startup.</h2>
-          <p class="section-subtitle">Empat tahap kurasi yang transparan. Tidak ada nepotisme—hanya metrik bisnis dan kesiapan pitch yang menentukan.</p>
+          <h2 class="section-title">Bagaimana Kami<br>Memilih Produk AI.</h2>
+          <p class="section-subtitle">Kurasi dibuat sederhana: produk harus jelas, bisa didemokan, dan relevan untuk audiens bisnis maupun pengguna nyata.</p>
         </div>
         <div class="process__grid">${cards}</div>
       </div>

@@ -2,10 +2,10 @@
    FOOTER
    ============================================ */
 .footer {
-  background: var(--red-900);
+  background: var(--bg-main);
   color: rgba(255,255,255,0.7);
-  padding-block: 5rem 2rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-block: 8rem 4rem;
+  border-top: 1px solid var(--gray-200);
 }
 .footer__top {
   display: grid;
@@ -24,7 +24,7 @@
   align-items: center;
   gap: 0.75rem;
 }
-.footer__brand h3 svg { width: 32px; height: 32px; color: var(--red-200); flex-shrink: 0; }
+.footer__brand h3 svg { width: 32px; height: 32px; color: var(--blue-500); flex-shrink: 0; }
 .footer__brand small {
   display: block;
   font-size: 0.625rem;

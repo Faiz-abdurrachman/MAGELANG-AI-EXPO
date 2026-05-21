@@ -1,201 +1,87 @@
 window.SorceryData = {
   event: {
-    name: "Sorcery: Meet The Investor",
+    name: "Magelang AI Expo",
     edition: "2026",
-    location: "Jogja-Magelang",
-    venue: "Gedung Tri Bhakti, Magelang",
-    date: "22 Mei 2026",
-    deadline: new Date("2026-05-22T23:59:59+07:00"),
-    tagline: "Connecting Regional Innovation to National Capital"
+    location: "Magelang",
+    venue: "Lokal Folk Cafe, Magelang",
+    date: "4 Juni 2026",
+    deadline: new Date("2026-06-04T09:00:00+07:00"),
+    tagline: "AI Showcase for Builders, Business Owners, and Regional Capital"
   },
 
   nav: [
     { label: "Tentang",  href: "#about" },
     { label: "Format",   href: "#format" },
     { label: "Agenda",   href: "#agenda" },
-    { label: "Investor", href: "#investors" },
+    { label: "Tamu",     href: "#investors" },
     { label: "FAQ",      href: "#faq" }
   ],
 
   stats: [
-    { 
-      value: "10",        
-      label: "Curated Startups",      
-      desc: "Hanya 5% pendaftar terbaik yang lolos kurasi panel independen untuk tampil di panggung utama." 
-    },
-    { 
-      value: "25+",       
-      label: "Venture Capital",       
-      desc: "Akses eksklusif ke Partner dan MD dari top-tier VC nasional yang aktif mencari deal di regional." 
-    },
-    { 
-      value: "Rp 100M+",  
-      label: "Capital Pool",          
-      desc: "Total alokasi dana kolektif yang disiapkan investor khusus untuk startup yang tampil di Sorcery 2026." 
-    },
-    { 
-      value: "6 Jam",     
-      label: "Pitch & Matchmaking",   
-      desc: "Format sekuensial dari Pitching Battle hingga Private Room—tanpa interupsi, tanpa basa-basi." 
-    }
+    { value: "10", label: "AI Products", desc: "Produk AI terpilih akan tampil langsung di depan pelaku bisnis, komunitas teknologi, dan calon partner strategis." },
+    { value: "25+", label: "Strategic Guests", desc: "Dihadiri pengusaha senior, pemilik modal, operator bisnis, dan pengambil keputusan yang ingin melihat use case AI nyata." },
+    { value: "1 Hari", label: "Showcase & Networking", desc: "Format dibuat untuk demo produk, obrolan bisnis, validasi kebutuhan pasar, dan koneksi lanjutan setelah acara." },
+    { value: "0 Janji", label: "No False Promise", desc: "Acara ini bukan jaminan pendanaan. Fokusnya membuka akses, membangun trust, dan mempertemukan produk AI dengan orang yang relevan." }
   ],
 
   vcLogos: [
-    "Alpha Ventures", "Nexus Capital", "Garuda VC", "Borobudur Equity",
-    "Mahameru Partners", "Surya Capital", "Nusantara Ventures", "Patiunus Fund",
-    "Wijaya Holdings", "Kencana Capital"
+    "Business Owners", "Family Offices", "Industry Leaders", "Local Enterprises",
+    "AI Builders", "Tech Communities", "Campus Innovators", "Government Partners",
+    "Corporate Buyers", "Angel Networks"
   ],
 
   pillars: [
-    {
-      number: "01",
-      title: "Curated Quality",
-      desc: "Hanya 10 startup terbaik dengan MVP terbukti dan traksi nyata yang lolos kurasi panel juri independen kami."
-    },
-    {
-      number: "02",
-      title: "Intimate Matchmaking",
-      desc: "Sesi Speed Dating 1-on-1 tertutup. Diskusi term sheet langsung tanpa gangguan—format yang dirancang untuk percakapan substantif, bukan basa-basi."
-    },
-    {
-      number: "03",
-      title: "Boomer-Friendly Setup",
-      desc: "Lounge ergonomis, makan siang seated, executive whitepaper cetak premium. Dirancang khusus untuk kenyamanan diskusi mendalam para investor senior."
-    }
+    { number: "01", title: "Real AI Products", desc: "Fokus pada produk atau prototype AI yang bisa didemokan, bukan sekadar ide, buzzword, atau presentasi konsep." },
+    { number: "02", title: "Warm Business Room", desc: "Founder bertemu langsung dengan orang-orang yang punya jaringan, pengalaman, dan kapasitas modal—tanpa framing seolah funding pasti terjadi." },
+    { number: "03", title: "Founder-Friendly Setup", desc: "Ruang dibuat nyaman untuk demo, tanya jawab, dan percakapan santai antara builder muda dengan pengusaha senior." }
   ],
 
   zones: [
-    {
-      name: "The Arena",
-      role: "Main Stage",
-      desc: "Panggung utama Pitching Battle 7 menit + Q&A 5 menit. Setup audio premium, lighting korporat, floor seating eksekutif untuk kenyamanan maksimal."
-    },
-    {
-      name: "The Experience Tour",
-      role: "Booth Showcase",
-      desc: "Walking gallery 10 booth startup. Investor dibekali 3 Koin Token kayu untuk vote favorit—mengukur signal interest sebelum sesi formal dimulai."
-    },
-    {
-      name: "Private Room",
-      role: "1-on-1 Suite",
-      desc: "Ruang tertutup khusus Speed Dating dan diskusi term sheet. Dilengkapi Liaison Officer pribadi dan layanan beverage tanpa interupsi."
-    }
+    { name: "AI Showcase", role: "Product Demo Area", desc: "Area utama untuk memperlihatkan produk AI secara langsung. Pengunjung bisa mencoba, bertanya, dan memahami problem yang diselesaikan." },
+    { name: "Founder Stage", role: "Short Pitch", desc: "Sesi presentasi singkat untuk menjelaskan produk, target pasar, model bisnis, dan kebutuhan kolaborasi secara ringkas." },
+    { name: "Business Lounge", role: "Networking Room", desc: "Ruang percakapan informal untuk founder, pengusaha senior, calon partner, dan pemilik modal yang ingin diskusi lebih dalam." }
   ],
 
   agenda: [
-    {
-      time: "09:00 — 10:00",
-      title: "The Experience Tour",
-      desc: "Investor disambut dengan instalasi AI Wayang Portrait. Setiap tamu menerima 3 Koin Token kayu untuk di-vote ke booth startup yang paling menarik perhatian mereka.",
-      tag: "Welcome"
-    },
-    {
-      time: "10:15 — 11:00",
-      title: "Fireside Chat",
-      desc: "Diskusi santai di lounge: \"Central Java—The Next Hub for Tech Investment.\" Format moderated panel dengan partner senior dari dua VC nasional.",
-      tag: "Panel"
-    },
-    {
-      time: "11:00 — 11:45",
-      title: "The 60-Second Thunder",
-      desc: "Sesi bertegangan tinggi. 10 founder bergiliran pitching kilat 60 detik. Tujuannya satu—memancing minat investor sebelum makan siang dimulai.",
-      tag: "Pitch Sprint"
-    },
-    {
-      time: "12:00 — 13:00",
-      title: "VIP Seated Lunch",
-      desc: "Makan siang eksklusif di meja bundar. Tidak ada standing party. Investor difasilitasi diskusi informal dengan founder pilihan dari sesi Thunder.",
-      tag: "Networking"
-    },
-    {
-      time: "13:00 — 15:00",
-      title: "Pitching Battle",
-      desc: "Inti pertarungan. 7 menit pitch deck + 5 menit Q&A tajam dari panel investor. Setiap startup mendapat slot equal dengan setup teknis identik.",
-      tag: "Main Stage"
-    },
-    {
-      time: "15:30 — 16:30",
-      title: "Exclusive Speed Dating",
-      desc: "Diskusi 1-on-1 tertutup. Rotasi setiap 10 menit. Term sheet, valuation, dan due diligence dapat dibuka langsung—dimana deal sebenarnya dimulai.",
-      tag: "Closed Door"
-    }
+    { time: "09:00 — 10:00", title: "Registration & AI Showcase Opening", desc: "Tamu masuk, melihat booth produk AI, dan mulai mengenal founder serta use case yang dibawa masing-masing tim.", tag: "Opening" },
+    { time: "10:15 — 11:00", title: "Talk: AI untuk Bisnis Daerah", desc: "Diskusi ringan tentang bagaimana AI bisa membantu operasional, pemasaran, layanan pelanggan, dan efisiensi bisnis lokal.", tag: "Talk" },
+    { time: "11:00 — 12:00", title: "Founder Lightning Demo", desc: "Founder memperkenalkan produk AI secara singkat: masalah yang diselesaikan, cara kerja, target pengguna, dan progress saat ini.", tag: "Demo" },
+    { time: "12:00 — 13:00", title: "Lunch & Casual Networking", desc: "Waktu makan siang untuk ngobrol lebih santai antara peserta, tamu bisnis, komunitas, dan calon partner.", tag: "Networking" },
+    { time: "13:00 — 15:00", title: "Product Showcase Session", desc: "Sesi demo lebih dalam di booth. Pengunjung bisa mencoba produk, memberi feedback, dan membuka peluang kerja sama.", tag: "Showcase" },
+    { time: "15:30 — 16:30", title: "Business Matching", desc: "Percakapan terarah untuk tim yang punya kecocokan kebutuhan dengan calon partner, pembeli, mentor, atau pemilik modal.", tag: "Matching" }
   ],
 
   investors: [
-    {
-      title: "Senior Partner",
-      thesis: "Series A · AgriTech & Foodtech",
-      ticket: "USD 500K — 2M",
-      portfolio: "12 portfolio, 3 exits"
-    },
-    {
-      title: "Managing Director",
-      thesis: "Pre-Seed → Seed · AI / SaaS",
-      ticket: "USD 100K — 750K",
-      portfolio: "8 active investments di Asia Tenggara"
-    },
-    {
-      title: "Angel Syndicate Lead",
-      thesis: "Pre-Seed · Fintech & Marketplace",
-      ticket: "USD 50K — 300K",
-      portfolio: "20+ founder regional di-back"
-    },
-    {
-      title: "Corporate VC Principal",
-      thesis: "Series A & B · DeepTech",
-      ticket: "USD 1M — 5M",
-      portfolio: "Strategic LP backed, exit-ready focus"
-    }
+    { title: "Pengusaha Senior", thesis: "Retail · Properti · Distribusi", ticket: "Potensi pilot project & jaringan bisnis", portfolio: "Berpengalaman membangun bisnis lintas sektor" },
+    { title: "Pemilik Modal Lokal", thesis: "Early product · bisnis berbasis teknologi", ticket: "Diskusi kolaborasi, bukan janji pendanaan", portfolio: "Tertarik melihat peluang AI yang realistis" },
+    { title: "Corporate Decision Maker", thesis: "Efisiensi operasional · otomasi · customer service", ticket: "Potensi adopsi produk dan partnership", portfolio: "Mencari solusi yang bisa dipakai di bisnis nyata" },
+    { title: "Mentor & Operator Teknologi", thesis: "Product strategy · GTM · AI implementation", ticket: "Feedback produk dan koneksi lanjutan", portfolio: "Mendampingi founder dari ide ke implementasi" }
   ],
 
   values: [
-    { icon: "doc",       title: "Executive Whitepaper",        desc: "Profil startup Anda dicetak premium dan ditempatkan di setiap meja investor sebagai materi referensi formal." },
-    { icon: "users",     title: "Speed Dating 1-on-1",         desc: "Akses langsung ke 25+ investor tanpa antre, tanpa gatekeeper. Diskusi tertutup yang biasanya butuh 6 bulan networking." },
-    { icon: "mic",       title: "Main Stage Spotlight",        desc: "7 menit panggung utama dengan setup audio-visual korporat. Direkam profesional untuk dokumentasi pitch deck Anda." },
-    { icon: "handshake", title: "Post-Event Intro",            desc: "Tim Sorcery memfasilitasi follow-up meeting hingga 30 hari pasca event—tidak ditinggalkan setelah hari acara." },
-    { icon: "press",     title: "Media Coverage",              desc: "Liputan tier-1 media tech regional dan nasional. Brand exposure yang sulit dibeli oleh marketing budget startup early-stage." },
-    { icon: "shield",    title: "Gratis & NDA-Protected",      desc: "Tanpa biaya partisipasi sepeser pun. Semua diskusi dan materi pitch dilindungi NDA standar yang ditandatangani semua pihak." }
+    { icon: "doc", title: "Product Exposure", desc: "Produk Anda dilihat langsung oleh tamu bisnis, komunitas, dan calon partner yang relevan dengan pasar daerah." },
+    { icon: "users", title: "Relevant Networking", desc: "Bukan networking acak. Acara diarahkan untuk mempertemukan founder AI dengan orang yang bisa memberi insight, akses, atau peluang kolaborasi." },
+    { icon: "mic", title: "Demo Stage", desc: "Kesempatan menjelaskan produk secara ringkas dan menunjukkan cara kerja solusi AI Anda di depan audiens terkurasi." },
+    { icon: "handshake", title: "Business Matching", desc: "Jika ada kecocokan, tim acara membantu membuka percakapan lanjutan dengan calon partner, pembeli, mentor, atau pemilik modal." },
+    { icon: "press", title: "Local Tech Momentum", desc: "Membangun narasi bahwa Magelang punya talenta dan produk AI yang layak diperhatikan ekosistem lebih luas." },
+    { icon: "shield", title: "Realistic Expectation", desc: "Acara ini tidak menjanjikan investasi. Yang dibuka adalah akses, validasi, relasi, dan peluang yang bisa ditindaklanjuti." }
   ],
 
   process: [
-    { step: "01", title: "Apply",     desc: "Submit form pendaftaran lengkap dengan pitch deck dan traction metrics yang jujur." },
-    { step: "02", title: "Curation",  desc: "Tim juri independen melakukan screening berdasarkan model bisnis, ROI, dan kegunaan teknologi." },
-    { step: "03", title: "Interview", desc: "Founder shortlist diundang sesi 30 menit untuk validasi metrik dan kesiapan pitch." },
-    { step: "04", title: "Pitch Day", desc: "10 startup terpilih diumumkan H-14, lengkap dengan briefing teknis dan investor preview." }
+    { step: "01", title: "Apply", desc: "Isi form dengan profil tim, deskripsi produk AI, progress, dan link demo atau deck." },
+    { step: "02", title: "Review", desc: "Tim meninjau relevansi produk, kesiapan demo, dan kecocokan dengan tema Magelang AI Expo." },
+    { step: "03", title: "Briefing", desc: "Tim terpilih mengikuti briefing agar demo dan narasi produk lebih jelas untuk audiens bisnis." },
+    { step: "04", title: "Expo Day", desc: "Produk tampil di showcase, founder melakukan demo, dan membuka percakapan dengan tamu yang relevan." }
   ],
 
   faq: [
-    {
-      q: "Siapa saja yang bisa mendaftar?",
-      a: "Startup di area Jogja-Magelang dan sekitarnya yang minimal sudah memiliki MVP dan traksi awal. Kami menerima dari semua sektor, namun memberikan preferensi pada AI, SaaS, Fintech, dan AgriTech yang relevan dengan tesis investasi para VC peserta."
-    },
-    {
-      q: "Kapan batas akhir pendaftaran?",
-      a: "Gelombang pertama ditutup 22 Mei 2026 pukul 23:59 WIB. Pengumuman shortlist disampaikan H-14 sebelum hari acara, beserta briefing teknis dan investor preview."
-    },
-    {
-      q: "Apakah acara ini berbayar untuk startup?",
-      a: "Tidak. Acara ini 100% gratis bagi 10 startup terpilih. Tim Sorcery menanggung seluruh biaya cetak whitepaper, F&B, dan logistik venue. Kami tidak memungut equity atau success fee."
-    },
-    {
-      q: "Apa fokus penilaian dari investor?",
-      a: "Tiga hal utama: kejelasan model bisnis, potensi return on investment yang realistis, dan kegunaan teknologi sebagai solusi nyata terhadap masalah pasar—bukan sekadar gimmick AI atau buzzword."
-    },
-    {
-      q: "Apakah diskusi dengan investor dilindungi NDA?",
-      a: "Ya. Setiap investor dan startup peserta menandatangani NDA standar saat onboarding. Materi pitch deck dan diskusi term sheet sepenuhnya tertutup—tidak ada media atau pihak ketiga yang masuk ke Private Room."
-    },
-    {
-      q: "Bagaimana jika saya tidak lolos kurasi?",
-      a: "Kami tetap memberikan feedback tertulis kepada seluruh aplikan. Lebih dari sekadar event, Sorcery membangun database founder regional yang akan dirujuk untuk gelombang berikutnya dan program lanjutan."
-    },
-    {
-      q: "Apakah ada follow-up setelah acara?",
-      a: "Tim Sorcery memfasilitasi intro lanjutan hingga 30 hari pasca event. Investor yang tertarik akan dihubungkan langsung dengan founder untuk due diligence formal dan diskusi term sheet."
-    },
-    {
-      q: "Kategori industri apa saja yang diterima?",
-      a: "AI/ML, SaaS B2B, Fintech, AgriTech, HealthTech, EdTech, Marketplace, Logistics, ClimateTech, dan DeepTech. Hubungi tim kami di partnership@sorcery.id jika kategori Anda tidak tercakup."
-    }
+    { q: "Siapa saja yang bisa mendaftar?", a: "Founder, tim, komunitas, mahasiswa, atau startup yang punya produk/prototype AI dan siap menunjukkannya secara langsung. Produk tidak harus sempurna, tapi harus punya use case yang jelas." },
+    { q: "Kapan acaranya berlangsung?", a: "Magelang AI Expo berlangsung pada 4 Juni 2026 di Lokal Folk Cafe, Magelang." },
+    { q: "Apakah acara ini menjamin pendanaan?", a: "Tidak. Acara ini bukan janji investasi. Kami mempertemukan produk AI dengan pengusaha senior, pemilik modal, calon partner, dan operator bisnis agar peluang kolaborasi bisa terbuka secara realistis." },
+    { q: "Apa fokus kurasinya?", a: "Kami melihat kejelasan problem, fungsi produk, kesiapan demo, potensi penggunaan di dunia nyata, dan kemampuan founder menjelaskan solusi dengan sederhana." },
+    { q: "Apakah harus startup berbadan hukum?", a: "Tidak wajib. Tim awal, project kampus, komunitas, atau founder independen tetap bisa mendaftar selama produknya relevan dan bisa didemokan." },
+    { q: "Apakah acara ini berbayar?", a: "Untuk tim produk yang terpilih, partisipasi showcase tidak dipungut biaya. Detail teknis akan dikonfirmasi saat proses kurasi." },
+    { q: "Apa yang perlu disiapkan?", a: "Siapkan penjelasan produk, demo singkat, target pengguna, progress saat ini, dan bentuk dukungan atau kolaborasi yang sedang dicari." },
+    { q: "Kategori AI apa saja yang diterima?", a: "AI untuk bisnis, edukasi, UMKM, operasional, creative tools, customer service, data analytics, otomasi, pertanian, kesehatan, dan use case lain yang relevan dengan kebutuhan nyata." }
   ]
 };

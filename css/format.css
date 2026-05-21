@@ -8,8 +8,8 @@
 
 .format__head {
   text-align: center;
-  margin-bottom: 5rem;
-  max-width: 760px;
+  margin-bottom: 8rem;
+  max-width: 800px;
   margin-inline: auto;
 }
 
@@ -55,20 +55,19 @@
   border-radius: 22px;
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
-  background: #fff;
-  box-shadow:
-    0 24px 50px -18px rgba(0, 0, 0, 0.25),
-    0 14px 32px -10px rgba(183, 28, 28, 0.18);
+  background: var(--bg-card);
+  box-shadow: var(--glass-shadow);
   transition:
     transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .format__card-wrapper:hover .format__card {
-  transform: translateY(-10px);
-  box-shadow:
-    0 36px 70px -18px rgba(0, 0, 0, 0.35),
-    0 20px 50px -10px rgba(183, 28, 28, 0.28);
+  transform: translateY(-20px) scale(1.02);
+  box-shadow: 
+    0 50px 100px -30px rgba(0, 0, 0, 0.7),
+    0 0 80px rgba(14, 165, 233, 0.2);
+  border-color: var(--blue-400);
 }
 
 .format__slide {
@@ -89,19 +88,19 @@
 .format__slide--1 {
   color: #fff;
   z-index: 2;
-  background: linear-gradient(160deg, var(--red-500) 0%, var(--red-700) 100%);
+  background: linear-gradient(160deg, var(--blue-500) 0%, var(--blue-700) 100%);
   overflow: hidden;
 }
 
 /* Distinct gradients per zone for visual variety */
 .format__card-wrapper:nth-child(1) .format__slide--1 {
-  background: linear-gradient(160deg, #ff5252 0%, #b33939 100%);
+  background: linear-gradient(160deg, var(--blue-400) 0%, var(--blue-600) 100%);
 }
 .format__card-wrapper:nth-child(2) .format__slide--1 {
-  background: linear-gradient(160deg, var(--red-500) 0%, var(--red-800) 100%);
+  background: linear-gradient(160deg, var(--blue-500) 0%, var(--blue-800) 100%);
 }
 .format__card-wrapper:nth-child(3) .format__slide--1 {
-  background: linear-gradient(160deg, var(--red-700) 0%, #2b0808 100%);
+  background: linear-gradient(160deg, var(--blue-700) 0%, var(--blue-900) 100%);
 }
 
 /* Glassy highlight on the colored face */
@@ -120,7 +119,7 @@
 }
 
 .format__slide--2 {
-  background: #fff;
+  background: var(--bg-elevated);
   z-index: 1;
   justify-content: flex-start;
   padding-top: 4.5rem;
@@ -201,10 +200,4 @@
     0% { transform: rotateX(30deg) translateY(-30px); opacity: 0; }
     100% { transform: rotateX(0) translateY(0); opacity: 1; }
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .format__card-wrapper { transform: none; opacity: 1; }
-  .format__card-wrapper.is-visible { animation: none; }
-  .format__card-wrapper:hover .format__card { transform: translateY(-4px); }
 }

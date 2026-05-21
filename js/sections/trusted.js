@@ -5,7 +5,7 @@ window.SorceryApp.trusted = function () {
     .join("");
 
   return `
-    <section class="trusted">
+    <section class="section trusted">
       <div class="container">
         <div class="trusted__label">Dihadiri & dipercaya oleh top venture capital regional</div>
       </div>
