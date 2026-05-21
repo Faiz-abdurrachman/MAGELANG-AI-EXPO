@@ -90,7 +90,7 @@ window.SorceryApp.heroInit = function() {
   if (!canvas) return;
   const context = canvas.getContext('2d');
 
-  const frameCount = 48; // Reduced from 192 — every 4th frame
+  const frameCount = 192; // All frames, compressed to ~6MB total
   const currentFrame = index => (
     `assets/sequence/frame_${(index + 1).toString().padStart(4, '0')}.webp`
   );
