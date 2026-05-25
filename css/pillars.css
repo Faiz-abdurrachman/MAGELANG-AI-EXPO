@@ -33,8 +33,9 @@
   transform-origin: 50% 100%;
   transform: rotateX(60deg) translateY(-90px) translateZ(-60px);
   opacity: 0;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(2, 6, 23, 0.8); /* Darker background */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
   will-change: transform, box-shadow; /* GPU Prep */
 }
 
@@ -49,12 +50,12 @@
     135deg,
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 255, 255, 0.05) 45%,
-    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.4) 50%,
     rgba(255, 255, 255, 0.05) 55%,
     rgba(255, 255, 255, 0) 100%
   );
   transform: translateX(-100%) skewX(-30deg);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Faster, synchronized */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); /* Balanced speed */
   z-index: 5;
   pointer-events: none;
 }
@@ -63,9 +64,9 @@
   transform: translateX(100%) skewX(-30deg);
 }
 
-.why__card:nth-child(1) { background: linear-gradient(155deg, #0ea5e9 0%, #0369a1 100%); }
-.why__card:nth-child(2) { background: linear-gradient(155deg, #0284c7 0%, #075985 100%); }
-.why__card:nth-child(3) { background: linear-gradient(155deg, #0c4a6e 0%, #082f49 100%); }
+.why__card:nth-child(1) { background: linear-gradient(155deg, rgba(14, 165, 233, 0.9) 0%, rgba(2, 6, 23, 0.95) 100%); }
+.why__card:nth-child(2) { background: linear-gradient(155deg, rgba(2, 132, 199, 0.9) 0%, rgba(2, 6, 23, 0.95) 100%); }
+.why__card:nth-child(3) { background: linear-gradient(155deg, rgba(12, 74, 110, 0.9) 0%, rgba(2, 6, 23, 0.95) 100%); }
 
 .why__num {
   position: absolute;
@@ -78,7 +79,7 @@
   line-height: 1;
   color: #fff;
   opacity: 0.15;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
   will-change: transform, opacity; /* Fixes hover lag */
 }
 
@@ -98,7 +99,7 @@
   font-size: 1.85rem;
   font-weight: 800;
   margin-bottom: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .why__desc {
@@ -111,17 +112,17 @@
   left: 3rem;
   right: 3rem;
   transform: translateY(20px);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
   pointer-events: none;
 }
 
 /* === Natural Hover State (Performance Optimized) === */
 .why__card:hover {
-  transform: translateY(-12px) rotateX(1deg) scale(1.02);
+  /* transform is handled by JS tilt */
   box-shadow: 
-    0 40px 100px -20px rgba(0, 0, 0, 0.6),
+    0 40px 100px -20px rgba(0, 0, 0, 0.8),
     0 0 60px rgba(34, 211, 238, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .why__card::before {
