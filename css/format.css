@@ -2,7 +2,7 @@
    EVENT FORMAT — 3D LIFT CARDS WITH SLIDE REVEAL
    ============================================ */
 .format {
-  background: var(--bg-main);
+
   padding-block: 8rem;
 }
 
@@ -55,7 +55,7 @@
   border-radius: 22px;
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
-  background: var(--bg-card);
+
   box-shadow: var(--glass-shadow);
   transition:
     transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),

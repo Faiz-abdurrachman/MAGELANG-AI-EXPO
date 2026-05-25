@@ -3,7 +3,7 @@ body {
   font-size: var(--fs-body);
   line-height: 1.6;
   color: var(--gray-700);
-  background: var(--bg-main);
+
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -65,40 +65,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .container--narrow { max-width: var(--container-narrow); }
 
-/* === SECTION: HIGH-FIDELITY SPACING & BLENDING === */
+/* === SECTION: ZEBRA STRIPING === */
 .section {
   padding-block: clamp(10rem, 20vw, 15rem); /* Maximum breathing room */
   position: relative;
-  /* Every section now has a guaranteed fade to the deep space background */
+}
+
+.section:nth-of-type(odd) {
   background-color: var(--bg-main);
 }
 
-/* Global Section Blenders - Subtle edge fade for smooth section flow */
-.section::before,
-.section::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 120px; /* Compact fade zone */
-  pointer-events: none;
-  z-index: 1;    /* Below content so buttons/text stay visible */
-}
-.section::before {
-  top: 0;
-  background: linear-gradient(
-    to bottom,
-    var(--bg-main) 0%,
-    transparent 100%
-  );
-}
-.section::after {
-  bottom: 0;
-  background: linear-gradient(
-    to top,
-    var(--bg-main) 0%,
-    transparent 100%
-  );
+.section:nth-of-type(even) {
+  background-color: var(--bg-elevated); /* Slightly different dark blue */
 }
 /* Ensure section content sits above the blend overlays */
 .section > * {
@@ -125,7 +103,8 @@ h1, h2, h3, h4, h5, h6 {
 .section-title {
   font-size: var(--fs-h1);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.2;
+  padding-bottom: 0.15em;
   letter-spacing: -0.04em;
   color: var(--white);
   margin-block: 0 3rem; /* Aggressive margin for clarity */

@@ -1,7 +1,7 @@
 /* ============================================
    FAQ — accordion
    ============================================ */
-.faq { background: var(--bg-main); }
+.faq { padding-block: 8rem; position: relative; z-index: 10; }
 .faq__head { max-width: 800px; margin-bottom: 4rem; text-align: center; margin-inline: auto; }
 .faq__list { max-width: 880px; margin-inline: auto; }
 .faq__item {
@@ -20,11 +20,11 @@
   text-align: left;
   font-size: 1.0625rem;
   font-weight: 600;
-  color: var(--blue-900);
+  color: var(--white);
   letter-spacing: -0.005em;
   transition: color var(--transition);
 }
-.faq__trigger:hover { color: var(--blue-500); }
+.faq__trigger:hover { color: var(--blue-400); }
 .faq__icon {
   width: 24px;
   height: 24px;

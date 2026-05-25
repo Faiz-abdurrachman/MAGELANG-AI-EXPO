@@ -32,8 +32,8 @@ window.SorceryData = {
 
   pillars: [
     { number: "01", title: "Real AI Products", desc: "Fokus pada produk atau prototype AI yang bisa didemokan, bukan sekadar ide, buzzword, atau presentasi konsep." },
-    { number: "02", title: "Warm Business Room", desc: "Founder bertemu langsung dengan orang-orang yang punya jaringan, pengalaman, dan kapasitas modal—tanpa framing seolah funding pasti terjadi." },
-    { number: "03", title: "Founder-Friendly Setup", desc: "Ruang dibuat nyaman untuk demo, tanya jawab, dan percakapan santai antara builder muda dengan pengusaha senior." }
+    { number: "02", title: "Warm Business Room", desc: "Founder bertemu langsung dengan orang-orang yang punya jaringan, pengalaman, dan kapasitas modal tanpa framing seolah funding pasti terjadi." },
+    { number: "03", title: "Founder Friendly Setup", desc: "Ruang dibuat nyaman untuk demo, tanya jawab, dan percakapan santai antara builder muda dengan pengusaha senior." }
   ],
 
   zones: [

@@ -2,10 +2,9 @@
    STATS BAR — TRON 3D FLIP CARDS (REBORE)
    ============================================ */
 .stats {
-  padding-block: 6rem 8rem;
+  padding-block: 15rem 10rem;
   position: relative;
   z-index: 10;
-  background: var(--bg-main);
 }
 
 .stats__grid {

@@ -35,6 +35,15 @@
   <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
+  <div id="debug-log" style="display:none; position:fixed; top:0; left:0; width:100%; background:rgba(255,0,0,0.9); color:white; padding:1rem; z-index:9999; font-family:monospace; font-size:12px; max-height:50vh; overflow:auto;"></div>
+  <script>
+    window.onerror = function(msg, url, line, col, error) {
+      const log = document.getElementById('debug-log');
+      log.style.display = 'block';
+      log.innerHTML += '<div>' + msg + ' at ' + url + ':' + line + '</div>';
+      return false;
+    };
+  </script>
   <div class="scroll-progress"></div>
   <div id="app"></div>
 
@@ -58,7 +67,7 @@
   <script src="js/sections/map.js"></script>
   <script src="js/sections/form.js"></script>
   <script src="js/sections/faq.js"></script>
-  <script src="js/sections/cta.js"></script>a
+  <script src="js/sections/cta.js"></script>
   <script src="js/sections/footer.js"></script>
 
   <!-- Bootstrap -->

@@ -6,8 +6,7 @@ window.SorceryApp.form = function () {
       <div class="container">
         <div class="form__layout">
           <div class="form__intro reveal">
-            <span class="eyebrow">Apply Now</span>
-            <h2>Tampilkan Produk AI Anda di Magelang AI Expo 2026.</h2>
+            <h2>Tampilkan Produk AI Anda di Magelang AI Expo 2026</h2>
             <p>Kami mencari produk AI yang siap diperlihatkan ke pelaku bisnis, calon pengguna, dan partner strategis. Isi form singkat ini dengan jujur dan jelas.</p>
             <div class="form__intro-meta">
               <div><span>Event</span><span>4 Juni 2026</span></div>

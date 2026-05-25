@@ -3,7 +3,6 @@
    ============================================ */
 .trusted {
   padding-block: 6rem;
-  background: var(--bg-main);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 .trusted__label {

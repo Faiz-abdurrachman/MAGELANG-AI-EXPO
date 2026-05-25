@@ -5,8 +5,7 @@ window.SorceryApp.map = function () {
       <div class="container">
         <div class="map__grid">
           <div class="map__content reveal">
-            <span class="eyebrow">The Venue</span>
-            <h2 class="section-title">Lokal Folk Cafe,<br>Magelang.</h2>
+            <h2 class="section-title">Lokal Folk Cafe,<br>Magelang</h2>
             <p class="section-subtitle">Berlokasi di Lokal Folk Cafe Magelang, venue ini dipilih untuk suasana yang lebih hangat, santai, dan cocok untuk demo produk serta networking yang natural.</p>
             
             <div class="map__info">

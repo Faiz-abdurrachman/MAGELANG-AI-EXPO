@@ -2,7 +2,7 @@
    PROCESS (HOLOGRAPHIC BENTO)
    ============================================ */
 .process { 
-  background: var(--bg-main); 
+
   padding-block: 8rem; 
   position: relative;
   overflow: hidden;
@@ -44,7 +44,7 @@
   padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
-  background: var(--bg-card);
+
   border-radius: var(--radius-lg);
   border: 1px solid var(--gray-100);
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
