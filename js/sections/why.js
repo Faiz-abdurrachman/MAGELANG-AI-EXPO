@@ -4,7 +4,7 @@ window.SorceryApp.why = function () {
     .map(
       (p) => `
         <article class="why__card reveal reveal--rotate">
-          <div class="why__shine" data-speed="0.08"></div>
+          <div class="why__shine"></div>
           <div class="why__num" aria-hidden="true">${p.number}</div>
           <div class="why__body">
             <h3 class="why__title">${p.title}</h3>

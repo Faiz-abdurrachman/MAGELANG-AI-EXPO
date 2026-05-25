@@ -6,6 +6,7 @@ window.SorceryApp.value = function () {
         <div class="value__card-wrapper reveal reveal--scale">
           <div class="value__card">
             <div class="value__card-inner">
+              <div class="value__shine"></div>
               <div class="value__icon">${window.SorceryIcons[v.icon] || ""}</div>
               <h3>${v.title}</h3>
               <p>${v.desc}</p>
