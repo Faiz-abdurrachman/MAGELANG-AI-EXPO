@@ -274,12 +274,12 @@
   height: 1px;
   background: repeating-linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.1) 0,
-    rgba(255, 255, 255, 0.1) 4px,
-    transparent 4px,
-    transparent 8px
+    rgba(255, 255, 255, 0.2) 0,
+    rgba(255, 255, 255, 0.2) 6px,
+    transparent 6px,
+    transparent 12px
   );
-  margin-block: 0.25rem;
+  margin-block: 0.75rem;
 }
 
 .hero__ticket-foot {
@@ -331,6 +331,11 @@
   .hero__ticket-row { grid-template-columns: 70px 1fr; padding-block: 0.3rem; }
   .hero__ticket-value { font-size: 1rem; }
   .hero__ticket-meta { font-size: 0.625rem; }
+  .hero__ticket .countdown { gap: 0.4rem; }
+  .hero__ticket .countdown__item { min-width: 32px; }
+  .hero__ticket .countdown__num { font-size: 1.125rem; }
+  .hero__scroll-indicator { display: none; } /* Hide on mobile to save space */
+}hero__ticket-meta { font-size: 0.625rem; }
   .hero__ticket .countdown { gap: 0.4rem; }
   .hero__ticket .countdown__item { min-width: 32px; }
   .hero__ticket .countdown__num { font-size: 1.125rem; }
