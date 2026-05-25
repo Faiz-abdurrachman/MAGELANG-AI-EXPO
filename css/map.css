@@ -35,7 +35,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--blue-500);
   margin-bottom: 0.5rem;
 }

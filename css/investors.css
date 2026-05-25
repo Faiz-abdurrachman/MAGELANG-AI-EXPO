@@ -71,6 +71,31 @@
   box-sizing: border-box;
 }
 
+/* Scan line animation on hover */
+.profile__inner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--blue-500), var(--neon-cyan), var(--blue-500), transparent);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: none;
+  pointer-events: none;
+  z-index: 10;
+}
+.investors__profile:hover .profile__inner::after {
+  opacity: 1;
+  animation: scanLine 1.2s ease-out;
+}
+@keyframes scanLine {
+  0% { transform: translateY(-10px); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(600px); opacity: 0; }
+}
+
 /* Smooth Ambient Blue Glow */
 .profile__inner::before {
   content: "";

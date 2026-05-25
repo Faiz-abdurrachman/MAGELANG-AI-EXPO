@@ -3,7 +3,7 @@ window.SorceryApp.format = function () {
   const cards = window.SorceryData.zones
     .map(
       (z, i) => `
-        <div class="format__card-wrapper reveal">
+        <div class="format__card-wrapper reveal reveal--scale">
           <div class="format__card">
             <div class="format__slide format__slide--1">
               <div class="format__num">Zone 0${i + 1}</div>
@@ -29,7 +29,7 @@ window.SorceryApp.format = function () {
           <h2 class="section-title">Tiga Zona, Satu Hari Penuh.</h2>
           <p class="section-subtitle">Venue acara diatur menjadi tiga zona spesifik—masing-masing dirancang untuk format interaksi yang berbeda. Tamu dapat berpindah dari demo, booth, hingga lounge diskusi tanpa alur yang rumit.</p>
         </div>
-        <div class="format__grid">${cards}</div>
+        <div class="format__grid reveal-stagger">${cards}</div>
       </div>
     </section>
   `;

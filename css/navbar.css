@@ -53,7 +53,7 @@
   font-size: 0.5625rem;
   font-weight: 500;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--gray-600);
   margin-top: 2px;
 }
@@ -81,15 +81,12 @@
 /* Clean "glow spot" indicator — sits BEHIND the text for a subtle red aura */
 .nav__indicator {
   position: absolute;
-  background: 
-    radial-gradient(circle at center, rgba(14, 165, 233, 0.6) 0%, transparent 70%),
-    radial-gradient(circle at center, rgba(14, 165, 233, 0.3) 0%, transparent 95%);
+  background: rgba(14, 165, 233, 0.15);
   filter: blur(8px);
-  border-radius: 50%;
+  border-radius: var(--radius-glass);
   z-index: 1;
   opacity: 0;
   pointer-events: none;
-  transform: scale(1.5);
   transition:
     left 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -98,34 +95,6 @@
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.25s ease;
   will-change: left, width, transform;
-}
-
-.nav__indicator::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 150%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-  transform: skewX(-30deg);
-  animation: navScan 4s infinite linear;
-}
-
-@keyframes navScan {
-  0% { left: -200%; }
-  100% { left: 200%; }
-}
-
-.nav__indicator::after {
-  content: "+";
-  position: absolute;
-  top: 10%;
-  right: 10%;
-  font-size: 10px;
-  font-weight: 900;
-  color: var(--blue-500);
-  opacity: 0.8;
 }
 
 .nav__menu a:hover { color: var(--blue-500); }
@@ -249,7 +218,7 @@
   
   /* Show CTA in mobile menu */
   .nav__menu::after {
-    content: "DAFTARKAN PRODUK AI ANDA";
+    content: "Daftarkan Produk Anda";
     display: block;
     margin-top: 2rem;
     font-size: 0.75rem;

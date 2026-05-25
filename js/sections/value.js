@@ -3,7 +3,7 @@ window.SorceryApp.value = function () {
   const cards = window.SorceryData.values
     .map(
       (v) => `
-        <div class="value__card-wrapper reveal">
+        <div class="value__card-wrapper reveal reveal--scale">
           <div class="value__card">
             <div class="value__card-inner">
               <div class="value__icon">${window.SorceryIcons[v.icon] || ""}</div>
@@ -25,7 +25,7 @@ window.SorceryApp.value = function () {
           <h2 class="section-title">Enam Hal yang Anda<br>Bawa Pulang.</h2>
           <p class="section-subtitle">Magelang AI Expo memberi ruang agar produk AI bisa dilihat, dicoba, dan dibicarakan oleh orang yang relevan—tanpa menjanjikan hasil yang tidak pasti.</p>
         </div>
-        <div class="value__grid">${cards}</div>
+        <div class="value__grid reveal-stagger">${cards}</div>
       </div>
     </section>
   `;

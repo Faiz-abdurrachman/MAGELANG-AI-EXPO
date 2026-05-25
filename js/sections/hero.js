@@ -9,25 +9,25 @@ window.SorceryApp.hero = function () {
         <div class="container hero__inner">
           <div class="hero__grid">
             <div class="hero__content">
-              <div class="hero__badge reveal">
-                <span>Magelang AI Expo · 4 Juni 2026</span>
-              </div>
               <h1 class="hero__headline reveal">
                 Koneksi Nyata,<br>
-                Bukan Sekadar <span class="hero__headline-accent">Seremoni<em>.</em></span>
+                Bukan Sekadar<br>
+                <span class="hero__headline-accent">Seremoni<em>.</em></span>
               </h1>
+              <div class="hero__badge reveal">
+                <span>Magelang AI Expo 4 Juni 2026</span>
+              </div>
               <p class="hero__sub reveal">
                 Panggung untuk produk AI yang nyata: demo langsung, validasi dari pelaku bisnis, dan ruang bertemu orang-orang yang bisa membuka peluang kolaborasi.
               </p>
               <div class="hero__actions reveal">
-                <a href="#register" class="btn btn-holographic btn--lg">Daftarkan Produk AI Anda →</a>
+                <a href="#register" class="btn btn-holographic btn--lg">Daftarkan Produk Anda</a>
                 <a href="#investors" class="hero__link-arrow">
                   Lihat Tamu & Partner
-                  <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>
-            <aside class="hero__ticket reveal" aria-label="Detail acara">
+            <aside class="hero__ticket reveal" data-speed="-0.05" aria-label="Detail acara">
               <div class="hero__ticket-head">
                 <span class="hero__ticket-tag">Event Brief</span>
                 <span class="hero__ticket-id">#MAE-2026</span>
@@ -59,6 +59,10 @@ window.SorceryApp.hero = function () {
               </div>
             </aside>
           </div>
+        </div>
+        <div class="hero__scroll-hint">
+          <span>Scroll</span>
+          <span class="hero__scroll-hint__arrow"></span>
         </div>
       </div>
     </section>

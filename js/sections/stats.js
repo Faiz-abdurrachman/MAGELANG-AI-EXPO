@@ -6,7 +6,7 @@ window.SorceryApp.stats = function () {
         <div class="stats__item-wrapper reveal">
           <div class="stats__item">
             <div class="stats__front">
-              <div class="stats__num">${s.value}</div>
+              <div class="stats__num" data-count="${s.value.replace(/[^0-9]/g, '') || '0'}">${s.value.match(/^\d+/) ? '0' : s.value}</div>
               <div class="stats__label">${s.label}</div>
               <div class="stats__hint">Klik untuk detail →</div>
             </div>
@@ -23,7 +23,7 @@ window.SorceryApp.stats = function () {
   return `
     <section class="section stats">
       <div class="container">
-        <div class="stats__grid">${items}</div>
+        <div class="stats__grid reveal-stagger">${items}</div>
       </div>
     </section>
   `;

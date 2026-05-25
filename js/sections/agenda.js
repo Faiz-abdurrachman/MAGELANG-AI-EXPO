@@ -14,7 +14,7 @@ window.SorceryApp.agenda = function () {
               <span class="agenda__tag">${a.tag}</span>
             </div>
             <h3 class="agenda__title">${a.title}</h3>
-            <div class="agenda__pic">PIC: ${a.pic}</div>
+            <div class="agenda__pic">Pic: ${a.pic}</div>
             <p class="agenda__desc">${a.desc}</p>
           </div>
           <div class="agenda__index" aria-hidden="true">0${i + 1}</div>
@@ -31,7 +31,7 @@ window.SorceryApp.agenda = function () {
           <h2 class="section-title">Enam Jam,<br>Masa Depan Inovasi.</h2>
           <p class="section-subtitle">Disusun untuk memudahkan demo, feedback, networking, dan percakapan bisnis yang realistis dalam satu hari.</p>
         </div>
-        <div class="agenda__list">${items}</div>
+        <div class="agenda__list reveal-stagger">${items}</div>
       </div>
     </section>
   `;

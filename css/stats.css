@@ -2,7 +2,7 @@
    STATS BAR — TRON 3D FLIP CARDS (REBORE)
    ============================================ */
 .stats {
-  padding-block: 6rem 10rem;
+  padding-block: 6rem 8rem;
   position: relative;
   z-index: 10;
   background: var(--bg-main);
@@ -51,6 +51,8 @@
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* === NYENTRIK BUT NATURAL GRADIENTS === */
@@ -86,7 +88,7 @@
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.22em; /* Slightly tighter for better wrap */
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--blue-400);
   text-align: center;
   max-width: 100%;
@@ -96,7 +98,7 @@
   margin-top: 2rem;
   font-size: 0.625rem;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.1em;
   color: var(--gray-500);
   opacity: 0.6;
@@ -125,7 +127,7 @@
   font-size: 0.625rem;
   font-weight: 800;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--blue-500);
   padding: 0.5rem 1.25rem; /* Better pill proportions */
   border: 1px solid rgba(14, 165, 233, 0.3);

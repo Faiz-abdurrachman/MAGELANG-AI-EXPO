@@ -3,8 +3,8 @@ window.SorceryApp.why = function () {
   const cards = window.SorceryData.pillars
     .map(
       (p) => `
-        <article class="why__card reveal">
-          <div class="why__shine"></div>
+        <article class="why__card reveal reveal--rotate">
+          <div class="why__shine" data-speed="0.08"></div>
           <div class="why__num" aria-hidden="true">${p.number}</div>
           <div class="why__body">
             <h3 class="why__title">${p.title}</h3>
@@ -28,7 +28,7 @@ window.SorceryApp.why = function () {
           <h2 class="section-title">Bukan Janji Investasi,<br>Tapi Ruang Bertemu yang Nyata.</h2>
           <p class="section-subtitle">Setiap sesi dirancang agar founder AI bisa menjelaskan produknya dengan jelas, bertemu calon pengguna, dan membuka percakapan bisnis yang realistis.</p>
         </div>
-        <div class="why__grid">${cards}</div>
+        <div class="why__grid reveal-stagger">${cards}</div>
       </div>
     </section>
   `;

@@ -8,7 +8,7 @@ window.SorceryApp.cta = function () {
         <h2 class="cta__headline">Produk AI Anda Perlu Dilihat Orang yang Tepat.</h2>
         <p class="cta__sub">Magelang AI Expo bukan janji investasi instan. Ini ruang untuk demo, validasi, networking, dan membuka peluang yang lebih realistis.</p>
         <div class="cta__countdown countdown" id="cta-countdown"></div>
-        <a href="#register" class="btn btn-holographic btn--lg cta__btn">Daftarkan Produk AI Anda →</a>
+        <a href="#register" class="btn btn-holographic btn--lg cta__btn">Daftarkan Produk Anda</a>
       </div>
     </section>
   `;

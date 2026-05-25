@@ -10,7 +10,7 @@ window.SorceryApp.trusted = function () {
         <div class="trusted__label">Dihadiri & dipercaya oleh top venture capital regional</div>
       </div>
       <div class="trusted__marquee">
-        <div class="trusted__track">
+        <div class="trusted__track" data-speed="0.03">
           ${logos}${logos}
         </div>
       </div>

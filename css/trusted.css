@@ -2,20 +2,22 @@
    TRUSTED BY (VC LOGOS MARQUEE)
    ============================================ */
 .trusted {
-  padding-block: 8rem;
+  padding-block: 6rem;
   background: var(--bg-main);
-  border-bottom: 1px solid var(--gray-200);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 .trusted__label {
   text-align: center;
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--white);
-  opacity: 0.9;
-  margin-bottom: 3.5rem;
-  text-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  text-transform: none;
+  color: var(--blue-400);
+  opacity: 0.8;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+  max-width: 600px;
+  margin-inline: auto;
 }
 .trusted__marquee {
   overflow: hidden;
