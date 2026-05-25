@@ -15,7 +15,6 @@ window.addEventListener('DOMContentLoaded', () => {
       ${typeof A.nav === 'function' ? A.nav() : ''}
       ${typeof A.hero === 'function' ? A.hero() : ''}
       ${typeof A.stats === 'function' ? A.stats() : ''}
-      ${typeof A.trusted === 'function' ? A.trusted() : ''}
       ${typeof A.why === 'function' ? A.why() : ''}
       ${typeof A.format === 'function' ? A.format() : ''}
       ${typeof A.agenda === 'function' ? A.agenda() : ''}

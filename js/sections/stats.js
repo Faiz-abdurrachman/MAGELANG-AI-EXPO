@@ -20,10 +20,26 @@ window.SorceryApp.stats = function () {
     )
     .join("");
 
+  const logos = window.SorceryData.vcLogos
+    .map((name) => `<div class="trusted__logo">${name}</div>`)
+    .join("");
+
   return `
     <section class="section stats">
       <div class="container">
         <div class="stats__grid reveal-stagger">${items}</div>
+      </div>
+      
+      <!-- Merged Trusted Section -->
+      <div class="stats__trusted-merged">
+        <div class="container">
+          <div class="trusted__label">Dihadiri & dipercaya oleh top venture capital regional</div>
+        </div>
+        <div class="trusted__marquee">
+          <div class="trusted__track" data-speed="0.03">
+            ${logos}${logos}
+          </div>
+        </div>
       </div>
     </section>
   `;

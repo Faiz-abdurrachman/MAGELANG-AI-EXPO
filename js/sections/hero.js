@@ -60,10 +60,6 @@ window.SorceryApp.hero = function () {
             </aside>
           </div>
         </div>
-        <div class="hero__scroll-hint">
-          <span>Scroll</span>
-          <span class="hero__scroll-hint__arrow"></span>
-        </div>
       </div>
     </section>
   `;

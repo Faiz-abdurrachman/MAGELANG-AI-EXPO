@@ -20,11 +20,13 @@ window.SorceryApp.faq = function () {
   return `
     <section class="section faq" id="faq">
       <div class="container">
-        <div class="faq__head reveal">
-          <h2 class="section-title">Pertanyaan yang<br>Sering Diajukan</h2>
-          <p class="section-subtitle">Jika pertanyaan Anda belum tercakup, hubungi tim kami di <a href="mailto:partnership@sorcery.id" class="text-red">partnership@sorcery.id</a>—kami merespons dalam 24 jam kerja.</p>
+        <div class="faq__grid">
+          <div class="faq__head reveal">
+            <h2 class="section-title">Pertanyaan yang<br>Sering Diajukan</h2>
+            <p class="section-subtitle">Jika pertanyaan Anda belum tercakup, hubungi tim kami di <a href="mailto:partnership@sorcery.id" class="text-red">partnership@sorcery.id</a> kami merespons dalam 24 jam kerja.</p>
+          </div>
+          <div class="faq__list reveal">${items}</div>
         </div>
-        <div class="faq__list">${items}</div>
       </div>
     </section>
   `;

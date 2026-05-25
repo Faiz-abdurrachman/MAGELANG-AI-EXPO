@@ -63,19 +63,6 @@ window.SorceryScroll = {
     }
 
     /* =============================================
-       4. HERO SCROLL HINT — hide on scroll
-       ============================================= */
-    const scrollHint = document.querySelector(".hero__scroll-hint");
-    if (scrollHint) {
-      const hideHint = () => {
-        if (window.scrollY > 100) {
-          scrollHint.classList.add("is-hidden");
-        }
-      };
-      window.addEventListener("scroll", hideHint, { passive: true });
-    }
-
-    /* =============================================
        5. STATS COUNTER ANIMATION
        ============================================= */
     const counterElements = document.querySelectorAll("[data-count]");

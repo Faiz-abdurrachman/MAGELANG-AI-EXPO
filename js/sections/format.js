@@ -26,7 +26,7 @@ window.SorceryApp.format = function () {
       <div class="container">
         <div class="format__head reveal">
           <h2 class="section-title">Tiga Zona, Satu Hari Penuh</h2>
-          <p class="section-subtitle">Venue acara diatur menjadi tiga zona spesifik—masing-masing dirancang untuk format interaksi yang berbeda. Tamu dapat berpindah dari demo, booth, hingga lounge diskusi tanpa alur yang rumit.</p>
+          <p class="section-subtitle">Venue acara diatur menjadi tiga zona spesifik, masing-masing dirancang untuk format interaksi yang berbeda. Tamu dapat berpindah dari demo, booth, hingga lounge diskusi tanpa alur yang rumit.</p>
         </div>
         <div class="format__grid reveal-stagger">${cards}</div>
       </div>

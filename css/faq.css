@@ -2,8 +2,34 @@
    FAQ — accordion
    ============================================ */
 .faq { padding-block: 8rem; position: relative; z-index: 10; }
-.faq__head { max-width: 800px; margin-bottom: 4rem; text-align: center; margin-inline: auto; }
-.faq__list { max-width: 880px; margin-inline: auto; }
+
+.faq__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.faq__head { 
+  max-width: 100%; 
+  text-align: left; 
+  position: sticky;
+  top: 120px;
+}
+
+.faq__head .section-title {
+  text-align: left;
+  margin-inline: 0;
+}
+
+.faq__head .section-subtitle {
+  text-align: left;
+  margin-inline: 0;
+  margin-bottom: 0;
+}
+
+.faq__list { width: 100%; }
+
 .faq__item {
   border-bottom: 1px solid var(--gray-200);
 }
@@ -63,6 +89,13 @@
   padding-right: 3rem;
   color: var(--gray-800);
   line-height: 1.65;
-  max-width: 720px;
+  max-width: 100%;
   font-size: 0.9375rem;
+}
+
+@media (max-width: 1024px) {
+  .faq__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .faq__head { text-align: center; }
+  .faq__head .section-title { text-align: center; margin-inline: auto; }
+  .faq__head .section-subtitle { text-align: center; margin-inline: auto; }
 }
