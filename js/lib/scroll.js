@@ -1,6 +1,9 @@
 window.SorceryScroll = {
   init() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouchDevice = window.matchMedia('(hover: none)').matches
+      || window.matchMedia('(pointer: coarse)').matches;
+
     if (prefersReducedMotion) {
       document.querySelectorAll('.reveal, .hero__word, .why__card, .format__card-wrapper').forEach(el => {
         el.classList.add('is-visible');
@@ -41,7 +44,6 @@ window.SorceryScroll = {
 
     /* =============================================
        2b. SAFETY TIMEOUT — force all reveals visible
-       after 4 seconds to prevent permanent invisibility
        ============================================= */
     setTimeout(() => {
       document.querySelectorAll('.reveal:not(.is-visible), .hero__word:not(.is-visible)').forEach(el => {
@@ -90,14 +92,12 @@ window.SorceryScroll = {
             const target = parseInt(el.dataset.count, 10);
             if (isNaN(target)) { counterIO.unobserve(el); return; }
 
-            let start = 0;
             const duration = 2000;
             const startTime = performance.now();
 
             const animate = (now) => {
               const elapsed = now - startTime;
               const progress = Math.min(elapsed / duration, 1);
-              // easeOutExpo
               const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
               const current = Math.round(ease * target);
               el.textContent = current;
@@ -116,11 +116,10 @@ window.SorceryScroll = {
     }
 
     /* =============================================
-       6. PARALLAX — elements with data-speed
-       (Disabled on mobile and reduced-motion)
+       6. PARALLAX — desktop only, no touch devices
        ============================================= */
     const parallaxEls = document.querySelectorAll("[data-speed]");
-    if (parallaxEls.length && !prefersReducedMotion && window.innerWidth > 768) {
+    if (parallaxEls.length && !prefersReducedMotion && !isTouchDevice && window.innerWidth >= 1024) {
       let ticking = false;
       const updateParallax = () => {
         const scrollY = window.scrollY;
@@ -146,7 +145,7 @@ window.SorceryScroll = {
        7. AGENDA — Mobile Glow on Scroll
        ============================================= */
     const agendaItems = document.querySelectorAll(".agenda__item");
-    if (agendaItems.length && window.innerWidth <= 920) {
+    if (agendaItems.length && isTouchDevice) {
       const agendaIO = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -168,7 +167,7 @@ window.SorceryScroll = {
     const statsItems = document.querySelectorAll(".stats__item-wrapper");
     statsItems.forEach(item => {
       item.addEventListener("click", () => {
-        if (window.innerWidth <= 920) {
+        if (isTouchDevice) {
           const wasHovered = item.classList.contains("is-hovered");
           statsItems.forEach(i => i.classList.remove("is-hovered"));
           if (!wasHovered) item.classList.add("is-hovered");
@@ -226,16 +225,20 @@ window.SorceryScroll = {
         const top = target.getBoundingClientRect().top + window.scrollY - 60;
         window.scrollTo({ top, behavior: "smooth" });
         document.querySelector(".nav__menu")?.classList.remove("is-open");
-        document.getElementById("nav-toggle")?.classList.remove("is-active");
+        const toggle = document.getElementById("nav-toggle");
+        if (toggle) {
+          toggle.classList.remove("is-active");
+          toggle.setAttribute("aria-expanded", "false");
+        }
         document.body.style.overflow = '';
       });
     });
 
     /* =============================================
-       12b. 3D TILT EFFECT on value cards
+       12b. 3D TILT EFFECT — desktop with hover only
        ============================================= */
     const tiltCards = document.querySelectorAll(".value__card, .why__card, .process__card");
-    if (tiltCards.length && !prefersReducedMotion && window.innerWidth > 768) {
+    if (tiltCards.length && !prefersReducedMotion && !isTouchDevice && window.innerWidth >= 1024) {
       tiltCards.forEach((card) => {
         card.addEventListener("mousemove", (e) => {
           const rect = card.getBoundingClientRect();
@@ -247,7 +250,6 @@ window.SorceryScroll = {
           const rotateY = ((x - centerX) / centerX) * 8;
           card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
 
-          // Move glow to cursor position
           const glow = card.querySelector(".value__card-glow, .process__card-glow");
           if (glow) {
             glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(14, 165, 233, 0.2) 0%, transparent 60%)`;
@@ -301,10 +303,10 @@ window.SorceryScroll = {
     }
 
     /* =============================================
-       16. FORMAT CARD HOVER — glow follow mouse
+       16. FORMAT CARD HOVER — glow follow mouse (desktop only)
        ============================================= */
     const formatCards = document.querySelectorAll(".format__card");
-    if (formatCards.length && window.innerWidth > 768) {
+    if (formatCards.length && !isTouchDevice && window.innerWidth >= 1024) {
       formatCards.forEach((card) => {
         card.addEventListener("mousemove", (e) => {
           const rect = card.getBoundingClientRect();

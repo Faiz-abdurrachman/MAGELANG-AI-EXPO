@@ -5,7 +5,7 @@
   --blue-200: #bae6fd;
   --blue-300: #7dd3fc;
   --blue-400: #38bdf8;
-  --blue-500: #0ea5e9; /* Primary Action */
+  --blue-500: #0ea5e9;
   --blue-600: #0284c7;
   --blue-700: #0369a1;
   --blue-800: #075985;
@@ -16,22 +16,22 @@
   --bg-space: #020617;
   --bg-main:  var(--bg-space);
   --bg-dark:  #000000;
-  
+   
   /* Cards & Elevate */
   --bg-card:       rgba(15, 23, 42, 0.7);
   --bg-card-flat:  rgba(15, 23, 42, 0.4);
   --bg-elevated:   #0f172a;
-  
-  /* Grayscale (Light text for Dark theme) */
+   
+  /* Grayscale (Light text for Dark theme — inverted scale) */
   --white:    #ffffff;
-  --gray-900: #f8fafc; /* Title Text */
+  --gray-900: #f8fafc;
   --gray-800: #f1f5f9;
-  --gray-700: #e2e8f0; /* Brightened from cbd5e1 */
-  --gray-600: #cbd5e1; /* Brightened from 94a3b8 */
-  --gray-500: #94a3b8; /* Brightened from 64748b */
+  --gray-700: #e2e8f0;
+  --gray-600: #cbd5e1;
+  --gray-500: #94a3b8;
   --gray-400: #64748b;
   --gray-300: #475569;
-  --gray-200: #1e293b; /* Borders */
+  --gray-200: #1e293b;
   --gray-100: #0f172a;
   --gray-50:  #020617;
 
@@ -46,18 +46,20 @@
   --glass-border:   rgba(56, 189, 248, 0.2);
   --glass-shadow:   0 8px 32px 0 rgba(0, 0, 0, 0.6);
 
-  /* === TYPOGRAPHY === */
+  /* === RESPONSIVE BREAKPOINTS === */
+  --bp-sm: 640px;
+  --bp-md: 1024px;
+  --bp-lg: 1280px;
+
+  /* === TYPOGRAPHY (mobile-first, NO vh caps) === */
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
    
-  --fs-display: clamp(2.4rem, min(6vw, 8vh), 4.5rem);
-  --fs-h1:      clamp(2rem, min(5vw, 6vh), 3.5rem);
-  --fs-h2:      clamp(1.75rem, min(4vw, 5vh), 3rem);
-  --fs-h3:      clamp(1.25rem, min(2.5vw, 3vh), 1.8rem);
+  --fs-display: clamp(2rem, 5.5vw, 4.5rem);
+  --fs-h1:      clamp(1.75rem, 5vw, 3.5rem);
+  --fs-h2:      clamp(1.5rem, 4vw, 3rem);
+  --fs-h3:      clamp(1.125rem, 2.5vw, 1.8rem);
   --fs-body:    clamp(0.9375rem, 1.5vw, 1.125rem);
   --fs-small:   0.9375rem;
-
-  /* === RESPONSIVE BREAKPOINTS (reference) === */
-  /* sm: 640px  md: 768px  lg: 1024px  xl: 1280px  2xl: 1440px */
 
   /* === MOTION & SHAPE === */
   --transition: 400ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -66,9 +68,13 @@
   --radius-lg: 24px;
   --radius-full: 9999px;
   --radius-glass: 100px;
-  
+   
+  /* === TOUCH === */
+  --touch-target: 44px;
+  --card-radius-mobile: 20px;
+
   /* Layout */
   --container: 1440px;
   --container-narrow: 960px;
-  --gutter: clamp(1.5rem, 5vw, 3.5rem);
+  --gutter: clamp(1.25rem, 5vw, 3.5rem);
 }

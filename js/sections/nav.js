@@ -11,12 +11,13 @@ window.SorceryApp.nav = function () {
           ${window.SorceryIcons.logo}
           <span>MAGELANG AI EXPO<small>AI Expo 2026</small></span>
         </a>
-        <nav class="nav__menu">
+        <nav class="nav__menu" id="nav-menu" role="navigation" aria-label="Main navigation">
           ${items}
+          <a href="#register" class="btn btn-holographic nav__menu-cta">Daftarkan Produk Anda</a>
           <div class="nav__indicator"></div>
         </nav>
         <div class="nav__cta">
-          <button class="nav__burger" aria-label="Buka menu" type="button" id="nav-toggle">
+          <button class="nav__burger" aria-label="Buka menu" aria-expanded="false" aria-controls="nav-menu" type="button" id="nav-toggle">
             <div class="nav__burger-box">
               <span class="nav__burger-line nav__burger-line--1"></span>
               <span class="nav__burger-line nav__burger-line--2"></span>
@@ -36,22 +37,18 @@ window.SorceryApp.navInit = function() {
   const links = document.querySelectorAll('.nav__link');
   const toggle = document.getElementById('nav-toggle');
 
-  if (!menu || !indicator) return;
+  if (!menu || !toggle) return;
 
-  // Toggle Mobile Menu
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      const isOpen = menu.classList.toggle('is-open');
-      toggle.classList.toggle('is-active', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-  }
-
-  let hoverLink = null;
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('is-open');
+    toggle.classList.toggle('is-active', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
 
   const moveIndicator = (el) => {
-    if (!el || window.innerWidth <= 920) {
-      indicator.style.opacity = '0';
+    if (!el || !indicator || window.innerWidth < 1024) {
+      if (indicator) indicator.style.opacity = '0';
       return;
     }
     const rect = el.getBoundingClientRect();
@@ -64,9 +61,11 @@ window.SorceryApp.navInit = function() {
     indicator.style.top = `${rect.top - menuRect.top}px`;
   };
 
+  let hoverLink = null;
+
   const sync = () => {
-    if (window.innerWidth <= 920) {
-      indicator.style.opacity = '0';
+    if (window.innerWidth < 1024) {
+      if (indicator) indicator.style.opacity = '0';
       return;
     }
     if (hoverLink) {
@@ -76,7 +75,7 @@ window.SorceryApp.navInit = function() {
     const activeLink = document.querySelector('.nav__link.is-active');
     if (activeLink) {
       moveIndicator(activeLink);
-    } else {
+    } else if (indicator) {
       indicator.style.opacity = '0';
     }
   };
@@ -88,11 +87,11 @@ window.SorceryApp.navInit = function() {
       link.classList.add('is-active');
       hoverLink = link;
       sync();
-      
-      // Close mobile menu on click
+
       if (menu.classList.contains('is-open')) {
         menu.classList.remove('is-open');
-        toggle?.classList.remove('is-active');
+        toggle.classList.remove('is-active');
+        toggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       }
 
@@ -123,9 +122,10 @@ window.SorceryApp.navInit = function() {
 
   window.addEventListener('resize', () => {
     sync();
-    if (window.innerWidth > 920 && menu.classList.contains('is-open')) {
+    if (window.innerWidth >= 1024 && menu.classList.contains('is-open')) {
       menu.classList.remove('is-open');
-      toggle?.classList.remove('is-active');
+      toggle.classList.remove('is-active');
+      toggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
   });

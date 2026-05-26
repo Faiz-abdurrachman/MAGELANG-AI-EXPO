@@ -28,7 +28,7 @@ window.SorceryApp.hero = function () {
                 </a>
               </div>
             </div>
-            <aside class="hero__ticket reveal" data-speed="-0.05" aria-label="Detail acara">
+            <aside class="hero__ticket reveal" aria-label="Detail acara">
               <div class="hero__ticket-head">
                 <span class="hero__ticket-tag">Event Brief</span>
                 <span class="hero__ticket-id">#MAE-2026</span>
@@ -71,7 +71,10 @@ window.SorceryApp.heroInit = function() {
   if (!canvas) return;
   const context = canvas.getContext('2d');
 
+  const isMobile = window.innerWidth < 1024;
   const frameCount = 192;
+  const frameStep = isMobile ? 2 : 1;
+
   const currentFrame = index => (
     `assets/sequence/frame_${(index + 1).toString().padStart(4, '0')}.webp`
   );
@@ -86,7 +89,7 @@ window.SorceryApp.heroInit = function() {
   };
 
   function preloadRange(start, end) {
-    for (let i = start; i < end && i < frameCount; i++) {
+    for (let i = start; i < end && i < frameCount; i += frameStep) {
       if (images[i] && images[i].complete) continue;
       if (!images[i]) {
         const img = new Image();
@@ -97,44 +100,44 @@ window.SorceryApp.heroInit = function() {
     }
   }
 
-  // Preload first 24 frames for instant start, rest load on demand
-  preloadRange(0, 24);
+  preloadRange(0, Math.min(24, frameCount));
 
-  // Load frame 0 immediately
-  images[0].onload = () => {
-    resizeCanvas();
-    updateImage(0);
-  };
+  if (images[0]) {
+    images[0].onload = () => {
+      resizeCanvas();
+      updateImage(0);
+    };
+  }
 
-  // Background load remaining frames in batches
   let batchIndex = 24;
   function loadNextBatch() {
     if (batchIndex >= frameCount) return;
-    preloadRange(batchIndex, Math.min(batchIndex + 24, frameCount));
-    batchIndex += 24;
+    const batchEnd = Math.min(batchIndex + (isMobile ? 16 : 24), frameCount);
+    preloadRange(batchIndex, batchEnd);
+    batchIndex = batchEnd;
     if (batchIndex < frameCount) {
-      setTimeout(loadNextBatch, 100);
+      setTimeout(loadNextBatch, isMobile ? 200 : 100);
     }
   }
   setTimeout(loadNextBatch, 500);
 
+  let resizeTimer;
   function resizeCanvas() {
     state.width = window.innerWidth;
     state.height = window.innerHeight;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
     canvas.width = state.width * dpr;
     canvas.height = state.height * dpr;
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
     updateImage(state.frameIndex, true);
   }
 
-  function updateImage(index, force = false) {
+  function updateImage(index, force) {
     if (state.frameIndex === index && !force) return;
     state.frameIndex = index;
     const img = images[index];
     if (!img || !img.complete) {
-      // If frame not loaded yet, find nearest loaded frame
-      for (let offset = 1; offset < 10; offset++) {
+      for (let offset = frameStep; offset < 10 * frameStep; offset += frameStep) {
         const prev = images[index - offset];
         if (prev && prev.complete) { state.frameIndex = index - offset; drawFrame(prev); return; }
       }
@@ -174,8 +177,7 @@ window.SorceryApp.heroInit = function() {
     progress = Math.max(0, Math.min(1, progress));
     const frameIndex = Math.min(frameCount - 1, Math.floor(progress * frameCount));
 
-    // Ensure nearby frames are preloaded
-    preloadRange(Math.max(0, frameIndex - 5), Math.min(frameCount, frameIndex + 15));
+    preloadRange(Math.max(0, frameIndex - 3 * frameStep), Math.min(frameCount, frameIndex + 10 * frameStep));
 
     if (!ticking) {
       window.requestAnimationFrame(() => {
@@ -186,6 +188,9 @@ window.SorceryApp.heroInit = function() {
     }
   }
 
-  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resizeCanvas, 150);
+  });
   window.addEventListener('scroll', onScroll, { passive: true });
 };
