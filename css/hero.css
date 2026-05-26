@@ -44,6 +44,9 @@
   position: absolute;
   inset: 0;
   background:
+    /* Digital Dotted Pattern to break up watermark texture */
+    radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px),
+    /* Main Gradient Overlays */
     linear-gradient(
       90deg,
       rgba(2, 6, 23, 0.95) 0%,
@@ -57,19 +60,23 @@
       transparent 80%,
       rgba(2, 6, 23, 0.5) 100%
     );
+  background-size: 32px 32px, 100% 100%, 100% 100%;
   z-index: 1;
   pointer-events: none;
 }
 
 .hero__canvas-vignette {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 280px;
-  height: 80px;
-  background: radial-gradient(ellipse at 100% 100%, var(--bg-space) 0%, transparent 70%);
+  bottom: -50px;
+  right: -50px;
+  width: 400px;
+  height: 250px;
+  /* Localized Holographic Glow */
+  background: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.15) 0%, rgba(2, 6, 23, 0.4) 50%, transparent 80%);
+  filter: blur(40px);
   z-index: 2;
   pointer-events: none;
+  mix-blend-mode: screen;
 }
 
 /* --- FOREGROUND CONTENT --- */
