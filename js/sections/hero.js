@@ -6,6 +6,7 @@ window.SorceryApp.hero = function () {
       <div class="hero__sticky">
         <canvas class="hero__canvas" id="hero-canvas"></canvas>
         <div class="hero__video-overlay"></div>
+        <div class="hero__canvas-vignette" aria-hidden="true"></div>
         <div class="container hero__inner">
           <div class="hero__grid">
             <div class="hero__content">
@@ -76,6 +77,7 @@ window.SorceryApp.heroInit = function() {
   );
 
   const images = [];
+  let loadedCount = 0;
 
   const state = {
     frameIndex: 0,
@@ -83,23 +85,43 @@ window.SorceryApp.heroInit = function() {
     height: 0
   };
 
-  // Preload all images
-  for (let i = 0; i < frameCount; i++) {
-    const img = new Image();
-    img.src = currentFrame(i);
-    if (i === 0) {
-      img.onload = () => {
-        resizeCanvas();
-        updateImage(0);
-      };
+  function preloadRange(start, end) {
+    for (let i = start; i < end && i < frameCount; i++) {
+      if (images[i] && images[i].complete) continue;
+      if (!images[i]) {
+        const img = new Image();
+        img.src = currentFrame(i);
+        img.onload = () => { loadedCount++; };
+        images[i] = img;
+      }
     }
-    images.push(img);
   }
+
+  // Preload first 24 frames for instant start, rest load on demand
+  preloadRange(0, 24);
+
+  // Load frame 0 immediately
+  images[0].onload = () => {
+    resizeCanvas();
+    updateImage(0);
+  };
+
+  // Background load remaining frames in batches
+  let batchIndex = 24;
+  function loadNextBatch() {
+    if (batchIndex >= frameCount) return;
+    preloadRange(batchIndex, Math.min(batchIndex + 24, frameCount));
+    batchIndex += 24;
+    if (batchIndex < frameCount) {
+      setTimeout(loadNextBatch, 100);
+    }
+  }
+  setTimeout(loadNextBatch, 500);
 
   function resizeCanvas() {
     state.width = window.innerWidth;
     state.height = window.innerHeight;
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = state.width * dpr;
     canvas.height = state.height * dpr;
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -110,7 +132,18 @@ window.SorceryApp.heroInit = function() {
     if (state.frameIndex === index && !force) return;
     state.frameIndex = index;
     const img = images[index];
-    if (!img || !img.complete) return;
+    if (!img || !img.complete) {
+      // If frame not loaded yet, find nearest loaded frame
+      for (let offset = 1; offset < 10; offset++) {
+        const prev = images[index - offset];
+        if (prev && prev.complete) { state.frameIndex = index - offset; drawFrame(prev); return; }
+      }
+      return;
+    }
+    drawFrame(img);
+  }
+
+  function drawFrame(img) {
     const imgRatio = img.width / img.height;
     const canvasRatio = state.width / state.height;
     let drawWidth, drawHeight, x, y;
@@ -140,6 +173,10 @@ window.SorceryApp.heroInit = function() {
     let progress = Math.abs(sectionTop) / scrollDistance;
     progress = Math.max(0, Math.min(1, progress));
     const frameIndex = Math.min(frameCount - 1, Math.floor(progress * frameCount));
+
+    // Ensure nearby frames are preloaded
+    preloadRange(Math.max(0, frameIndex - 5), Math.min(frameCount, frameIndex + 15));
+
     if (!ticking) {
       window.requestAnimationFrame(() => {
         updateImage(frameIndex);

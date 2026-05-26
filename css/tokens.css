@@ -46,15 +46,18 @@
   --glass-border:   rgba(56, 189, 248, 0.2);
   --glass-shadow:   0 8px 32px 0 rgba(0, 0, 0, 0.6);
 
-  /* === TYPOGRAPHY (RESTORED) === */
+  /* === TYPOGRAPHY === */
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  
-  --fs-display: clamp(2.8rem, 6vw, 4.5rem);
-  --fs-h1:      clamp(2.3rem, 5vw, 3.5rem);
-  --fs-h2:      clamp(2rem, 4vw, 3rem);
-  --fs-h3:      clamp(1.35rem, 2.5vw, 1.8rem);
-  --fs-body:    1.125rem;
+   
+  --fs-display: clamp(2.4rem, min(6vw, 8vh), 4.5rem);
+  --fs-h1:      clamp(2rem, min(5vw, 6vh), 3.5rem);
+  --fs-h2:      clamp(1.75rem, min(4vw, 5vh), 3rem);
+  --fs-h3:      clamp(1.25rem, min(2.5vw, 3vh), 1.8rem);
+  --fs-body:    clamp(0.9375rem, 1.5vw, 1.125rem);
   --fs-small:   0.9375rem;
+
+  /* === RESPONSIVE BREAKPOINTS (reference) === */
+  /* sm: 640px  md: 768px  lg: 1024px  xl: 1280px  2xl: 1440px */
 
   /* === MOTION & SHAPE === */
   --transition: 400ms cubic-bezier(0.16, 1, 0.3, 1);

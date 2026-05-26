@@ -5,8 +5,9 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  height: -webkit-fill-available;
 }
-body { min-height: 100vh; line-height: 1.5; }
+body { min-height: 100vh; min-height: -webkit-fill-available; line-height: 1.5; }
 img, picture, video, canvas, svg { display: block; max-width: 100%; }
 input, button, textarea, select { font: inherit; color: inherit; }
 button { background: none; border: 0; cursor: pointer; }

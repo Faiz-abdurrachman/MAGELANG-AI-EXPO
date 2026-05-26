@@ -3,7 +3,7 @@
    ============================================ */
 .investors {
 
-  padding-block: 12rem;
+  padding-block: clamp(4rem, 10vw, 10rem);
   overflow: hidden;
   position: relative;
 }
@@ -25,7 +25,7 @@
 
 .investors__head {
   text-align: center;
-  margin-bottom: 8rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
   max-width: 800px;
   margin-inline: auto;
 }

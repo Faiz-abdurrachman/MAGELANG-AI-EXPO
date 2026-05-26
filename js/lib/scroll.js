@@ -1,5 +1,13 @@
 window.SorceryScroll = {
   init() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      document.querySelectorAll('.reveal, .hero__word, .why__card, .format__card-wrapper').forEach(el => {
+        el.classList.add('is-visible');
+      });
+      return;
+    }
+
     /* =============================================
        1. SCROLL PROGRESS BAR
        ============================================= */
@@ -27,18 +35,26 @@ window.SorceryScroll = {
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.08, rootMargin: "0px 0px -30px 0px" });
+      }, { threshold: 0.05, rootMargin: "0px 0px -10px 0px" });
       reveals.forEach((el) => io.observe(el));
     }
+
+    /* =============================================
+       2b. SAFETY TIMEOUT — force all reveals visible
+       after 4 seconds to prevent permanent invisibility
+       ============================================= */
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.is-visible), .hero__word:not(.is-visible)').forEach(el => {
+        el.classList.add('is-visible');
+      });
+    }, 4000);
 
     /* =============================================
        3. HERO WORD-BY-WORD ANIMATION
        ============================================= */
     const heroHeadline = document.querySelector(".hero__headline");
     if (heroHeadline) {
-      // Wrap each word in a span.hero__word
       const html = heroHeadline.innerHTML;
-      // Split text nodes into words, preserve <br> and existing tags
       const wrapped = html.replace(
         /(<[^>]+>)|(\S+)/g,
         (match, tag, word) => {
@@ -53,12 +69,12 @@ window.SorceryScroll = {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             words.forEach((w, i) => {
-              setTimeout(() => w.classList.add("is-visible"), i * 100);
+              setTimeout(() => w.classList.add("is-visible"), i * 80);
             });
             wordIO.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.2 });
+      }, { threshold: 0.1 });
       wordIO.observe(heroHeadline);
     }
 
@@ -101,9 +117,10 @@ window.SorceryScroll = {
 
     /* =============================================
        6. PARALLAX — elements with data-speed
+       (Disabled on mobile and reduced-motion)
        ============================================= */
     const parallaxEls = document.querySelectorAll("[data-speed]");
-    if (parallaxEls.length) {
+    if (parallaxEls.length && !prefersReducedMotion && window.innerWidth > 768) {
       let ticking = false;
       const updateParallax = () => {
         const scrollY = window.scrollY;
@@ -215,27 +232,10 @@ window.SorceryScroll = {
     });
 
     /* =============================================
-       12. SECTION TITLE REVEAL (clip-path)
-       ============================================= */
-    const sectionTitles = document.querySelectorAll(".section-title");
-    sectionTitles.forEach((title) => {
-      title.classList.add("reveal--clip");
-      const titleIO = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            titleIO.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      titleIO.observe(title);
-    });
-
-    /* =============================================
-       13. 3D TILT EFFECT on value cards
+       12b. 3D TILT EFFECT on value cards
        ============================================= */
     const tiltCards = document.querySelectorAll(".value__card, .why__card, .process__card");
-    if (tiltCards.length && window.innerWidth > 768) {
+    if (tiltCards.length && !prefersReducedMotion && window.innerWidth > 768) {
       tiltCards.forEach((card) => {
         card.addEventListener("mousemove", (e) => {
           const rect = card.getBoundingClientRect();

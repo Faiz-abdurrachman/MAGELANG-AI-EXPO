@@ -1,7 +1,7 @@
 /* ============================================
    FAQ — accordion
    ============================================ */
-.faq { padding-block: 8rem; position: relative; z-index: 10; }
+.faq { padding-block: clamp(4rem, 8vw, 8rem); position: relative; z-index: 10; }
 
 .faq__grid {
   display: grid;

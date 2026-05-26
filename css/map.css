@@ -3,7 +3,7 @@
    ============================================ */
 .map {
 
-  padding-block: 8rem;
+  padding-block: clamp(4rem, 8vw, 8rem);
 }
 
 .map__grid {

@@ -3,12 +3,12 @@
    ============================================ */
 .format {
 
-  padding-block: 8rem;
+  padding-block: clamp(4rem, 8vw, 8rem);
 }
 
 .format__head {
   text-align: center;
-  margin-bottom: 8rem;
+  margin-bottom: clamp(3rem, 6vw, 6rem);
   max-width: 800px;
   margin-inline: auto;
 }
@@ -25,7 +25,7 @@
 
 @keyframes formatStandUp {
   0% {
-    transform: rotateX(50deg) translateY(-70px) translateZ(-40px);
+    transform: rotateX(35deg) translateY(-40px) translateZ(-20px);
     opacity: 0;
   }
   100% {
@@ -36,7 +36,7 @@
 
 .format__card-wrapper {
   perspective: 1400px;
-  transform: rotateX(50deg) translateY(-70px) translateZ(-40px);
+  transform: rotateX(35deg) translateY(-40px) translateZ(-20px);
   opacity: 0;
   will-change: transform;
 }
@@ -51,7 +51,8 @@
 
 .format__card {
   position: relative;
-  height: 420px;
+  min-height: 380px;
+  height: 100%;
   border-radius: 22px;
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
@@ -209,8 +210,8 @@
 
 @media (max-width: 720px) {
   .format__grid { grid-template-columns: 1fr; perspective: 900px; gap: 1.5rem; }
-  .format__card { height: 360px; border-radius: 24px; }
-  .format__card-wrapper { transform: rotateX(30deg) translateY(-30px); }
+  .format__card { min-height: 340px; border-radius: 24px; }
+  .format__card-wrapper { transform: rotateX(25deg) translateY(-20px); }
   .format__slide { padding: 2rem 1.5rem; }
   .format__name { font-size: 1.85rem; }
   .format__card:hover .format__slide--1 { height: 80px; }
@@ -218,5 +219,13 @@
   @keyframes formatStandUp {
     0% { transform: rotateX(30deg) translateY(-30px); opacity: 0; }
     100% { transform: rotateX(0) translateY(0); opacity: 1; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .format__card-wrapper {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }

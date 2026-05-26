@@ -7,7 +7,7 @@ body {
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ============================================
@@ -49,6 +49,13 @@ body::after {
   66% { transform: translate(-60px, 60px); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none !important;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 800;
@@ -67,8 +74,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* === SECTION: ZEBRA STRIPING === */
 .section {
-  padding-block: clamp(10rem, 20vw, 15rem); /* Maximum breathing room */
+  padding-block: clamp(4rem, 10vw, 8rem);
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 .section:nth-of-type(odd) {
@@ -85,8 +94,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 720px) {
-  .section { padding-block: 8rem; }
-  .section-title { font-size: 2.25rem; }
+  .section { padding-block: 3.5rem; }
+  .section-title { font-size: 2rem; }
 }
 
 .eyebrow {
@@ -118,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
   margin-inline: auto;
   text-align: center;
-  margin-bottom: 5rem; /* Space before content starts */
+  margin-bottom: 3.5rem;
 }
 
 .text-blue    { color: var(--blue-500); }
