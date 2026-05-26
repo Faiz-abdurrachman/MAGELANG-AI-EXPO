@@ -149,7 +149,7 @@ window.SorceryApp.heroInit = function() {
     let drawWidth, drawHeight, x, y;
     if (imgRatio > canvasRatio) {
       drawHeight = state.height;
-      drawWidth = img.height * imgRatio;
+      drawWidth = state.height * imgRatio;
       x = (state.width - drawWidth) / 2;
       y = 0;
     } else {

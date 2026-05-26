@@ -77,8 +77,8 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  padding-top: clamp(2rem, 12vh, 28vh);
-  padding-bottom: clamp(1rem, 6vh, 15vh);
+  padding-top: 60px; /* Reduced for better centering */
+  padding-bottom: 2rem;
 }
 
 .hero__grid {
@@ -98,27 +98,27 @@
 
 .hero__badge {
   display: block;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero__badge span {
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: var(--blue-400);
   position: relative;
   display: inline-block;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .hero__headline {
   font-family: var(--font-sans);
-  font-size: clamp(2rem, min(5.5vw, 6.5vh), 4rem);
+  font-size: clamp(2.5rem, min(6.5vw, 7.5vh), 4.5rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -0.04em;
   color: var(--white);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
   text-shadow: 0 4px 30px rgba(0,0,0,0.5);
 }
 
