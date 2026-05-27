@@ -78,8 +78,7 @@ window.SorceryApp.heroInit = function() {
      ============================================= */
   if (isMobile) {
     const img = new Image();
-    img.src = 'assets/sequence/frame_0001.webp';
-    img.onload = () => {
+    const initMobileFrame = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -99,6 +98,12 @@ window.SorceryApp.heroInit = function() {
       dx = (w - dw) / 2; dy = (h - dh) / 2;
       context.drawImage(img, dx, dy, dw, dh);
     };
+
+    img.onload = initMobileFrame;
+    img.src = 'assets/sequence/frame_0001.webp';
+    if (img.complete) {
+      initMobileFrame();
+    }
 
     let resizeTimer;
     window.addEventListener('resize', () => {
@@ -162,10 +167,15 @@ window.SorceryApp.heroInit = function() {
   preloadRange(0, Math.min(24, frameCount));
 
   if (images[0]) {
-    images[0].onload = () => {
+    const initFirstFrame = () => {
       resizeCanvas();
-      updateImage(0);
+      updateImage(0, true);
     };
+    if (images[0].complete) {
+      initFirstFrame();
+    } else {
+      images[0].addEventListener('load', initFirstFrame);
+    }
   }
 
   let batchIndex = 24;

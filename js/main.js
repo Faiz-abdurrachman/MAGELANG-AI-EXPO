@@ -67,4 +67,8 @@ window.addEventListener('DOMContentLoaded', () => {
       window.SorceryCountdown.start(deadline, document.getElementById("cta-countdown"));
     }
   } catch (e) { console.error("Countdown init:", e); }
+
+  try {
+    if (typeof A.loaderInit === 'function') A.loaderInit();
+  } catch (e) { console.error("Loader init:", e); }
 });

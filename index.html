@@ -33,11 +33,33 @@
   <link rel="stylesheet" href="css/form.css">
   <link rel="stylesheet" href="css/faq.css">
   <link rel="stylesheet" href="css/cta.css">
+  <!-- Loader CSS -->
+  <link rel="stylesheet" href="css/loader.css">
   <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
+  <!-- Cinematic Loader -->
+  <div class="loader" id="cinematic-loader">
+    <div class="loader__bg"></div>
+    <div class="loader__particles" id="loader-particles"></div>
+    <div class="loader__glow"></div>
+    <div class="loader__glow loader__glow--2"></div>
+    <div class="loader__content">
+      <div class="loader__brand">Magelang AI Expo</div>
+      <div class="loader__text-wrapper">
+        <div class="loader__text" id="loader-text">Initializing ecosystem...</div>
+      </div>
+      <div class="loader__progress">
+        <div class="loader__progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="scroll-progress"></div>
   <div id="app"></div>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
   <!-- Data + utilities -->
   <script src="js/data.js"></script>
@@ -46,6 +68,7 @@
   <script src="js/lib/scroll.js"></script>
 
   <!-- Section renderers -->
+  <script src="js/sections/loader.js"></script>
   <script src="js/sections/nav.js"></script>
   <script src="js/sections/hero.js"></script>
   <script src="js/sections/stats.js"></script>

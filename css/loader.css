@@ -1,0 +1,112 @@
+/* ============================================
+   CINEMATIC LOADER
+   GSAP-driven first-visit experience
+   ============================================ */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-main, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Will be hidden via JS if already played */
+}
+
+.loader__bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(14, 165, 233, 0.05) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.loader__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40vw;
+  height: 40vw;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.loader__glow--2 {
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle at center, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.loader__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.loader__particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.6);
+  filter: blur(2px);
+  box-shadow: 0 0 10px 2px rgba(56, 189, 248, 0.4);
+}
+
+.loader__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.loader__brand {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #f8fafc;
+  text-transform: uppercase;
+}
+
+.loader__text-wrapper {
+  position: relative;
+  height: 1.2rem; /* Fixed height to prevent layout shifts */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Hide sliding text */
+}
+
+.loader__text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  color: var(--blue-400, #38bdf8);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.loader__progress {
+  width: 140px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.loader__progress-bar {
+  width: 100%;
+  height: 100%;
+  background: var(--blue-500, #0ea5e9);
+  transform-origin: left;
+  transform: scaleX(0);
+}
