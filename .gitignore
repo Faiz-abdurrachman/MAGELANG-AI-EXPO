@@ -1,3 +1,4 @@
 node_modules/
 assets/sequence-backup/
 .vercel
+*.md
