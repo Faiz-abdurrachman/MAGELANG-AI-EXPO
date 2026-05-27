@@ -4,7 +4,7 @@ window.SorceryApp.process = function () {
     .map(
       (p) => `
         <div class="process__card-wrapper reveal reveal--scale">
-          <div class="process__card holographic-card">
+          <div class="process__card">
             <div class="process__shine"></div>
             <div class="process__step-badge">Step ${p.step}</div>
             <div class="process__card-content">

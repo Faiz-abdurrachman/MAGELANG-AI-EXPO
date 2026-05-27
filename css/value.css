@@ -32,7 +32,6 @@
   height: 100%;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transform-style: preserve-3d;
-  cursor: pointer;
   will-change: transform;
 }
 
@@ -101,16 +100,6 @@
   z-index: -1;
 }
 
-/* Mobile: simple tap elevation */
-.value__card:active {
-  transform: translateY(-4px);
-}
-
-.value__card:active .value__card-inner {
-  background: rgba(2, 6, 23, 0.95);
-  border-color: rgba(14, 165, 233, 0.5);
-}
-
 /* === TABLET: 2 columns === */
 @media (min-width: 640px) {
   .value__head { margin-bottom: 3.5rem; }
@@ -177,6 +166,10 @@
   }
 
   @media (hover: hover) {
+    .value__card {
+      cursor: pointer;
+    }
+
     .value__card:hover {
       transform: rotateX(8deg) rotateY(-8deg) translateZ(10px);
     }

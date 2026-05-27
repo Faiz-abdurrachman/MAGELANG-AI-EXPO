@@ -2,8 +2,5 @@
   "framework": null,
   "outputDirectory": ".",
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/applications", "destination": "/api/applications" }
-  ]
+  "trailingSlash": false
 }

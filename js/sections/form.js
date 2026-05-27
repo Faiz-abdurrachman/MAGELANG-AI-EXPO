@@ -1,5 +1,7 @@
 window.SorceryApp = window.SorceryApp || {};
 
+window.SorceryApp.GAS_ENDPOINT = 'PASTE_YOUR_GAS_WEB_APP_URL_HERE';
+
 window.SorceryApp.form = function () {
   return `
     <section class="section form" id="register">
@@ -100,6 +102,7 @@ window.SorceryApp.formInit = function () {
   const form = document.getElementById("apply-form");
   if (!form) return;
 
+  const GAS_URL = window.SorceryApp.GAS_ENDPOINT;
   const showError = (name, msg) => {
     const el = form.querySelector(`[data-error="${name}"]`);
     if (el) el.textContent = msg || "";
@@ -144,24 +147,35 @@ window.SorceryApp.formInit = function () {
     submitBtn.disabled = true;
 
     const payload = Object.fromEntries(data.entries());
+    const founderName = escape(String(data.get("founder")));
+    const founderEmail = escape(email);
 
-    fetch('/applications', {
+    fetch(GAS_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(payload)
     })
-    .then((res) => {
-      if (!res.ok) throw new Error('Gagal mengirim data');
-      /* Success state — replace form contents */
-      form.innerHTML = `
-        <div class="form__success">
-          <h3>Pendaftaran Terkirim ✓</h3>
-          <p>Terima kasih, <strong>${escape(String(data.get("founder")))}</strong>. Tim acara akan menghubungi melalui <strong>${escape(email)}</strong> dalam 7 hari kerja. Mohon cek folder spam Anda.</p>
-        </div>
-      `;
+    .then((res) => res.json())
+    .then((result) => {
+      if (result.success) {
+        form.innerHTML = `
+          <div class="form__success">
+            <h3>Pendaftaran Terkirim ✓</h3>
+            <p>Terima kasih, <strong>${founderName}</strong>. Tim acara akan menghubungi melalui <strong>${founderEmail}</strong> dalam 7 hari kerja. Mohon cek folder spam Anda.</p>
+          </div>
+        `;
+      } else {
+        const msg = result.error || 'Terjadi kesalahan. Silakan coba lagi.';
+        if (result.code === 409) {
+          showError('email', msg);
+        } else {
+          alert(msg);
+        }
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      }
     })
-    .catch((err) => {
-      console.error(err);
+    .catch(() => {
       submitBtn.textContent = originalBtnText;
       submitBtn.disabled = false;
       alert('Terjadi kesalahan koneksi. Silakan coba lagi.');

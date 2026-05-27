@@ -72,8 +72,63 @@ window.SorceryApp.heroInit = function() {
   const context = canvas.getContext('2d');
 
   const isMobile = window.innerWidth < 1024;
+
+  /* =============================================
+     MOBILE: Static cinematic background — no scroll animation
+     ============================================= */
+  if (isMobile) {
+    const img = new Image();
+    img.src = 'assets/sequence/frame_0001.webp';
+    img.onload = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      context.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const imgRatio = img.width / img.height;
+      const canvasRatio = w / h;
+      let dw, dh, dx, dy;
+      if (imgRatio > canvasRatio) {
+        dh = h; dw = h * imgRatio; dx = (w - dw) / 2; dy = 0;
+      } else {
+        dw = w; dh = w / imgRatio; dx = 0; dy = (h - dh) / 2;
+      }
+      context.drawImage(img, dx, dy, dw, dh);
+    };
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!img.complete) return;
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        context.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const imgRatio = img.width / img.height;
+        const canvasRatio = w / h;
+        let dw, dh, dx, dy;
+        if (imgRatio > canvasRatio) {
+          dh = h; dw = h * imgRatio; dx = (w - dw) / 2; dy = 0;
+        } else {
+          dw = w; dh = w / imgRatio; dx = 0; dy = (h - dh) / 2;
+        }
+        context.drawImage(img, dx, dy, dw, dh);
+      }, 200);
+    });
+    return;
+  }
+
+  /* =============================================
+     DESKTOP: Full cinematic scroll-driven frame sequence
+     ============================================= */
   const frameCount = 192;
-  const frameStep = isMobile ? 2 : 1;
+  const frameStep = 1;
 
   const currentFrame = index => (
     `assets/sequence/frame_${(index + 1).toString().padStart(4, '0')}.webp`
@@ -112,11 +167,11 @@ window.SorceryApp.heroInit = function() {
   let batchIndex = 24;
   function loadNextBatch() {
     if (batchIndex >= frameCount) return;
-    const batchEnd = Math.min(batchIndex + (isMobile ? 16 : 24), frameCount);
+    const batchEnd = Math.min(batchIndex + 24, frameCount);
     preloadRange(batchIndex, batchEnd);
     batchIndex = batchEnd;
     if (batchIndex < frameCount) {
-      setTimeout(loadNextBatch, isMobile ? 200 : 100);
+      setTimeout(loadNextBatch, 100);
     }
   }
   setTimeout(loadNextBatch, 500);
@@ -125,7 +180,7 @@ window.SorceryApp.heroInit = function() {
   function resizeCanvas() {
     state.width = window.innerWidth;
     state.height = window.innerHeight;
-    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = state.width * dpr;
     canvas.height = state.height * dpr;
     context.setTransform(dpr, 0, 0, dpr, 0, 0);

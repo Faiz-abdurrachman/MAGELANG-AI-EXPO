@@ -53,12 +53,14 @@ window.SorceryApp.navInit = function() {
     }
     const rect = el.getBoundingClientRect();
     const menuRect = menu.getBoundingClientRect();
+    const pad = 4;
+    const vPad = 2;
 
     indicator.style.opacity = '1';
-    indicator.style.width = `${rect.width}px`;
-    indicator.style.height = `${rect.height}px`;
-    indicator.style.left = `${rect.left - menuRect.left}px`;
-    indicator.style.top = `${rect.top - menuRect.top}px`;
+    indicator.style.width = `${rect.width + pad * 2}px`;
+    indicator.style.height = `${rect.height + vPad * 2}px`;
+    indicator.style.left = `${rect.left - menuRect.left - pad}px`;
+    indicator.style.top = `${rect.top - menuRect.top - vPad}px`;
   };
 
   let hoverLink = null;
@@ -111,7 +113,16 @@ window.SorceryApp.navInit = function() {
     sync();
   });
 
-  requestAnimationFrame(() => requestAnimationFrame(sync));
+  setTimeout(() => requestAnimationFrame(sync), 100);
+
+  const inner = document.querySelector('.nav__inner');
+  if (inner) {
+    inner.addEventListener('transitionend', (e) => {
+      if (e.target === inner && (e.propertyName === 'height' || e.propertyName === 'padding')) {
+        sync();
+      }
+    });
+  }
 
   const observer = new MutationObserver(() => {
     if (!hoverLink) sync();

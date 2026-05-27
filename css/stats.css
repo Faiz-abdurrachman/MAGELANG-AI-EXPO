@@ -1,8 +1,8 @@
 /* ============================================
-   STATS — mobile-first flip cards
+   STATS — mobile: static cards / desktop: flip cards
    ============================================ */
 
-/* === BASE: MOBILE (1-column) === */
+/* === BASE: MOBILE (1-column, static informational) === */
 .stats {
   padding-block: 4rem;
   position: relative;
@@ -19,33 +19,18 @@
 }
 
 .stats__item-wrapper {
-  perspective: 2000px;
-  min-height: 260px;
-  height: 100%;
+  height: auto;
 }
 
 .stats__item {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transform-style: preserve-3d;
-  cursor: pointer;
 }
 
-/* Touch: tap-to-flip via .is-hovered */
-.stats__item-wrapper.is-hovered .stats__item {
-  transform: rotateY(180deg);
-}
-
-.stats__front,
-.stats__back {
-  position: absolute;
-  inset: 0;
+.stats__front {
+  position: relative;
   width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   border-radius: var(--card-radius-mobile);
   display: flex;
   flex-direction: column;
@@ -93,36 +78,19 @@
   color: var(--blue-400);
   text-align: center;
   max-width: 100%;
-}
-
-.stats__hint {
-  margin-top: 1.5rem;
-  font-size: 0.5625rem;
-  font-weight: 700;
-  text-transform: none;
-  letter-spacing: 0.1em;
-  color: var(--gray-500);
-  opacity: 0.6;
-  text-align: center;
-}
-
-/* === BACK SIDE === */
-.stats__back {
-  background: #0f172a;
-  color: var(--white);
-  transform: rotateY(180deg);
-  border: 1px solid var(--blue-500);
-  padding: 2rem 1.5rem;
-  box-shadow: inset 0 0 50px rgba(14, 165, 233, 0.1);
-  border-radius: var(--card-radius-mobile);
+  margin-bottom: 1rem;
 }
 
 .stats__desc {
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: 0.8125rem;
+  line-height: 1.55;
   color: var(--gray-700);
   text-align: center;
-  margin-bottom: 1.5rem;
+  max-width: 100%;
+}
+
+.stats__back {
+  display: none;
 }
 
 .stats__back-label {
@@ -154,22 +122,17 @@
     padding-inline: 0;
   }
 
-  .stats__item-wrapper { min-height: 280px; }
-
-  .stats__front,
-  .stats__back {
+  .stats__front {
     border-radius: var(--radius-lg);
     padding: 2.5rem 2rem;
   }
 
-  .stats__back { border-radius: var(--radius-lg); }
-
   .stats__num { font-size: clamp(3rem, 5vw, 4.5rem); }
   .stats__label { font-size: 0.75rem; }
-  .stats__desc { font-size: 0.9375rem; }
+  .stats__desc { font-size: 0.875rem; }
 }
 
-/* === DESKTOP: 4 columns, hover flip === */
+/* === DESKTOP: 4 columns, flip cards === */
 @media (min-width: 1024px) {
   .stats {
     padding-block: clamp(6rem, 10vw, 10rem) clamp(6rem, 8vw, 8rem);
@@ -182,7 +145,63 @@
     margin-bottom: 6rem;
   }
 
-  .stats__item-wrapper { min-height: 340px; }
+  .stats__item-wrapper {
+    perspective: 2000px;
+    min-height: 340px;
+    cursor: pointer;
+  }
+
+  .stats__item {
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 100%;
+  }
+
+  .stats__front {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    transition: border-color 0.4s ease;
+  }
+
+  .stats__front .stats__desc {
+    display: none;
+  }
+
+  .stats__back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: rotateY(180deg);
+    background: #0f172a;
+    color: var(--white);
+    border: 1px solid var(--blue-500);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 50px rgba(14, 165, 233, 0.1);
+    overflow: hidden;
+  }
+
+  .stats__back .stats__desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--gray-700);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
 
   @media (hover: hover) {
     .stats__item-wrapper:hover .stats__item {
@@ -193,10 +212,4 @@
       border-color: var(--blue-400);
     }
   }
-
-  .stats__back {
-    padding: 3rem 2rem;
-  }
-
-  .stats__hint { font-size: 0.625rem; }
 }

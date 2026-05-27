@@ -8,7 +8,7 @@ window.SorceryApp.stats = function () {
             <div class="stats__front">
               <div class="stats__num" data-count="${s.value.replace(/[^0-9]/g, '') || '0'}">${s.value.match(/^\d+/) ? '0' : s.value}</div>
               <div class="stats__label">${s.label}</div>
-              <div class="stats__hint">Klik untuk detail →</div>
+              <p class="stats__desc">${s.desc}</p>
             </div>
             <div class="stats__back">
               <p class="stats__desc">${s.desc}</p>

@@ -162,20 +162,6 @@ window.SorceryScroll = {
     }
 
     /* =============================================
-       8. STATS — Mobile Tap-to-Flip
-       ============================================= */
-    const statsItems = document.querySelectorAll(".stats__item-wrapper");
-    statsItems.forEach(item => {
-      item.addEventListener("click", () => {
-        if (isTouchDevice) {
-          const wasHovered = item.classList.contains("is-hovered");
-          statsItems.forEach(i => i.classList.remove("is-hovered"));
-          if (!wasHovered) item.classList.add("is-hovered");
-        }
-      });
-    });
-
-    /* =============================================
        9. ACTIVE NAV LINK based on visible section
        ============================================= */
     const sections = document.querySelectorAll("section[id]");
@@ -206,7 +192,7 @@ window.SorceryScroll = {
     const nav = document.querySelector(".nav");
     if (nav) {
       const onScroll = () => {
-        nav.classList.toggle("is-scrolled", window.scrollY > 20);
+        nav.classList.toggle("is-scrolled", window.scrollY > 50);
       };
       window.addEventListener("scroll", onScroll, { passive: true });
       onScroll();

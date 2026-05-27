@@ -33,23 +33,38 @@ window.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  /* Init interactions after DOM mounted */
+  /* Init interactions after DOM mounted — each isolated so one failure cannot block others */
   try {
     if (window.SorceryScroll && typeof window.SorceryScroll.init === 'function') {
       window.SorceryScroll.init();
     }
-    if (typeof A.navInit === 'function') A.navInit();
-    if (typeof A.faqInit === 'function') A.faqInit();
-    if (typeof A.formInit === 'function') A.formInit();
-    if (typeof A.heroInit === 'function') A.heroInit();
+  } catch (e) { console.error("Scroll init:", e); }
 
-    /* Countdowns */
+  try {
+    if (typeof A.navInit === 'function') A.navInit();
+  } catch (e) { console.error("Nav init:", e); }
+
+  try {
+    if (typeof A.faqInit === 'function') A.faqInit();
+  } catch (e) { console.error("FAQ init:", e); }
+
+  try {
+    if (typeof A.formatInit === 'function') A.formatInit();
+  } catch (e) { console.error("Format init:", e); }
+
+  try {
+    if (typeof A.formInit === 'function') A.formInit();
+  } catch (e) { console.error("Form init:", e); }
+
+  try {
+    if (typeof A.heroInit === 'function') A.heroInit();
+  } catch (e) { console.error("Hero init:", e); }
+
+  try {
     const deadline = D.event.deadline;
     if (window.SorceryCountdown && typeof window.SorceryCountdown.start === 'function') {
       window.SorceryCountdown.start(deadline, document.getElementById("hero-countdown"));
       window.SorceryCountdown.start(deadline, document.getElementById("cta-countdown"));
     }
-  } catch (err) {
-    console.error("Init error:", err);
-  }
+  } catch (e) { console.error("Countdown init:", e); }
 });

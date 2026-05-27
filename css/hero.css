@@ -6,13 +6,13 @@
 /* === BASE: MOBILE === */
 .hero {
   position: relative;
-  height: 200vh;
+  height: 100vh;
+  height: 100dvh;
   background: var(--bg-space);
 }
 
 .hero__sticky {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100vh;
   height: 100dvh;
   width: 100%;
@@ -359,6 +359,8 @@
   }
 
   .hero__sticky {
+    position: sticky;
+    top: 0;
     overflow: hidden;
   }
 
