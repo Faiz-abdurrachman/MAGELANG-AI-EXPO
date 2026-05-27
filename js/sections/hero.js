@@ -87,14 +87,16 @@ window.SorceryApp.heroInit = function() {
       canvas.height = h * dpr;
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+      const zoom = 1.08;
       const imgRatio = img.width / img.height;
       const canvasRatio = w / h;
       let dw, dh, dx, dy;
       if (imgRatio > canvasRatio) {
-        dh = h; dw = h * imgRatio; dx = (w - dw) / 2; dy = 0;
+        dh = h * zoom; dw = dh * imgRatio;
       } else {
-        dw = w; dh = w / imgRatio; dx = 0; dy = (h - dh) / 2;
+        dw = w * zoom; dh = dw / imgRatio;
       }
+      dx = (w - dw) / 2; dy = (h - dh) / 2;
       context.drawImage(img, dx, dy, dw, dh);
     };
 
@@ -110,14 +112,16 @@ window.SorceryApp.heroInit = function() {
         canvas.height = h * dpr;
         context.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+        const zoom = 1.08;
         const imgRatio = img.width / img.height;
         const canvasRatio = w / h;
         let dw, dh, dx, dy;
         if (imgRatio > canvasRatio) {
-          dh = h; dw = h * imgRatio; dx = (w - dw) / 2; dy = 0;
+          dh = h * zoom; dw = dh * imgRatio;
         } else {
-          dw = w; dh = w / imgRatio; dx = 0; dy = (h - dh) / 2;
+          dw = w * zoom; dh = dw / imgRatio;
         }
+        dx = (w - dw) / 2; dy = (h - dh) / 2;
         context.drawImage(img, dx, dy, dw, dh);
       }, 200);
     });
@@ -202,20 +206,20 @@ window.SorceryApp.heroInit = function() {
   }
 
   function drawFrame(img) {
+    const zoom = 1.08;
     const imgRatio = img.width / img.height;
     const canvasRatio = state.width / state.height;
     let drawWidth, drawHeight, x, y;
     if (imgRatio > canvasRatio) {
-      drawHeight = state.height;
-      drawWidth = state.height * imgRatio;
-      x = (state.width - drawWidth) / 2;
-      y = 0;
+      drawHeight = state.height * zoom;
+      drawWidth = drawHeight * imgRatio;
     } else {
-      drawWidth = state.width;
-      drawHeight = state.width / imgRatio;
-      x = 0;
-      y = (state.height - drawHeight) / 2;
+      drawWidth = state.width * zoom;
+      drawHeight = drawWidth / imgRatio;
     }
+    x = (state.width - drawWidth) / 2;
+    y = (state.height - drawHeight) / 2;
+    
     context.clearRect(0, 0, state.width, state.height);
     context.drawImage(img, x, y, drawWidth, drawHeight);
   }
