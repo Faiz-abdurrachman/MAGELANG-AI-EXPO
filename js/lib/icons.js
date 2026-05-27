@@ -1,50 +1,73 @@
 window.SorceryIcons = {
 
   /* ============================================
-     LOGO MONOGRAM — circular crest with stylized
-     dragon serpent coiled into "S" shape
+     LOGO MONOGRAM — Magelang Water Tower 
+     Refined architectural AI emblem
      ============================================ */
-  logo: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <circle cx="32" cy="32" r="29" stroke-width="2"/>
-    <circle cx="32" cy="32" r="24.5" stroke-opacity="0.35" stroke-width="0.8"/>
-    <path d="M22 23 Q22 17, 28 17 Q42 17, 42 25 Q42 31, 32 31 Q22 31, 22 38 Q22 47, 36 47 Q43 47, 43 42"/>
-    <circle cx="42" cy="22" r="1.2" fill="currentColor"/>
-    <path d="M42 25 q -2.5 -2, -5 -1.5 M42 25 q 1.5 1, 3 0"/>
-    <circle cx="32" cy="6" r="0.9" fill="currentColor"/>
-    <circle cx="32" cy="58" r="0.9" fill="currentColor"/>
+  logo: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="32" cy="32" r="30" stroke-width="1.2" stroke-opacity="0.5"/>
+    <!-- Simplified Tower -->
+    <path d="M20 22 L24 16 L40 16 L44 22 L44 28 L20 28 Z" fill="currentColor" fill-opacity="0.1"/>
+    <path d="M24 28 L24 48 M32 28 L32 48 M40 28 L40 48" stroke-width="1.5"/>
+    <path d="M20 48 L44 48" stroke-width="2"/>
+    <!-- AI Accents -->
+    <path d="M12 36 Q 32 46, 52 36" stroke-opacity="0.7" stroke-dasharray="2 2"/>
+    <circle cx="32" cy="42" r="1.5" fill="currentColor" stroke="none"/>
   </svg>`,
 
   /* ============================================
-     HERO WATERMARK — long Eastern dragon serpent,
-     S-curve flowing horizontally, scales + clouds
+     CINEMATIC ARTWORK — Magelang Water Tower
+     High-fidelity detailed architectural line-art
      ============================================ */
-  dragonWatermark: `<svg viewBox="0 0 800 360" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <!-- Body main S-curve -->
-    <path d="M40 200 Q120 90, 230 150 T440 200 Q540 220, 620 150 T780 170" stroke-width="3"/>
-    <!-- Body undertone (parallel) -->
-    <path d="M40 220 Q120 110, 230 170 T440 220 Q540 240, 620 170 T780 190" stroke-opacity="0.45"/>
-    <!-- Spine scales along top -->
-    <path d="M125 145 q5 -9 10 0 M165 125 q5 -9 10 0 M205 122 q5 -9 10 0 M245 128 q5 -9 10 0 M285 145 q5 -9 10 0 M325 168 q5 -9 10 0 M365 185 q5 -9 10 0 M405 195 q5 -9 10 0 M445 198 q5 -9 10 0 M485 195 q5 -9 10 0 M525 188 q5 -9 10 0 M565 170 q5 -9 10 0 M605 150 q5 -9 10 0 M645 145 q5 -9 10 0"/>
-    <!-- Belly arcs along bottom -->
-    <path d="M120 240 q15 8 30 0 M170 245 q15 8 30 0 M225 240 q15 8 30 0 M280 235 q15 8 30 0 M335 235 q15 8 30 0 M395 240 q15 8 30 0 M455 245 q15 8 30 0 M515 235 q15 8 30 0 M575 215 q15 8 30 0 M630 205 q15 8 30 0" stroke-opacity="0.6" stroke-width="1.2"/>
-    <!-- Head at left -->
-    <path d="M40 200 q -12 -8, -22 -4 q 6 4, 6 12 q -6 0, -10 6 q 6 0, 12 4 q -4 6, 2 11" stroke-width="2.5"/>
-    <circle cx="32" cy="195" r="2.2" fill="currentColor"/>
-    <!-- Whiskers -->
-    <path d="M22 200 q -16 -6, -22 4 M22 212 q -14 6, -22 0"/>
-    <!-- Horns -->
-    <path d="M28 188 q -3 -10, 4 -16 M40 184 q 0 -10, 8 -14"/>
-    <!-- Tail flame at right -->
-    <path d="M780 170 q 12 -8, 18 -2 q -6 6, 0 12 q -10 -2, -12 4"/>
-    <path d="M775 188 q 14 6, 22 0 q -6 6, 2 11"/>
-    <!-- Cloud accents -->
-    <path d="M150 70 q 10 -10, 20 0 q 5 -8, 15 -3 q 5 -5, 12 0 q 3 -3, 8 0" stroke-opacity="0.4" stroke-width="1.4"/>
-    <path d="M580 80 q 10 -10, 20 0 q 5 -8, 15 -3 q 4 -3, 8 0" stroke-opacity="0.4" stroke-width="1.4"/>
-    <path d="M340 310 q 10 -10, 20 0 q 5 -8, 15 -3 q 4 -3, 8 0 q 3 -2, 6 1" stroke-opacity="0.4" stroke-width="1.4"/>
-    <path d="M50 320 q 10 -10, 20 0 q 4 -3, 8 0" stroke-opacity="0.35" stroke-width="1.4"/>
-    <!-- Pearl (oriental dragon often chases pearl) -->
-    <circle cx="50" cy="60" r="6" stroke-opacity="0.4"/>
-    <circle cx="50" cy="60" r="3" stroke-opacity="0.25" fill="currentColor" fill-opacity="0.15"/>
+  towerWatermark: `<svg viewBox="0 0 500 800" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <!-- Top Spire / Antenna -->
+    <path d="M250 20 L250 80 M230 80 L270 80 L260 60 L240 60 Z" />
+    
+    <!-- Octagon Tank (The Crown) -->
+    <path d="M120 120 L380 120 L450 220 L420 350 L80 350 L50 220 Z" stroke-width="2" />
+    <path d="M120 120 L120 350 M180 120 L180 350 M250 120 L250 350 M320 120 L320 350 M380 120 L380 350" stroke-opacity="0.6" />
+    <path d="M50 220 L450 220 M80 330 L420 330" stroke-opacity="0.4" />
+    
+    <!-- Window Details on Tank -->
+    <rect x="135" y="150" width="30" height="150" rx="2" stroke-opacity="0.3" />
+    <rect x="200" y="150" width="100" height="150" rx="2" stroke-opacity="0.3" />
+    <rect x="335" y="150" width="30" height="150" rx="2" stroke-opacity="0.3" />
+
+    <!-- Main Pillars (The Structure) -->
+    <path d="M90 350 L90 650 M140 350 L140 650 M190 350 L190 650 M250 350 L250 650 M310 350 L310 650 M360 350 L360 650 M410 350 L410 650" />
+    
+    <!-- Horizontal Structural Rings -->
+    <path d="M90 450 L410 450 M90 550 L410 550" stroke-width="1.8" />
+    <path d="M85 460 L415 460 M85 560 L415 560" stroke-opacity="0.3" stroke-width="0.8" />
+
+    <!-- Cross Bracing (Intricate Detail) -->
+    <g stroke-opacity="0.4" stroke-width="0.8">
+      <path d="M90 350 L140 450 M140 350 L90 450" />
+      <path d="M140 350 L190 450 M190 350 L140 450" />
+      <path d="M190 350 L250 450 M250 350 L190 450" />
+      <path d="M250 350 L310 450 M310 350 L250 450" />
+      <path d="M310 350 L360 450 M360 350 L310 450" />
+      <path d="M360 350 L410 450 M410 350 L360 450" />
+      
+      <path d="M90 450 L140 550 M140 450 L90 550" />
+      <path d="M140 450 L190 550 M190 450 L140 550" />
+      <path d="M190 450 L250 550 M250 450 L190 550" />
+      <path d="M250 450 L310 550 M310 450 L250 550" />
+      <path d="M310 450 L360 550 M360 450 L310 550" />
+      <path d="M360 450 L410 550 M410 450 L360 550" />
+    </g>
+
+    <!-- Stone/Brick Base -->
+    <path d="M60 650 L440 650 L460 750 L40 750 Z" stroke-width="1.5" />
+    <path d="M60 670 L440 670 M55 690 L445 690 M50 710 L450 710 M45 730 L455 730" stroke-opacity="0.3" stroke-width="0.8" />
+    <path d="M100 650 L100 750 M180 650 L180 750 M250 650 L250 750 M320 650 L320 750 M400 650 L400 750" stroke-opacity="0.2" />
+
+    <!-- AI Ecosystem Accents -->
+    <circle cx="250" cy="400" r="220" stroke-dasharray="10 15" stroke-opacity="0.2" />
+    <path d="M50 400 A 200 200 0 0 1 450 400" stroke-opacity="0.4" stroke-dasharray="4 8" />
+    <circle cx="50" cy="400" r="3" fill="currentColor" />
+    <circle cx="450" cy="400" r="3" fill="currentColor" />
+    <circle cx="250" cy="620" r="4" fill="currentColor" fill-opacity="0.8" />
   </svg>`,
 
   /* ============================================
@@ -52,33 +75,20 @@ window.SorceryIcons = {
      ============================================ */
   seal: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <circle cx="50" cy="50" r="46" stroke-width="1"/>
-    <circle cx="50" cy="50" r="40" stroke-width="0.5" stroke-opacity="0.4"/>
-    <path d="M30 38 Q30 28, 40 28 Q58 28, 58 38 Q58 47, 50 49 Q40 51, 40 60 Q40 70, 58 70 Q66 70, 68 65" stroke-width="1.5"/>
-    <circle cx="58" cy="34" r="1.1" fill="currentColor"/>
-    <path d="M58 37 q -2 -1, -4 -1"/>
-    <circle cx="50" cy="10" r="1.3" fill="currentColor"/>
-    <circle cx="50" cy="90" r="1.3" fill="currentColor"/>
-    <circle cx="10" cy="50" r="1.3" fill="currentColor"/>
-    <circle cx="90" cy="50" r="1.3" fill="currentColor"/>
-    <path d="M22 22 l3 3 M75 22 l3 3 M22 78 l3 -3 M75 78 l3 -3" stroke-opacity="0.5"/>
+    <circle cx="50" cy="50" r="40" stroke-width="0.5" stroke-dasharray="2 4"/>
+    <path d="M40 35 L60 35 L65 45 L65 55 L60 65 L40 65 L35 55 L35 45 Z" stroke-width="1.5" fill="currentColor" fill-opacity="0.1" />
   </svg>`,
 
   /* ============================================
      FOOTER CREST — elaborate full crest
      ============================================ */
   crest: `<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <circle cx="60" cy="60" r="56" stroke-width="1"/>
-    <circle cx="60" cy="60" r="48" stroke-width="0.5" stroke-opacity="0.35"/>
-    <path d="M35 48 Q35 33, 50 33 Q70 33, 70 48 Q70 60, 60 62 Q48 64, 48 74 Q48 86, 65 86 Q76 86, 80 80" stroke-width="1.5"/>
-    <circle cx="70" cy="42" r="1.6" fill="currentColor"/>
-    <path d="M70 46 q -3 -2, -6 -1 M70 46 q 1 3, 4 4"/>
-    <path d="M64 36 q -1 -6, 3 -10 M72 38 q 2 -6, 7 -8"/>
-    <path d="M40 14 q 20 -8, 40 0" stroke-width="0.8"/>
-    <path d="M40 106 q 20 8, 40 0" stroke-width="0.8"/>
-    <circle cx="50" cy="100" r="1" fill="currentColor"/>
-    <circle cx="60" cy="102" r="1" fill="currentColor"/>
-    <circle cx="70" cy="100" r="1" fill="currentColor"/>
-    <path d="M14 60 l4 0 M102 60 l4 0" stroke-width="1"/>
+    <circle cx="60" cy="60" r="56" stroke-width="1.2"/>
+    <circle cx="60" cy="60" r="50" stroke-width="0.6" stroke-dasharray="4 4" stroke-opacity="0.4"/>
+    <!-- Detailed mini tower -->
+    <path d="M45 40 L75 40 L80 50 L75 60 L45 60 L40 50 Z" stroke-width="1.5" />
+    <path d="M48 60 L48 85 M60 60 L60 85 M72 60 L72 85" stroke-width="1.2" />
+    <path d="M40 85 L80 85" stroke-width="2" />
   </svg>`,
 
   /* ============================================
