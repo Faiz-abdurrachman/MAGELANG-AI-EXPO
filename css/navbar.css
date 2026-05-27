@@ -22,17 +22,17 @@
   opacity: 1;
   max-width: 100%;
   margin-inline: auto;
-  transition: top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              right 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              max-width 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              border-radius 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: top 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              left 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              right 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav__inner {
@@ -42,9 +42,9 @@
   height: 56px;
   padding-inline: 1rem;
   gap: 1rem;
-  transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              padding 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              gap 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: height 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              padding 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              gap 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   z-index: 10;
 }
@@ -250,7 +250,7 @@
     pointer-events: auto;
     transform: none;
     z-index: 10;
-    transition: gap 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: gap 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .nav.is-scrolled .nav__menu {
