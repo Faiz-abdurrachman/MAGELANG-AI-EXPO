@@ -15,11 +15,16 @@ const CONFIG = {
   EVENT_NAME: 'Magelang AI Expo 2026',
   EVENT_DATE: '4 Juni 2026',
   EVENT_VENUE: 'Lokal Folk Cafe, Magelang',
+  ID_PREFIX: 'MAE',
+  ID_YEAR: '2026',
   MAX_PAYLOAD_KB: 32,
   DUPLICATE_WINDOW_HOURS: 24
 };
 
+/*  Column layout — Submission ID is column 1 (index 0)
+    Index: 0              1            2                 3              4           5                 6               7                    8                 9       10              */
 const COLUMNS = [
+  'Submission ID',
   'Waktu Submit',
   'Nama Produk/Tim',
   'Nama Founder',
@@ -33,6 +38,12 @@ const COLUMNS = [
   'Catatan Admin'
 ];
 
+const COL = {
+  SID: 0, TIMESTAMP: 1, STARTUP: 2, FOUNDER: 3, EMAIL: 4,
+  PHONE: 5, CATEGORY: 6, STAGE: 7, TRACTION: 8, DECK: 9,
+  STATUS: 10, NOTES: 11
+};
+
 const REQUIRED = ['startup', 'founder', 'email', 'phone', 'category', 'stage', 'traction', 'deck'];
 
 /* ============================================
@@ -44,10 +55,11 @@ function doPost(e) {
     var payload = parsePayload(e);
     validatePayload(payload);
     checkDuplicate(payload.email);
-    saveToSheet(payload);
-    sendFounderEmail(payload);
-    sendOrganizerEmail(payload);
-    return jsonOk({ success: true, message: 'Pendaftaran berhasil dikirim.' });
+    var submissionId = generateSubmissionId();
+    saveToSheet(payload, submissionId);
+    sendFounderEmail(payload, submissionId);
+    sendOrganizerEmail(payload, submissionId);
+    return jsonOk({ success: true, submissionId: submissionId, message: 'Pendaftaran berhasil dikirim.' });
   } catch (err) {
     if (err.isPublic) {
       return jsonError(err.message, err.code || 400);
@@ -59,7 +71,7 @@ function doPost(e) {
 
 function doGet(e) {
   return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok', service: 'magelang-ai-exppo-submissions' }))
+    .createTextOutput(JSON.stringify({ status: 'ok', service: 'magelang-ai-expo-submissions' }))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
@@ -152,12 +164,12 @@ function checkDuplicate(email) {
   if (data.length <= 1) return;
 
   var cutoff = new Date(Date.now() - CONFIG.DUPLICATE_WINDOW_HOURS * 60 * 60 * 1000);
-  var emailCol = 3;
+  var emailCol = COL.EMAIL;
 
   for (var i = data.length - 1; i >= 1; i--) {
     var row = data[i];
     if (row[emailCol] && String(row[emailCol]).toLowerCase() === email.toLowerCase()) {
-      var rowTime = row[0];
+      var rowTime = row[COL.TIMESTAMP];
       if (rowTime instanceof Date && rowTime >= cutoff) {
         throw publicError('Email ini sudah mengajukan pendaftaran dalam ' + CONFIG.DUPLICATE_WINDOW_HOURS + ' jam terakhir. Tim kami akan menghubungi Anda.', 409);
       }
@@ -166,10 +178,33 @@ function checkDuplicate(email) {
 }
 
 /* ============================================
+   SUBMISSION ID GENERATION
+   ============================================ */
+
+function generateSubmissionId() {
+  var ss = SpreadsheetApp.openById(CONFIG.SPREADSHEET_ID);
+  var sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
+  var nextNum = 1;
+
+  if (sheet && sheet.getLastRow() > 1) {
+    var lastRow = sheet.getRange(sheet.getLastRow(), COL.SID + 1, 1, 1).getValue();
+    if (lastRow && typeof lastRow === 'string') {
+      var match = lastRow.match(/(\d+)$/);
+      if (match) {
+        nextNum = parseInt(match[1], 10) + 1;
+      }
+    }
+  }
+
+  var padded = String(nextNum).padStart(3, '0');
+  return CONFIG.ID_PREFIX + '-' + CONFIG.ID_YEAR + '-' + padded;
+}
+
+/* ============================================
    SAVE TO SHEET
    ============================================ */
 
-function saveToSheet(p) {
+function saveToSheet(p, submissionId) {
   var ss = SpreadsheetApp.openById(CONFIG.SPREADSHEET_ID);
   var sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
 
@@ -182,6 +217,7 @@ function saveToSheet(p) {
 
   var now = new Date();
   sheet.appendRow([
+    submissionId,
     now,
     p.startup,
     p.founder,
@@ -195,6 +231,7 @@ function saveToSheet(p) {
     ''
   ]);
 
+  SpreadsheetApp.flush();
   autoResize(sheet);
 }
 
@@ -210,9 +247,9 @@ function autoResize(sheet) {
    EMAIL — FOUNDER CONFIRMATION
    ============================================ */
 
-function sendFounderEmail(p) {
-  var subject = 'Pendaftaran Magelang AI Expo 2026 Diterima';
-  var body = founderEmailHtml(p);
+function sendFounderEmail(p, submissionId) {
+  var subject = 'Pendaftaran Magelang AI Expo 2026 Diterima — ' + submissionId;
+  var body = founderEmailHtml(p, submissionId);
   try {
     MailApp.sendEmail({
       to: p.email,
@@ -225,7 +262,7 @@ function sendFounderEmail(p) {
   }
 }
 
-function founderEmailHtml(p) {
+function founderEmailHtml(p, submissionId) {
   return '<!DOCTYPE html><html><head><meta charset="utf-8"></head>' +
     '<body style="margin:0;padding:0;background:#020617;font-family:system-ui,-apple-system,sans-serif;">' +
     '<table width="100%" cellpadding="0" cellspacing="0" style="background:#020617;padding:2rem 0;">' +
@@ -243,6 +280,7 @@ function founderEmailHtml(p) {
     '<table width="100%" cellpadding="0" cellspacing="0" style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.15);border-radius:12px;margin:1.5rem 0;">' +
     '<tr><td style="padding:1.25rem 1.5rem;">' +
     '<p style="margin:0 0 0.5rem;color:#38bdf8;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;">DETAIL PENDAFTARAN</p>' +
+    '<p style="margin:0 0 0.25rem;color:#cbd5e1;font-size:0.875rem;"><strong style="color:#e2e8f0;">Submission ID:</strong> ' + escHtml(submissionId) + '</p>' +
     '<p style="margin:0 0 0.25rem;color:#cbd5e1;font-size:0.875rem;"><strong style="color:#e2e8f0;">Produk:</strong> ' + escHtml(p.startup) + '</p>' +
     '<p style="margin:0 0 0.25rem;color:#cbd5e1;font-size:0.875rem;"><strong style="color:#e2e8f0;">Kategori:</strong> ' + escHtml(p.category) + '</p>' +
     '<p style="margin:0 0 0.25rem;color:#cbd5e1;font-size:0.875rem;"><strong style="color:#e2e8f0;">Tahap:</strong> ' + escHtml(p.stage) + '</p>' +
@@ -251,7 +289,8 @@ function founderEmailHtml(p) {
 
     '<p style="margin:1.5rem 0 0.5rem;color:#cbd5e1;font-size:0.9375rem;line-height:1.65;"><strong style="color:#e2e8f0;">Langkah Selanjutnya</strong></p>' +
     '<p style="margin:0 0 0.5rem;color:#cbd5e1;font-size:0.875rem;line-height:1.65;">Tim kurasi akan meninjau pendaftaran Anda berdasarkan kejelasan problem, kesiapan demo, dan relevansi dengan kebutuhan audiens bisnis. Proses review membutuhkan waktu hingga 7 hari kerja.</p>' +
-    '<p style="margin:0;color:#cbd5e1;font-size:0.875rem;line-height:1.65;">Jika terpilih, tim kami akan menghubungi Anda untuk briefing sebelum acara. Mohon cek folder spam jika tidak menerima email dari kami.</p>' +
+    '<p style="margin:0 0 0.75rem;color:#cbd5e1;font-size:0.875rem;line-height:1.65;">Jika terpilih, tim kami akan menghubungi Anda untuk briefing sebelum acara. Mohon cek folder spam jika tidak menerima email dari kami.</p>' +
+    '<p style="margin:0;padding:0.625rem 1rem;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.12);border-radius:8px;color:#94a3b8;font-size:0.8125rem;line-height:1.5;">Simpan <strong style="color:#cbd5e1;">' + escHtml(submissionId) + '</strong> sebagai referensi untuk komunikasi dengan tim acara.</p>' +
     '</td></tr>' +
 
     '<tr><td style="padding:1.5rem 2.5rem;border-top:1px solid rgba(255,255,255,0.06);">' +
@@ -265,9 +304,9 @@ function founderEmailHtml(p) {
    EMAIL — ORGANIZER NOTIFICATION
    ============================================ */
 
-function sendOrganizerEmail(p) {
-  var subject = '[Baru] Pendaftaran: ' + p.startup;
-  var body = organizerEmailHtml(p);
+function sendOrganizerEmail(p, submissionId) {
+  var subject = '[Baru] ' + submissionId + ' — ' + p.startup;
+  var body = organizerEmailHtml(p, submissionId);
   for (var i = 0; i < CONFIG.ORGANIZER_EMAILS.length; i++) {
     try {
       MailApp.sendEmail({
@@ -282,7 +321,7 @@ function sendOrganizerEmail(p) {
   }
 }
 
-function organizerEmailHtml(p) {
+function organizerEmailHtml(p, submissionId) {
   return '<!DOCTYPE html><html><head><meta charset="utf-8"></head>' +
     '<body style="margin:0;padding:0;background:#f8fafc;font-family:system-ui,-apple-system,sans-serif;">' +
     '<table width="100%" cellpadding="0" cellspacing="0" style="padding:1.5rem 0;">' +
@@ -294,6 +333,9 @@ function organizerEmailHtml(p) {
     '</td></tr>' +
 
     '<tr><td style="padding:1.5rem;">' +
+
+    '<div style="margin-bottom:1rem;padding:0.75rem 1rem;background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;font-size:1rem;font-weight:700;color:#0369a1;letter-spacing:0.02em;">' + escHtml(submissionId) + '</div>' +
+
     '<table width="100%" cellpadding="0" cellspacing="0" style="font-size:0.875rem;">' +
     '<tr><td style="padding:0.375rem 0;color:#64748b;width:140px;">Founder</td><td style="padding:0.375rem 0;color:#0f172a;font-weight:600;">' + escHtml(p.founder) + '</td></tr>' +
     '<tr><td style="padding:0.375rem 0;color:#64748b;">Email</td><td style="padding:0.375rem 0;"><a href="mailto:' + escAttr(p.email) + '" style="color:#0ea5e9;">' + escHtml(p.email) + '</a></td></tr>' +
@@ -365,7 +407,7 @@ function setupSheet() {
     sheet.setFrozenRows(1);
   }
 
-  var statusCol = COLUMNS.indexOf('Status') + 1;
+  var statusCol = COL.STATUS + 1;
   var validation = SpreadsheetApp.newDataValidation()
     .requireValueInList(['Baru', 'Ditinjau', 'Dihubungi', 'Diterima', 'Ditolak', 'Briefing', 'Expo Day'], true)
     .build();
@@ -386,16 +428,17 @@ function resendFounderEmail(rowNum) {
   var row = sheet.getRange(rowNum, 1, 1, COLUMNS.length).getValues()[0];
 
   var p = {
-    startup: row[1],
-    founder: row[2],
-    email: row[3],
-    phone: row[4],
-    category: row[5],
-    stage: row[6],
-    traction: row[7],
-    deck: row[8]
+    startup: row[COL.STARTUP],
+    founder: row[COL.FOUNDER],
+    email: row[COL.EMAIL],
+    phone: row[COL.PHONE],
+    category: row[COL.CATEGORY],
+    stage: row[COL.STAGE],
+    traction: row[COL.TRACTION],
+    deck: row[COL.DECK]
   };
 
-  sendFounderEmail(p);
-  Logger.log('Resent confirmation to ' + p.email);
+  var submissionId = row[COL.SID];
+  sendFounderEmail(p, submissionId);
+  Logger.log('Resent confirmation to ' + p.email + ' (' + submissionId + ')');
 }

@@ -1,6 +1,6 @@
 window.SorceryApp = window.SorceryApp || {};
 
-window.SorceryApp.GAS_ENDPOINT = 'PASTE_YOUR_GAS_WEB_APP_URL_HERE';
+window.SorceryApp.GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwjWqRUpvq_z9__gEir_kOcGgHpBrHk-z0pk5zS2zVgd6XKMyQRO6iyxBDx-5HrCqfM/exec';
 
 window.SorceryApp.form = function () {
   return `
@@ -158,10 +158,13 @@ window.SorceryApp.formInit = function () {
     .then((res) => res.json())
     .then((result) => {
       if (result.success) {
+        const sid = escape(result.submissionId || '');
         form.innerHTML = `
           <div class="form__success">
             <h3>Pendaftaran Terkirim ✓</h3>
-            <p>Terima kasih, <strong>${founderName}</strong>. Tim acara akan menghubungi melalui <strong>${founderEmail}</strong> dalam 7 hari kerja. Mohon cek folder spam Anda.</p>
+            <p>Terima kasih, <strong>${founderName}</strong>. Tim acara akan menghubungi melalui <strong>${founderEmail}</strong> dalam 7 hari kerja.</p>
+            <p class="form__sid">Submission ID: <strong>${sid}</strong></p>
+            <p class="form__sid-note">Simpan ID ini untuk referensi komunikasi dengan tim acara.</p>
           </div>
         `;
       } else {
