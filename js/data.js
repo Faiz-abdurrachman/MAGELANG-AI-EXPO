@@ -54,10 +54,34 @@ window.SorceryData = {
    { time: "14:30 — 15:00", title: "Closing & Photo Session", pic: "Panitia APINDO", desc: "Penutupan acara dan foto bersama.", tag: "Closing" }
   ],
   investors: [
-    { title: "Pengusaha Senior", thesis: "Retail · Properti · Distribusi", ticket: "Potensi pilot project & jaringan bisnis", portfolio: "Berpengalaman membangun bisnis lintas sektor" },
-    { title: "Pemilik Modal Lokal", thesis: "Early product · bisnis berbasis teknologi", ticket: "Diskusi kolaborasi, bukan janji pendanaan", portfolio: "Tertarik melihat peluang AI yang realistis" },
-    { title: "Corporate Decision Maker", thesis: "Efisiensi operasional · otomasi · customer service", ticket: "Potensi adopsi produk dan partnership", portfolio: "Mencari solusi yang bisa dipakai di bisnis nyata" },
-    { title: "Mentor & Operator Teknologi", thesis: "Product strategy · GTM · AI implementation", ticket: "Feedback produk dan koneksi lanjutan", portfolio: "Mendampingi founder dari ide ke implementasi" }
+    { 
+      title: "Government & City Ecosystem", 
+      desc: "Mendorong kolaborasi antara teknologi, bisnis, dan pemerintah daerah untuk membuka ruang inovasi yang lebih nyata dan berdampak bagi kota.", 
+      label: "Official Support · Regional Collaboration",
+      tags: "Regional Innovation · Public Collaboration · Smart City",
+      rep: "Walikota Magelang"
+    },
+    { 
+      title: "Institutional & Public Support", 
+      desc: "Mendukung terciptanya ruang interaksi publik yang aman, profesional, dan terbuka untuk perkembangan ekosistem teknologi lokal.", 
+      label: "Security · Trust · Event Stability",
+      tags: "Public Trust · Institutional Support · Safety",
+      rep: "Kapolres Magelang"
+    },
+    { 
+      title: "Business & Industry Network", 
+      desc: "Membuka koneksi industri, peluang implementasi AI, dan kolaborasi bisnis nyata untuk mempertemukan inovasi dengan kebutuhan pasar.", 
+      label: "Liem Wan King · Founder New Armada",
+      tags: "Industry Access · Strategic Partnership",
+      rep: "Industry Network"
+    },
+    { 
+      title: "AI & Technology Community", 
+      desc: "Komunitas builder, mahasiswa, kreator, dan eksplorator teknologi yang mendorong eksperimen AI, kolaborasi, dan adopsi teknologi secara nyata.", 
+      label: "Data Sorcerers · AI Builder Community",
+      tags: "AI Builders · Emerging Talent",
+      rep: "Tech Community"
+    }
   ],
 
   values: [
