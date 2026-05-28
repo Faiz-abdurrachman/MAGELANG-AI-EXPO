@@ -11,7 +11,7 @@
 const CONFIG = {
   SPREADSHEET_ID: 'PASTE_YOUR_SPREADSHEET_ID_HERE',
   SHEET_NAME: 'Submissions',
-  ORGANIZER_EMAILS: ['partnership@sorcery.id'],
+  ORGANIZER_EMAILS: ['Contact@data-sorcerers.com'],
   EVENT_NAME: 'Magelang AI Expo 2026',
   EVENT_DATE: '4 Juni 2026',
   EVENT_VENUE: 'Lokal Folk Cafe, Magelang',

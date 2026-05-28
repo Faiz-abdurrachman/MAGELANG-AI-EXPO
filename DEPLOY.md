@@ -65,7 +65,7 @@ Di editor Apps Script, cari object `CONFIG` di bagian atas file dan update:
 const CONFIG = {
   SPREADSHEET_ID: 'PASTE_YOUR_SPREADSHEET_ID_HERE',  // ← dari Step 1
   SHEET_NAME: 'Submissions',                           // ← biarkan default
-  ORGANIZER_EMAILS: ['partnership@sorcery.id'],        // ← tambah email organizer
+  ORGANIZER_EMAILS: ['Contact@data-sorcerers.com'],        // ← tambah email organizer
   EVENT_NAME: 'Magelang AI Expo 2026',                 // ← biarkan default
   EVENT_DATE: '4 Juni 2026',                           // ← biarkan default
   EVENT_VENUE: 'Lokal Folk Cafe, Magelang',            // ← biarkan default

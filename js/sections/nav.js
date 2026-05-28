@@ -53,14 +53,14 @@ window.SorceryApp.navInit = function() {
     }
     const rect = el.getBoundingClientRect();
     const menuRect = menu.getBoundingClientRect();
-    const pad = 4;
-    const vPad = 2;
+    const pad = 8;
+    const vPad = 5;
 
     indicator.style.opacity = '1';
     indicator.style.width = `${rect.width + pad * 2}px`;
     indicator.style.height = `${rect.height + vPad * 2}px`;
     indicator.style.left = `${rect.left - menuRect.left - pad}px`;
-    indicator.style.top = `${rect.top - menuRect.top - vPad}px`;
+    indicator.style.top = `${rect.top - menuRect.top - vPad - 1}px`;
   };
 
   let hoverLink = null;
@@ -81,6 +81,9 @@ window.SorceryApp.navInit = function() {
       indicator.style.opacity = '0';
     }
   };
+
+  // REAL-TIME SYNC: Update indicator while navbar is morphing/scrolling
+  window.addEventListener('scroll', sync, { passive: true });
 
   links.forEach(link => {
     link.addEventListener('click', () => {

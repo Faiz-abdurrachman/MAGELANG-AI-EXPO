@@ -26,14 +26,14 @@ window.SorceryApp.footer = function () {
               <li><a href="#register">Form Pendaftaran</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="mailto:press@sorcery.id">Press Inquiry</a></li>
-              <li><a href="mailto:partnership@sorcery.id">Partnership</a></li>
+              <li><a href="mailto:Contact@data-sorcerers.com">Partnership</a></li>
             </ul>
           </div>
 
           <div class="footer__col">
             <h4>Kontak</h4>
             <ul>
-              <li><a href="mailto:partnership@sorcery.id">partnership@sorcery.id</a></li>
+              <li><a href="mailto:Contact@data-sorcerers.com">Contact@data-sorcerers.com</a></li>
               <li>Lokal Folk Cafe</li>
               <li>Magelang, Indonesia</li>
               <li><a href="#">Instagram · LinkedIn</a></li>

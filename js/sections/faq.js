@@ -23,7 +23,7 @@ window.SorceryApp.faq = function () {
         <div class="faq__grid">
           <div class="faq__head reveal">
             <h2 class="section-title">Pertanyaan yang<br>Sering Diajukan</h2>
-            <p class="section-subtitle">Jika pertanyaan Anda belum tercakup, hubungi tim kami di <a href="mailto:partnership@sorcery.id" class="text-red">partnership@sorcery.id</a> kami merespons dalam 24 jam kerja.</p>
+            <p class="section-subtitle">Jika pertanyaan Anda belum tercakup, hubungi tim kami di <a href="mailto:Contact@data-sorcerers.com" class="text-red">Contact@data-sorcerers.com</a> kami merespons dalam 24 jam kerja.</p>
           </div>
           <div class="faq__list reveal">${items}</div>
         </div>
