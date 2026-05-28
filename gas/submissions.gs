@@ -46,6 +46,17 @@ const COL = {
 
 const REQUIRED = ['startup', 'founder', 'email', 'phone', 'category', 'stage', 'traction', 'deck'];
 
+const ALLOWED_CATEGORIES = [
+  'AI / Machine Learning', 'SaaS B2B', 'Fintech', 'AgriTech',
+  'HealthTech', 'EdTech', 'Marketplace', 'Logistics',
+  'ClimateTech', 'DeepTech', 'Lainnya'
+];
+
+const ALLOWED_STAGES = [
+  'Ide tervalidasi', 'Prototype', 'MVP berjalan',
+  'Produk aktif', 'Siap scale'
+];
+
 /* ============================================
    ENTRY POINTS
    ============================================ */
@@ -106,6 +117,7 @@ function parsePayload(e) {
     var key = fields[i];
     var val = data[key];
     sanitized[key] = (typeof val === 'string') ? val.trim() : '';
+    if (key === 'email') sanitized[key] = sanitized[key].toLowerCase();
   }
 
   return sanitized;
@@ -124,12 +136,12 @@ function validatePayload(p) {
     }
   }
 
-  if (p.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email)) {
+  if (p.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(p.email)) {
     errors.push('Format email tidak valid.');
   }
 
-  if (p.deck && !/^https?:\/\/.+\..+/.test(p.deck)) {
-    errors.push('Link demo/deck tidak valid.');
+  if (p.deck && !/^https:\/\/[a-zA-Z0-9].+\..{2,}/.test(p.deck)) {
+    errors.push('Link demo/deck tidak valid (gunakan https://).');
   }
 
   if (p.founder && p.founder.length > 200) {
@@ -142,6 +154,27 @@ function validatePayload(p) {
 
   if (p.traction && p.traction.length > 2000) {
     errors.push('Deskripsi terlalu panjang (maks 2000 karakter).');
+  }
+
+  if (p.phone && !/^\+?[\d\s\-()]{6,30}$/.test(p.phone)) {
+    errors.push('Format nomor WhatsApp tidak valid.');
+  }
+  if (p.phone && p.phone.replace(/\D/g, '').length < 6) {
+    errors.push('Nomor WhatsApp terlalu pendek (min. 6 digit).');
+  }
+
+  if (p.founder && p.founder.trim().length < 2) {
+    errors.push('Nama founder terlalu pendek (min. 2 karakter).');
+  }
+  if (p.startup && p.startup.trim().length < 2) {
+    errors.push('Nama produk terlalu pendek (min. 2 karakter).');
+  }
+
+  if (p.category && ALLOWED_CATEGORIES.indexOf(p.category) === -1) {
+    errors.push('Kategori industri tidak valid.');
+  }
+  if (p.stage && ALLOWED_STAGES.indexOf(p.stage) === -1) {
+    errors.push('Tahap produk tidak valid.');
   }
 
   if (errors.length > 0) {
@@ -201,6 +234,19 @@ function generateSubmissionId() {
 }
 
 /* ============================================
+   SHEET FORMULA INJECTION PROTECTION
+   ============================================ */
+
+function sanitiseForSheet(val) {
+  if (typeof val !== 'string') return val;
+  var first = val.charAt(0);
+  if (first === '=' || first === '+' || first === '-' || first === '@') {
+    return "'" + val;
+  }
+  return val;
+}
+
+/* ============================================
    SAVE TO SHEET
    ============================================ */
 
@@ -219,14 +265,14 @@ function saveToSheet(p, submissionId) {
   sheet.appendRow([
     submissionId,
     now,
-    p.startup,
-    p.founder,
-    p.email,
-    p.phone,
-    p.category,
-    p.stage,
-    p.traction,
-    p.deck,
+    sanitiseForSheet(p.startup),
+    sanitiseForSheet(p.founder),
+    sanitiseForSheet(p.email),
+    sanitiseForSheet(p.phone),
+    sanitiseForSheet(p.category),
+    sanitiseForSheet(p.stage),
+    sanitiseForSheet(p.traction),
+    sanitiseForSheet(p.deck),
     'Baru',
     ''
   ]);

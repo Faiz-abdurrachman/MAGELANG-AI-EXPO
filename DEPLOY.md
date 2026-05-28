@@ -419,3 +419,130 @@ Sebelum go live, pastikan:
 - [ ] Organizer email masuk ke semua email di `ORGANIZER_EMAILS`
 - [ ] Status dropdown berfungsi di Sheet
 - [ ] Vercel deployment up to date
+- [ ] Validasi nomor WhatsApp berfungsi (input sampah ditolak)
+- [ ] Validasi URL HTTPS-only berfungsi (`http://` ditolak)
+- [ ] Formula injection protection aktif (`= + - @` di-prefix apostrof)
+- [ ] Enum validation kategori & tahap berfungsi (nilai arbitrer ditolak)
+- [ ] Email dinormalisasi ke lowercase sebelum disimpan
+
+---
+
+## Update Deployment (Tanpa Ganti URL)
+
+Ketika kamu edit code GAS dan perlu mengupdate yang sudah berjalan:
+
+### Cara: Manage Deployments (URL tetap sama)
+
+1. Di Apps Script editor, setelah selesai edit, **Save** (Ctrl+S)
+2. Klik **Deploy → Manage deployments**
+3. Klik **pencil icon** (✏️) di deployment yang aktif
+4. Di kolom **Version**, pilih **New version** (bukan versi lama)
+5. Opsional: update **Description** (misal: `v2 — validation audit`)
+6. Klik **Deploy**
+7. **URL tetap sama** — frontend nggak perlu di-update
+8. Deployment lama otomatis diganti dengan versi baru
+
+> **Kenapa pakai Manage Deployments, bukan New Deployment?**
+> - New Deployment = URL baru → harus update `form.js` → git push → Vercel redeploy
+> - Manage Deployments = URL tetap → cukup update versi di GAS, selesai
+
+### Kapan Perlu New Deployment?
+
+- **Hampir tidak pernah.** Gunakan Manage Deployments untuk semua update code.
+- New Deployment hanya kalau kamu mau membuat endpoint terpisah (misal: staging vs production).
+
+---
+
+## Changelog — Validasi & Keamanan
+
+### v2 — Backend Validation Audit
+
+Perubahan yang diterapkan setelah audit keamanan:
+
+| # | Perubahan | File | Risiko Regresi |
+|---|-----------|------|:--------------:|
+| 1 | Tambah `sanitiseForSheet()` — prefix `'` untuk value `= + - @` | `gas/submissions.gs` | Rendah — apostrof tidak muncul di cell |
+| 2 | `saveToSheet()` — semua user value dibungkus `sanitiseForSheet()` | `gas/submissions.gs` | Rendah — data lama tidak terpengaruh |
+| 3 | Validasi nomor WhatsApp — regex `^\+?[\d\s\-()]{6,30}$` + min 6 digit | `gas/submissions.gs` + `form.js` | Rendah — format WA Indonesia lolos |
+| 4 | URL wajib HTTPS — regex hanya terima `https://`, TLD min 2 karakter | `gas/submissions.gs` + `form.js` | Rendah — hampir semua link demo pakai HTTPS |
+| 5 | Enum validation kategori & tahap — nilai arbitrer ditolak | `gas/submissions.gs` | Rendah — frontend pakai `<select>` |
+| 6 | Email dinormalisasi ke lowercase sebelum disimpan | `gas/submissions.gs` | Rendah — duplicate check sudah case-insensitive |
+| 7 | Min-length nama founder & startup (min 2 karakter) | `gas/submissions.gs` | Rendah — nama 1 huruf tidak bermakna |
+| 8 | Regex email diperketat — TLD min 2 karakter | `gas/submissions.gs` + `form.js` | Rendah — `.id`, `.com` dll semua lolos |
+
+### Yang TIDAK Berubah
+
+- Struktur Sheet (kolom, urutan) tetap sama
+- Submission ID system tetap sama
+- Email templates tetap sama
+- Duplicate check logic tetap sama
+- Frontend ↔ Backend contract tetap sama
+- GAS Web App URL tetap sama
+
+---
+
+## Test Checklist — Validasi Audit
+
+Setelah update deployment, jalankan test berikut:
+
+### Nomor WhatsApp
+
+| Input | Expected |
+|-------|----------|
+| `+6281234567890` | ✅ Lolos |
+| `0812 3456 7890` | ✅ Lolos |
+| `0812-345-6789` | ✅ Lolos |
+| `(021) 123-4567` | ✅ Lolos |
+| `halo bro` | ❌ Error: "Format nomor tidak valid" |
+| `abc123` | ❌ Error |
+| `1` | ❌ Error |
+| `<script>alert(1)</script>` | ❌ Error |
+
+### URL Demo/Deck
+
+| Input | Expected |
+|-------|----------|
+| `https://example.com/demo` | ✅ Lolos |
+| `https://drive.google.com/file/d/xxx` | ✅ Lolos |
+| `http://example.com` | ❌ Error: gunakan https |
+| `ftp://files.com` | ❌ Error |
+| `https://x` | ❌ Error (TLD terlalu pendek) |
+| `javascript://evil.com` | ❌ Error |
+
+### Formula Injection
+
+| Input (nama startup) | Di Sheet |
+|----------------------|----------|
+| `=HYPERLINK("x","y")` | Teks biasa `'=`HYPERLINK... — bukan formula |
+| `+cmd|' /C calc'!A0` | Teks biasa `'+'` + cmd... |
+| `-SUM(A1:A100)` | Teks biasa `'-'` SUM... |
+| `@SUM(A1:A100)` | Teks biasa `'@'` SUM... |
+| `Startup Biasa` | Teks biasa tanpa prefix |
+
+### Email
+
+| Input | Expected |
+|-------|----------|
+| `Test@Gmail.com` | Disimpan `test@gmail.com` |
+| `test@domain` | ❌ Error (TLD terlalu pendek) |
+| `test@domain.com` | ✅ Lolos |
+| `test@startup.id` | ✅ Lolos |
+
+### Kategori & Tahap (API direct)
+
+| Input | Expected |
+|-------|----------|
+| `AI / Machine Learning` | ✅ Lolos |
+| `hacked` | ❌ Error: "Kategori industri tidak valid" |
+| `MVP berjalan` | ✅ Lolos |
+| `random text` | ❌ Error: "Tahap produk tidak valid" |
+
+### Submission Normal (End-to-End)
+
+1. Isi form dengan data valid
+2. Submit
+3. Verifikasi:
+   - ✅ Success state muncul + Submission ID
+   - ✅ Row baru di Sheet, semua value bersih
+   - ✅ Email konfirmasi masuk ke founder
+   - ✅ Email notifikasi masuk ke organizer

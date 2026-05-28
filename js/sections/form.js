@@ -1,6 +1,6 @@
 window.SorceryApp = window.SorceryApp || {};
 
-window.SorceryApp.GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwjWqRUpvq_z9__gEir_kOcGgHpBrHk-z0pk5zS2zVgd6XKMyQRO6iyxBDx-5HrCqfM/exec';
+window.SorceryApp.GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxAOirZyI69bdkuQV_BGv4wcv2jz7-asMOSrC9YdoxMTvFplB-xYb-gmnxQr0X61ke5/exec';
 
 window.SorceryApp.form = function () {
   return `
@@ -121,16 +121,18 @@ window.SorceryApp.formInit = function () {
     if (!String(data.get("founder") || "").trim()) { showError("founder", "Nama founder wajib diisi."); valid = false; }
 
     const email = String(data.get("email") || "").trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError("email", "Format email tidak valid."); valid = false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { showError("email", "Format email tidak valid."); valid = false; }
 
-    if (!String(data.get("phone") || "").trim()) { showError("phone", "Nomor WhatsApp wajib diisi."); valid = false; }
+    const phone = String(data.get("phone") || "").trim();
+    if (!phone) { showError("phone", "Nomor WhatsApp wajib diisi."); valid = false; }
+    else if (!/^\+?[\d\s\-()]{6,30}$/.test(phone)) { showError("phone", "Format nomor tidak valid."); valid = false; }
     if (!data.get("category")) { showError("category", "Pilih kategori industri."); valid = false; }
     if (!data.get("stage"))    { showError("stage",    "Pilih tahap produk.");    valid = false; }
 
     if (!String(data.get("traction") || "").trim()) { showError("traction", "Ceritakan progress atau use case produk."); valid = false; }
 
     const deck = String(data.get("deck") || "").trim();
-    if (!/^https?:\/\/.+\..+/.test(deck)) { showError("deck", "Cantumkan link valid (https://...)."); valid = false; }
+    if (!/^https:\/\/[a-zA-Z0-9].+\..{2,}/.test(deck)) { showError("deck", "Cantumkan link HTTPS valid (https://...)."); valid = false; }
 
     if (!valid) {
       const firstErr = form.querySelector(".form__error:not(:empty)");
